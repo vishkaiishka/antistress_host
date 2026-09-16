@@ -1,0 +1,2506 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AntiStress — Работы, антистрессы и темы</title>
+<style>
+/* ============================================================
+   ТЕМЫ
+   ============================================================ */
+[data-theme="dark"]{
+  --bg-1:#2a1b4d; --bg-2:#0d0b1a;
+  --header-bg:rgba(18,13,36,.88); --header-border:rgba(168,85,247,.22);
+  --card-1:#241d45; --card-2:#171130;
+  --input-bg:#140f2b; --btn-bg:#1a1533; --btn-hover:#241d45;
+  --border:#ffffff14; --border-hover:#a855f755;
+  --text:#eae6ff; --muted:#9d94c9;
+  --accent:#a855f7; --accent-2:#22d3ee; --gold:#fbbf24;
+  --owned-1:#1b2b25; --owned-2:#131f1a; --owned-border:#4ade8033;
+  --modal-1:#241d45; --modal-2:#15102b; --modal-border:#a855f744;
+  --overlay:rgba(5,3,15,.82);
+  --shadow-card:0 18px 40px -18px rgba(168,85,247,.4);
+  --logo-1:#a855f7; --logo-2:#22d3ee;
+}
+[data-theme="light"]{
+  --bg-1:#dbeafe; --bg-2:#f8fafc;
+  --header-bg:rgba(255,255,255,.92); --header-border:rgba(99,102,241,.2);
+  --card-1:#ffffff; --card-2:#f1f5f9;
+  --input-bg:#f1f5f9; --btn-bg:#f1f5f9; --btn-hover:#e2e8f0;
+  --border:#00000018; --border-hover:#6366f155;
+  --text:#1e293b; --muted:#64748b;
+  --accent:#6366f1; --accent-2:#0ea5e9; --gold:#f59e0b;
+  --owned-1:#dcfce7; --owned-2:#bbf7d0; --owned-border:#22c55e55;
+  --modal-1:#ffffff; --modal-2:#f8fafc; --modal-border:#6366f144;
+  --overlay:rgba(15,23,42,.45);
+  --shadow-card:0 18px 40px -18px rgba(99,102,241,.4);
+  --logo-1:#6366f1; --logo-2:#0ea5e9;
+}
+[data-theme="neon"]{
+  --bg-1:#0a0014; --bg-2:#000000;
+  --header-bg:rgba(10,0,20,.92); --header-border:rgba(255,0,255,.35);
+  --card-1:#12002a; --card-2:#050010;
+  --input-bg:#050010; --btn-bg:#0f0020; --btn-hover:#1a0040;
+  --border:#ff00ff25; --border-hover:#ff00ff77;
+  --text:#f0f0ff; --muted:#a58fd9;
+  --accent:#ff00ff; --accent-2:#00ffff; --gold:#ffe600;
+  --owned-1:#002a15; --owned-2:#001a0d; --owned-border:#00ff8855;
+  --modal-1:#12002a; --modal-2:#050010; --modal-border:#ff00ff55;
+  --overlay:rgba(0,0,0,.9);
+  --shadow-card:0 18px 40px -18px rgba(255,0,255,.55);
+  --logo-1:#ff00ff; --logo-2:#00ffff;
+}
+[data-theme="sunset"]{
+  --bg-1:#7c2d12; --bg-2:#1c0a05;
+  --header-bg:rgba(40,15,8,.9); --header-border:rgba(251,146,60,.3);
+  --card-1:#3a1a0d; --card-2:#1f0d05;
+  --input-bg:#150903; --btn-bg:#2a1109; --btn-hover:#3f1a0c;
+  --border:#ffd7aa18; --border-hover:#fb923c77;
+  --text:#fff3e6; --muted:#d9a88a;
+  --accent:#f97316; --accent-2:#facc15; --gold:#fde047;
+  --owned-1:#2d4a1e; --owned-2:#182a10; --owned-border:#84cc1655;
+  --modal-1:#3a1a0d; --modal-2:#1f0d05; --modal-border:#f9731655;
+  --overlay:rgba(10,3,0,.85);
+  --shadow-card:0 18px 40px -18px rgba(249,115,22,.5);
+  --logo-1:#f97316; --logo-2:#facc15;
+}
+[data-theme="ocean"]{
+  --bg-1:#0c4a6e; --bg-2:#04121f;
+  --header-bg:rgba(4,25,42,.9); --header-border:rgba(56,189,248,.3);
+  --card-1:#0b2e47; --card-2:#04192b;
+  --input-bg:#031322; --btn-bg:#0a263c; --btn-hover:#0f3a56;
+  --border:#7dd3fc18; --border-hover:#38bdf877;
+  --text:#e0f2fe; --muted:#7cb7d4;
+  --accent:#0ea5e9; --accent-2:#67e8f9; --gold:#fde047;
+  --owned-1:#0d3d3d; --owned-2:#052222; --owned-border:#2dd4bf55;
+  --modal-1:#0b2e47; --modal-2:#04192b; --modal-border:#0ea5e955;
+  --overlay:rgba(0,10,20,.85);
+  --shadow-card:0 18px 40px -18px rgba(14,165,233,.5);
+  --logo-1:#0ea5e9; --logo-2:#67e8f9;
+}
+[data-theme="forest"]{
+  --bg-1:#14532d; --bg-2:#06130a;
+  --header-bg:rgba(8,28,15,.9); --header-border:rgba(74,222,128,.28);
+  --card-1:#0f3d23; --card-2:#08210f;
+  --input-bg:#06180c; --btn-bg:#0c3420; --btn-hover:#124a2d;
+  --border:#86efac18; --border-hover:#4ade8077;
+  --text:#ecfdf5; --muted:#86b39b;
+  --accent:#22c55e; --accent-2:#a3e635; --gold:#fbbf24;
+  --owned-1:#0d3d3d; --owned-2:#052222; --owned-border:#2dd4bf55;
+  --modal-1:#0f3d23; --modal-2:#08210f; --modal-border:#22c55e55;
+  --overlay:rgba(0,10,4,.85);
+  --shadow-card:0 18px 40px -18px rgba(34,197,94,.5);
+  --logo-1:#22c55e; --logo-2:#a3e635;
+}
+[data-theme="cyberpunk"]{
+  --bg-1:#3b0764; --bg-2:#0a0018;
+  --header-bg:rgba(20,0,40,.92); --header-border:rgba(236,72,153,.35);
+  --card-1:#1a0a33; --card-2:#0a0418;
+  --input-bg:#08031a; --btn-bg:#14082c; --btn-hover:#210e44;
+  --border:#ec489922; --border-hover:#ec489977;
+  --text:#fdf4ff; --muted:#b39ddb;
+  --accent:#ec4899; --accent-2:#22d3ee; --gold:#fde047;
+  --owned-1:#1e1b4b; --owned-2:#0c0a24; --owned-border:#818cf855;
+  --modal-1:#1a0a33; --modal-2:#0a0418; --modal-border:#ec489955;
+  --overlay:rgba(5,0,15,.9);
+  --shadow-card:0 18px 40px -18px rgba(236,72,153,.55);
+  --logo-1:#ec4899; --logo-2:#22d3ee;
+}
+[data-theme="candy"]{
+  --bg-1:#fce7f3; --bg-2:#fef3f8;
+  --header-bg:rgba(255,247,251,.95); --header-border:rgba(236,72,153,.25);
+  --card-1:#ffffff; --card-2:#fff1f7;
+  --input-bg:#fce7f3; --btn-bg:#fce7f3; --btn-hover:#fbcfe8;
+  --border:#ec489920; --border-hover:#ec489966;
+  --text:#831843; --muted:#be185d;
+  --accent:#ec4899; --accent-2:#a855f7; --gold:#f59e0b;
+  --owned-1:#dcfce7; --owned-2:#bbf7d0; --owned-border:#22c55e55;
+  --modal-1:#ffffff; --modal-2:#fff1f7; --modal-border:#ec489944;
+  --overlay:rgba(131,24,67,.45);
+  --shadow-card:0 18px 40px -18px rgba(236,72,153,.4);
+  --logo-1:#ec4899; --logo-2:#a855f7;
+}
+[data-theme="mono"]{
+  --bg-1:#3f3f46; --bg-2:#18181b;
+  --header-bg:rgba(24,24,27,.92); --header-border:rgba(161,161,170,.2);
+  --card-1:#27272a; --card-2:#18181b;
+  --input-bg:#0f0f11; --btn-bg:#232326; --btn-hover:#2f2f33;
+  --border:#ffffff14; --border-hover:#a1a1aa77;
+  --text:#f4f4f5; --muted:#a1a1aa;
+  --accent:#a1a1aa; --accent-2:#d4d4d8; --gold:#e4e4e7;
+  --owned-1:#2a2a2e; --owned-2:#1a1a1d; --owned-border:#a1a1aa55;
+  --modal-1:#27272a; --modal-2:#18181b; --modal-border:#a1a1aa44;
+  --overlay:rgba(9,9,11,.85);
+  --shadow-card:0 18px 40px -18px rgba(255,255,255,.15);
+  --logo-1:#d4d4d8; --logo-2:#a1a1aa;
+}
+[data-theme="retro"]{
+  --bg-1:#78350f; --bg-2:#2a1a08;
+  --header-bg:rgba(45,25,10,.9); --header-border:rgba(217,180,120,.3);
+  --card-1:#3d2510; --card-2:#1f1206;
+  --input-bg:#180d04; --btn-bg:#2f1c0b; --btn-hover:#422711;
+  --border:#d9b47820; --border-hover:#d9b47877;
+  --text:#fef3c7; --muted:#c9a87a;
+  --accent:#d97706; --accent-2:#a16207; --gold:#fde047;
+  --owned-1:#365314; --owned-2:#1a2a08; --owned-border:#84cc1655;
+  --modal-1:#3d2510; --modal-2:#1f1206; --modal-border:#d9770655;
+  --overlay:rgba(15,8,0,.85);
+  --shadow-card:0 18px 40px -18px rgba(217,119,6,.5);
+  --logo-1:#d97706; --logo-2:#fde047;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  background:radial-gradient(circle at 15% -10%, var(--bg-1) 0%, var(--bg-2) 55%) fixed;
+  color:var(--text);min-height:100vh;padding-bottom:50px;overflow-x:hidden;
+  transition:background .4s, color .3s;
+}
+h2{margin:0 0 14px;font-size:1.15rem}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:10px;
+  padding:12px 18px;background:var(--header-bg);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--header-border);transition:background .3s,border-color .3s;
+}
+.logo{font-weight:800;font-size:1.05rem;letter-spacing:.4px;
+  background:linear-gradient(90deg,var(--logo-1),var(--logo-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;}
+.coins{margin-left:auto;display:flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#3a2a10,#5c421a);
+  border:1px solid #fbbf2455;padding:8px 16px;border-radius:999px;
+  font-weight:800;color:#fbbf24;font-size:1rem;transition:transform .2s;}
+.coins.bump{animation:bump .35s}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
+.icon-btn{background:var(--btn-bg);border:1px solid var(--border);color:var(--text);
+  width:40px;height:40px;border-radius:12px;cursor:pointer;font-size:1.05rem;transition:.2s;}
+.icon-btn:hover{background:var(--btn-hover)}
+
+/* THEME PICKER */
+.theme-wrap{position:relative}
+.theme-menu{
+  position:absolute;top:48px;right:0;z-index:100;
+  background:var(--card-1);border:1px solid var(--border);
+  border-radius:16px;padding:14px;width:250px;
+  box-shadow:0 20px 50px -12px rgba(0,0,0,.6);
+  display:none;grid-template-columns:repeat(5,1fr);gap:8px;
+}
+.theme-menu.open{display:grid;animation:fadeIn .2s}
+.theme-swatch{
+  width:38px;height:38px;border-radius:11px;cursor:pointer;
+  border:2px solid transparent;position:relative;transition:.2s;
+}
+.theme-swatch:hover{transform:scale(1.12)}
+.theme-swatch.active{border-color:var(--text);box-shadow:0 0 0 2px var(--card-1)}
+.theme-swatch.active::after{
+  content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:900;font-size:1rem;text-shadow:0 1px 3px #000c;
+}
+
+/* TABS */
+.tabs{display:flex;gap:8px;padding:16px 18px 0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;padding:11px 18px;border-radius:13px;
+  border:1px solid var(--border);background:var(--btn-bg);color:var(--muted);
+  font-weight:700;cursor:pointer;font-size:.88rem;transition:.2s;font-family:inherit;}
+.tabs button:hover{color:var(--text);border-color:var(--border-hover)}
+.tabs button.active{background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 70%, #000));
+  color:#fff;border-color:transparent;box-shadow:0 8px 24px -8px var(--accent);}
+.tab-panel{display:none;padding:18px;max-width:900px;margin:0 auto}
+.tab-panel.active{display:block;animation:fadeIn .35s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* JOB GRID */
+.grid-jobs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.job-tile{background:linear-gradient(160deg,var(--card-1),var(--card-2));
+  border:1px solid var(--border);border-radius:20px;padding:22px 18px;
+  text-align:center;cursor:pointer;transition:.25s;position:relative;overflow:hidden;}
+.job-tile:hover{transform:translateY(-4px);border-color:var(--border-hover);box-shadow:var(--shadow-card)}
+.job-emoji{font-size:3.2rem;line-height:1;margin-bottom:12px;
+  filter:drop-shadow(0 6px 14px #0008);animation:floaty 3s ease-in-out infinite;}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.job-name{font-weight:800;margin-bottom:6px;font-size:.98rem}
+.job-desc{color:var(--muted);font-size:.78rem;line-height:1.4;margin-bottom:10px;min-height:2.2em}
+.job-reward{color:var(--gold);font-weight:700;font-size:.82rem}
+
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.shop-card{background:linear-gradient(160deg,var(--card-1),var(--card-2));
+  border:1px solid var(--border);border-radius:20px;padding:20px 16px;text-align:center;
+  transition:.25s;display:flex;flex-direction:column;}
+.shop-card:hover{transform:translateY(-4px);border-color:var(--border-hover);box-shadow:var(--shadow-card)}
+.shop-card.owned{border-color:var(--owned-border);
+  background:linear-gradient(160deg,var(--owned-1),var(--owned-2))}
+.toy-emoji{font-size:3.4rem;line-height:1;margin-bottom:12px;
+  filter:drop-shadow(0 6px 14px #0008);transition:.2s}
+.toy-name{font-weight:800;margin-bottom:6px;font-size:.98rem}
+.toy-desc{color:var(--muted);font-size:.78rem;margin-bottom:14px;flex:1;line-height:1.4;min-height:3.6em}
+.toy-actions{display:flex;gap:6px;flex-direction:column}
+.buy-btn{width:100%;padding:11px;border-radius:12px;border:none;cursor:pointer;
+  font-weight:800;font-size:.85rem;font-family:inherit;transition:.2s;
+  background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 70%, #000));color:#fff;}
+.buy-btn:hover:not(:disabled){filter:brightness(1.15)}
+.buy-btn:disabled{background:var(--btn-bg);color:var(--muted);cursor:default}
+.shop-card.owned .buy-btn{background:linear-gradient(135deg,#22c55e,#15803d)}
+.skin-btn{background:linear-gradient(135deg,#f59e0b,#d97706)!important;color:#2b1a00!important}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 20px;
+  font-size:.95rem;line-height:1.8}
+
+/* SKINS */
+.skin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.skin-card{background:var(--btn-bg);border:1px solid var(--border);border-radius:16px;
+  padding:14px;text-align:center;transition:.2s;}
+.skin-card.active{border-color:#22c55e;background:var(--owned-2);box-shadow:0 0 20px -5px #22c55e66}
+.skin-card.owned:not(.active){border-color:#fbbf2455}
+.skin-card .skin-preview{width:60px;height:60px;border-radius:50%;margin:0 auto 10px;
+  box-shadow:inset -6px -8px 14px #00000055, 0 4px 12px #00000055;
+  display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+.skin-name{font-weight:700;font-size:.82rem;margin-bottom:10px}
+.skin-card .buy-btn{padding:8px;font-size:.75rem}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:var(--overlay);backdrop-filter:blur(8px);
+  display:none;align-items:center;justify-content:center;padding:16px;z-index:200;}
+.modal.open{display:flex}
+.modal-card{background:linear-gradient(160deg,var(--modal-1),var(--modal-2));
+  border:1px solid var(--modal-border);border-radius:26px;padding:24px;
+  max-width:640px;width:100%;max-height:92vh;overflow-y:auto;position:relative;
+  box-shadow:0 30px 90px -20px rgba(0,0,0,.7);animation:modalIn .3s cubic-bezier(.34,1.4,.64,1);}
+@keyframes modalIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:none}}
+.modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:11px;
+  background:var(--btn-bg);border:1px solid var(--border);color:var(--text);
+  cursor:pointer;font-size:1rem;transition:.2s;z-index:5;}
+.modal-close:hover{background:#f8717133;border-color:#f8717155}
+#modalTitle{margin-bottom:16px;padding-right:40px}
+.hint{text-align:center;color:var(--muted);font-size:.82rem;margin:14px 0 0}
+.btn{padding:14px 28px;border-radius:14px;border:none;cursor:pointer;
+  font-weight:800;font-size:.95rem;font-family:inherit;transition:.2s;
+  background:linear-gradient(135deg,var(--accent-2),color-mix(in srgb,var(--accent-2) 70%, #000));
+  color:#04222b;}
+.btn:hover{transform:translateY(-2px)}
+
+/* TOY GAMES */
+.bubble-wrap{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;
+  padding:14px;background:var(--input-bg);border-radius:18px;user-select:none;}
+.bubble{aspect-ratio:1;border-radius:50%;cursor:pointer;
+  transition:transform .08s, background .2s;
+  box-shadow:0 2px 6px #0008, inset 0 -3px 7px #00000055;}
+.bubble:hover{transform:scale(1.08)}
+.bubble:active{transform:scale(.9)}
+.bubble.popped{background:radial-gradient(circle at 50% 50%, var(--card-1), var(--input-bg))!important;
+  box-shadow:inset 0 3px 9px #000a;transform:scale(.84);opacity:.6;cursor:default;}
+.bubble.popped:hover{transform:scale(.84)}
+.toy-bar{display:flex;align-items:center;justify-content:space-between;
+  margin-top:14px;font-size:.85rem;color:var(--muted);font-weight:600;gap:10px;flex-wrap:wrap;}
+.toy-bar button{padding:9px 16px;border-radius:11px;border:1px solid var(--border);
+  background:var(--btn-bg);color:var(--text);font-weight:700;cursor:pointer;
+  font-size:.8rem;font-family:inherit;transition:.2s;}
+.toy-bar button:hover{border-color:var(--border-hover);background:var(--btn-hover)}
+
+.spinner-wrap{display:flex;justify-content:center;align-items:center;height:280px}
+.fidget{width:190px;height:190px;position:relative;cursor:pointer;will-change:transform}
+.fidget .arm{position:absolute;left:50%;top:50%;width:76px;height:76px;border-radius:50%;
+  border:5px solid #4c1d95;box-shadow:inset 0 -8px 14px #0006, inset 0 6px 12px #ffffff44;}
+.fidget .arm:nth-child(1){transform:translate(-50%,-50%) rotate(0deg) translateY(-52px)}
+.fidget .arm:nth-child(2){transform:translate(-50%,-50%) rotate(120deg) translateY(-52px)}
+.fidget .arm:nth-child(3){transform:translate(-50%,-50%) rotate(240deg) translateY(-52px)}
+.fidget .cap{position:absolute;left:50%;top:50%;width:58px;height:58px;
+  margin:-29px 0 0 -29px;border-radius:50%;
+  background:radial-gradient(circle at 34% 28%, #a5f3fc, #0891b2 60%, #155e75);
+  border:5px solid #164e63;box-shadow:inset 0 -6px 12px #0006, 0 0 20px #22d3ee66;}
+
+.ball-stage{display:flex;align-items:center;justify-content:center;height:300px}
+.stress-ball{width:165px;height:165px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:3.4rem;
+  cursor:pointer;user-select:none;transition:transform .13s cubic-bezier(.34,1.56,.64,1);}
+.stress-ball.squeezed{transform:scale(.7,.78)}
+
+.slime-stage{position:relative;height:320px;background:var(--input-bg);border-radius:20px;
+  overflow:hidden;touch-action:none;cursor:crosshair;border:1px solid var(--border);
+  background-image:radial-gradient(circle at 20% 30%, #ffffff08 1px, transparent 1px);
+  background-size:26px 26px;}
+.slime{position:absolute;left:0;top:0;width:124px;height:124px;
+  margin:-62px 0 0 -62px;border-radius:46%;will-change:transform;pointer-events:none;}
+
+.cat-stage{display:flex;align-items:center;justify-content:center;height:290px;position:relative}
+.squish-cat{font-size:9rem;line-height:1;cursor:pointer;user-select:none;
+  transition:transform .1s;filter:drop-shadow(0 12px 26px #0008);}
+.squish-cat.squish{animation:catSquish .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes catSquish{
+  0%{transform:scale(1,1)}22%{transform:scale(1.32,.68)}
+  52%{transform:scale(.82,1.24)}78%{transform:scale(1.08,.94)}100%{transform:scale(1,1)}}
+.float-text{position:absolute;pointer-events:none;font-weight:900;color:var(--gold);
+  font-size:1.15rem;animation:floatUp .9s ease-out forwards;
+  text-shadow:0 2px 10px #000a;z-index:5;}
+@keyframes floatUp{
+  0%{opacity:1;transform:translate(-50%,0) scale(.7)}
+  100%{opacity:0;transform:translate(-50%,-80px) scale(1.25)}}
+
+.popit-wrap{display:flex;justify-content:center;padding:10px 0}
+.popit-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;
+  padding:16px;background:var(--input-bg);border-radius:22px;}
+
+.cube-stage{display:flex;align-items:center;justify-content:center;height:300px;perspective:900px}
+.cube-face{width:170px;height:170px;border-radius:26px;
+  display:flex;align-items:center;justify-content:center;font-size:5rem;
+  cursor:pointer;user-select:none;
+  transition:transform .45s cubic-bezier(.34,1.4,.64,1);
+  box-shadow:inset 0 -14px 26px #0006, inset 0 12px 26px #ffffff33, 0 22px 44px -10px #000a;}
+.cube-face.flip{transform:rotateY(180deg) scale(.85)}
+
+.sand-wrap{position:relative;height:320px;border-radius:20px;overflow:hidden;
+  border:1px solid var(--border);cursor:crosshair;touch-action:none;}
+#sandCanvas{display:block;width:100%;height:100%}
+
+.inf-stage{display:flex;align-items:center;justify-content:center;height:320px;perspective:900px}
+.inf-cube{width:120px;height:120px;position:relative;transform-style:preserve-3d;
+  transform:rotateX(-20deg) rotateY(-20deg);transition:transform .5s;}
+.inf-cube.spin{animation:infSpin 3s linear infinite}
+@keyframes infSpin{from{transform:rotateX(-20deg) rotateY(-20deg)}
+  to{transform:rotateX(-20deg) rotateY(340deg)}}
+.inf-cube .face{position:absolute;width:120px;height:120px;border-radius:14px;
+  border:2px solid #00000044;opacity:.95;box-shadow:inset 0 0 30px #00000055;}
+
+/* balloon */
+.balloon-stage{display:flex;align-items:center;justify-content:center;height:320px;
+  position:relative;overflow:hidden}
+.balloon{font-size:6rem;line-height:1;cursor:pointer;user-select:none;
+  transition:font-size .15s, transform .15s;transform-origin:center bottom;}
+.balloon.pulse{animation:balloonPulse .3s ease-out}
+@keyframes balloonPulse{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
+.balloon.burst{animation:burstOut .5s forwards}
+@keyframes burstOut{to{opacity:0;transform:scale(2.5) rotate(30deg)}}
+
+/* piano */
+.piano-stage{padding:14px 0}
+.piano{display:flex;justify-content:center;gap:4px;padding:14px;background:var(--input-bg);border-radius:18px}
+.piano-key{width:44px;height:160px;border-radius:0 0 10px 10px;cursor:pointer;
+  transition:transform .1s, filter .1s;border:none;font-family:inherit;
+  box-shadow:inset 0 -8px 14px #00000044, 0 4px 8px #0006;}
+.piano-key:active,.piano-key.playing{transform:translateY(4px) scale(.96);
+  filter:brightness(1.2)}
+
+/* magic ball */
+.magic-stage{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:340px;gap:20px}
+.magic-ball{width:180px;height:180px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:4.5rem;
+  background:radial-gradient(circle at 30% 25%, #312e81, #1e1b4b 45%, #0a0618);
+  box-shadow:inset -14px -20px 40px #00000099, inset 14px 12px 30px #ffffff22,
+    0 20px 50px -14px #4c1d95aa, 0 0 60px #4c1d9566;
+  transition:transform .2s;}
+.magic-ball:active{transform:scale(.94)}
+.magic-ball.shake{animation:magicShake .5s}
+@keyframes magicShake{
+  0%,100%{transform:translateX(0) rotate(0)}
+  20%{transform:translateX(-8px) rotate(-6deg)}
+  40%{transform:translateX(8px) rotate(6deg)}
+  60%{transform:translateX(-6px) rotate(-4deg)}
+  80%{transform:translateX(6px) rotate(4deg)}}
+.magic-answer{min-height:56px;padding:14px 22px;border-radius:16px;
+  background:var(--input-bg);border:1px solid var(--border);
+  font-weight:700;text-align:center;max-width:420px;
+  color:var(--accent-2);transition:.25s;font-size:.95rem;}
+.magic-answer.show{animation:ansIn .35s}
+@keyframes ansIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+
+/* yoyo */
+.yoyo-stage{position:relative;height:340px;border-radius:20px;
+  background:var(--input-bg);overflow:hidden;border:1px solid var(--border);
+  touch-action:none;cursor:ns-resize;}
+.yoyo-string{position:absolute;left:50%;top:0;width:2px;
+  background:linear-gradient(to bottom, var(--muted), var(--accent-2));}
+.yoyo{position:absolute;left:50%;width:64px;height:64px;border-radius:50%;
+  margin-left:-32px;margin-top:-32px;display:flex;align-items:center;justify-content:center;
+  font-size:2rem;will-change:top;
+  box-shadow:inset -8px -10px 18px #00000055, 0 0 30px currentColor;}
+
+/* JOB GAMES */
+.job-area{position:relative;height:320px;background:var(--input-bg);border-radius:20px;
+  overflow:hidden;border:1px solid var(--border);}
+.job-area .box{position:absolute;font-size:2.4rem;cursor:pointer;user-select:none;
+  transition:transform .15s, opacity .2s;}
+.job-area .box:active{transform:scale(1.3)!important}
+.job-result{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;gap:14px;padding:20px;text-align:center;}
+.job-result .big{font-size:3.4rem}
+.job-result .reward{font-size:1.5rem;font-weight:900;color:#4ade80}
+
+.hold-btn{width:220px;height:220px;border-radius:50%;border:none;cursor:pointer;
+  font-size:1.1rem;font-weight:900;font-family:inherit;color:#04222b;
+  transition:transform .08s;user-select:none;
+  background:radial-gradient(circle at 34% 28%, #a5f3fc, #0891b2 55%, #155e75);
+  box-shadow:0 20px 50px -12px #22d3eeaa, inset 0 -12px 26px #0004;}
+.hold-btn:active,.hold-btn.holding{transform:scale(.94);filter:brightness(1.2)}
+.hold-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;padding:14px 0}
+
+.target-area{position:relative;height:320px;background:var(--input-bg);border-radius:20px;
+  overflow:hidden;border:1px solid var(--border);touch-action:none;}
+.target{position:absolute;font-size:2.6rem;cursor:pointer;user-select:none;transition:transform .1s;}
+.target:active{transform:scale(.8)}
+.spots-area{position:relative;height:320px;background:var(--input-bg);
+  border-radius:20px;overflow:hidden;border:1px solid var(--border);cursor:crosshair;}
+.spot{position:absolute;width:62px;height:62px;border-radius:50%;cursor:pointer;
+  background:radial-gradient(circle at 35% 30%, #8b6b3e, #4a3416);
+  box-shadow:inset -6px -8px 14px #00000066, 0 4px 12px #00000055;
+  transition:transform .15s, opacity .2s;}
+.spot:active{transform:scale(.8)}
+
+.react-area{height:320px;background:var(--input-bg);border-radius:20px;position:relative;
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);}
+.react-btn{position:absolute;padding:18px 26px;border-radius:16px;border:none;
+  cursor:pointer;font-weight:900;font-size:1rem;font-family:inherit;
+  background:linear-gradient(135deg,#22c55e,#15803d);color:#fff;
+  box-shadow:0 12px 30px -10px #22c55eaa;
+  animation:reactPop .15s cubic-bezier(.34,1.56,.64,1);}
+.react-btn.bad{background:linear-gradient(135deg,#ef4444,#991b1b);
+  box-shadow:0 12px 30px -10px #ef4444aa;}
+@keyframes reactPop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+
+.code-area{height:320px;background:var(--input-bg);border-radius:20px;position:relative;
+  overflow:hidden;border:1px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;}
+.code-symbol{font-family:'Courier New',monospace;font-size:4.5rem;font-weight:900;
+  color:#4ade80;text-shadow:0 0 30px #4ade8088;animation:codePop .3s cubic-bezier(.34,1.56,.64,1);}
+@keyframes codePop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+.code-keys{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:0 12px}
+.code-keys button{width:62px;height:62px;border-radius:14px;border:1px solid var(--border);
+  background:var(--btn-bg);color:#4ade80;font-family:'Courier New',monospace;
+  font-size:1.6rem;font-weight:900;cursor:pointer;transition:.15s;}
+.code-keys button:hover{background:var(--btn-hover);transform:scale(1.06)}
+.code-keys button:active{transform:scale(.9)}
+
+.cook-area{height:320px;background:var(--input-bg);border-radius:20px;padding:18px;
+  border:1px solid var(--border);display:flex;flex-direction:column;gap:14px;}
+.recipe{background:var(--btn-bg);border-radius:14px;padding:12px;text-align:center;
+  font-size:1.8rem;letter-spacing:6px;min-height:60px;color:var(--text);}
+.recipe .done{opacity:.35}
+.ingredients{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1}
+.ingredients button{background:var(--btn-bg);border:1px solid var(--border);border-radius:14px;
+  font-size:2.4rem;cursor:pointer;transition:.15s;font-family:inherit;color:var(--text);}
+.ingredients button:hover{border-color:#fbbf2455;background:var(--btn-hover)}
+.ingredients button:active{transform:scale(.92)}
+
+.music-area{height:320px;background:var(--input-bg);border-radius:20px;position:relative;
+  overflow:hidden;border:1px solid var(--border);}
+.lane{position:absolute;top:0;bottom:0;width:33.33%;border-right:1px solid var(--border);}
+.lane:last-of-type{border-right:none}
+.lane-zone{position:absolute;bottom:0;left:0;right:0;height:88px;
+  background:linear-gradient(to top, #22c55e44, transparent);border-top:2px solid #22c55e88;}
+.note{position:absolute;width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+  transform:translateX(-50%);pointer-events:none;
+  box-shadow:0 0 22px currentColor, inset 0 -4px 8px #0006;}
+.lane-btn{position:absolute;bottom:6px;width:80px;height:64px;border-radius:14px;
+  border:2px solid var(--border);background:var(--btn-bg);color:var(--text);font-size:1.6rem;
+  cursor:pointer;font-family:inherit;transform:translateX(-50%);transition:.1s;}
+.lane-btn:active{transform:translateX(-50%) scale(.9);background:#22c55e44}
+
+.lib-area{height:320px;background:var(--input-bg);border-radius:20px;padding:18px;
+  border:1px solid var(--border);display:grid;
+  grid-template-columns:repeat(4,1fr);gap:10px;align-content:center;}
+.lib-card{aspect-ratio:.8;border-radius:14px;cursor:pointer;
+  background:linear-gradient(160deg,#4c1d95,#2e1065);border:1px solid #a855f744;
+  display:flex;align-items:center;justify-content:center;font-size:2rem;
+  transition:transform .25s, background .25s;}
+.lib-card:hover{transform:translateY(-3px)}
+.lib-card.flipped{background:linear-gradient(160deg,#fbbf24,#d97706);color:#2b1a00}
+.lib-card.matched{background:linear-gradient(160deg,#22c55e,#15803d);
+  cursor:default;opacity:.7}
+
+/* fishing */
+.fish-area{height:320px;background:var(--input-bg);border-radius:20px;
+  position:relative;overflow:hidden;border:1px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:20px;}
+.fish-scale{position:relative;width:100%;max-width:400px;height:38px;border-radius:19px;
+  background:linear-gradient(90deg, #1e3a8a, #0891b2, #22c55e, #eab308, #dc2626);
+  border:2px solid var(--border);overflow:hidden;}
+.fish-zone{position:absolute;top:0;bottom:0;background:#22c55e88;
+  border-left:2px solid #4ade80;border-right:2px solid #4ade80;
+  box-shadow:0 0 20px #4ade80aa;}
+.fish-marker{position:absolute;top:-6px;bottom:-6px;width:5px;background:#fff;
+  border-radius:3px;box-shadow:0 0 14px #fff, 0 0 4px #000;
+  transform:translateX(-50%);}
+.fish-emoji{font-size:4rem;animation:fishSwim 2s ease-in-out infinite}
+@keyframes fishSwim{0%,100%{transform:translateX(-8px) rotate(-5deg)}
+  50%{transform:translateX(8px) rotate(5deg)}}
+
+/* photo */
+.photo-area{position:relative;height:320px;border-radius:20px;overflow:hidden;
+  background:linear-gradient(160deg,#1e1b4b,#0a0618);border:1px solid var(--border);cursor:crosshair;}
+.photo-target{position:absolute;font-size:2.6rem;cursor:pointer;
+  transition:transform .1s;filter:drop-shadow(0 4px 10px #0009);}
+.photo-target:active{transform:scale(.85)}
+.photo-frame{position:absolute;left:50%;top:50%;width:120px;height:120px;
+  margin:-60px 0 0 -60px;border:3px dashed #fbbf24;border-radius:14px;
+  pointer-events:none;box-shadow:0 0 30px #fbbf2455, inset 0 0 30px #fbbf2422;}
+.photo-frame::before,.photo-frame::after{content:'';position:absolute;width:16px;height:16px;
+  border:3px solid #fbbf24;border-radius:4px;}
+.photo-frame::before{left:-6px;top:-6px;border-right:none;border-bottom:none}
+.photo-frame::after{right:-6px;bottom:-6px;border-left:none;border-top:none}
+
+/* trainer */
+.trainer-area{height:320px;background:var(--input-bg);border-radius:20px;
+  position:relative;overflow:hidden;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
+.trainer-btn{padding:24px 44px;border-radius:20px;border:none;cursor:pointer;
+  font-size:1.5rem;font-weight:900;font-family:inherit;color:#04222b;
+  background:radial-gradient(circle at 34% 28%, #fef08a, #facc15 55%, #a16207);
+  box-shadow:0 16px 40px -12px #facc15aa, inset 0 -10px 20px #0004;
+  transition:transform .08s;}
+.trainer-btn:active{transform:scale(.92)}
+.trainer-btn.hit{background:radial-gradient(circle at 34% 28%, #bbf7d0, #22c55e 55%, #15803d)}
+.trainer-btn.miss{background:radial-gradient(circle at 34% 28%, #fecaca, #dc2626 55%, #7f1d3a)}
+.trainer-btn.pulse{animation:beatPulse .5s}
+@keyframes beatPulse{0%{transform:scale(1)}30%{transform:scale(1.12)}100%{transform:scale(1)}}
+
+/* chemist */
+.chem-area{height:320px;background:var(--input-bg);border-radius:20px;
+  padding:20px;border:1px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;gap:16px;justify-content:center;}
+.chem-recipe{display:flex;gap:12px;font-size:2.2rem;padding:12px 20px;
+  background:var(--btn-bg);border-radius:16px;border:1px solid var(--border);}
+.chem-recipe span.done{opacity:.35}
+.chem-recipe span{transition:.2s}
+.chem-buttons{display:flex;gap:12px}
+.chem-buttons button{width:68px;height:68px;border-radius:50%;border:2px solid var(--border);
+  cursor:pointer;transition:.15s;font-size:1.6rem;}
+.chem-buttons button:hover{transform:scale(1.08)}
+.chem-buttons button:active{transform:scale(.92)}
+
+/* pilot */
+.pilot-area{position:relative;height:320px;overflow:hidden;border-radius:20px;
+  background:linear-gradient(180deg,#020010,#0a0520);
+  border:1px solid var(--border);cursor:crosshair;}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle 2s infinite}
+@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}
+.asteroid{position:absolute;font-size:2.4rem;cursor:pointer;
+  transition:transform .1s;filter:drop-shadow(0 0 12px #f97316aa);}
+.asteroid:active{transform:scale(.85)}
+
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);
+  background:linear-gradient(135deg,#22c55e,#15803d);color:#fff;
+  padding:13px 24px;border-radius:14px;font-weight:700;font-size:.9rem;
+  box-shadow:0 14px 40px -10px #000c;z-index:400;
+  animation:toastIn .3s cubic-bezier(.34,1.56,.64,1);}
+.toast.bad{background:linear-gradient(135deg,#ef4444,#991b1b)}
+.toast.out{opacity:0;transform:translate(-50%,14px);transition:.3s}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}
+
+@media(max-width:520px){
+  .bubble-wrap{gap:4px;padding:10px}
+  .squish-cat{font-size:7rem}
+  .logo{font-size:.9rem}
+  .tabs button{padding:10px 14px;font-size:.8rem}
+  .popit-grid{grid-template-columns:repeat(6,1fr);gap:6px}
+  .cube-face{width:140px;height:140px}
+  .skin-grid{grid-template-columns:repeat(2,1fr)}
+  .theme-menu{width:210px;grid-template-columns:repeat(4,1fr)}
+  .piano-key{width:34px;height:120px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🧘 AntiStress</div>
+  <div class="coins">🪙 <b id="coins">0</b></div>
+  <div class="theme-wrap">
+    <button class="icon-btn" id="themeBtn" title="Тема">🎨</button>
+    <div class="theme-menu" id="themeMenu">
+      <div id="themeSwatches" style="display:contents"></div>
+    </div>
+  </div>
+  <button class="icon-btn" id="soundBtn" title="Звук">🔊</button>
+</header>
+
+<nav class="tabs">
+  <button data-tab="work" class="active">💼 Работа</button>
+  <button data-tab="shop">🛒 Магазин</button>
+  <button data-tab="toys">🧸 Мои игрушки</button>
+</nav>
+
+<main>
+  <section class="tab-panel active" id="tab-work">
+    <h2>💼 Способы заработка</h2>
+    <p style="color:var(--muted);font-size:.85rem;margin:0 0 16px">Выбери подработку и заработай монеты на антистрессы</p>
+    <div class="grid-jobs" id="jobsGrid"></div>
+  </section>
+  <section class="tab-panel" id="tab-shop">
+    <h2>🛒 Магазин антистрессов</h2>
+    <div class="grid" id="shopGrid"></div>
+  </section>
+  <section class="tab-panel" id="tab-toys">
+    <h2>🧸 Мои антистрессы</h2>
+    <div class="grid" id="toysGrid"></div>
+  </section>
+</main>
+
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose">✕</button>
+    <h2 id="modalTitle"></h2>
+    <div id="modalStage"></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   БАЗА
+   ============================================================ */
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const wait = ms => new Promise(r => setTimeout(r, ms));
+const rnd  = (a,b) => a + Math.random() * (b - a);
+
+let audioCtx = null, soundOn = true;
+function ac(){ if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); return audioCtx; }
+function beep(freq, dur = 0.08, type = 'sine', vol = 0.1){
+  if(!soundOn) return;
+  try{
+    const c = ac(), o = c.createOscillator(), g = c.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(vol, c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + dur);
+    o.connect(g); g.connect(c.destination);
+    o.start(); o.stop(c.currentTime + dur + 0.02);
+  }catch(e){}
+}
+function popSound(){
+  if(!soundOn) return;
+  try{
+    const c = ac(), o = c.createOscillator(), g = c.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(800 + Math.random()*500, c.currentTime);
+    o.frequency.exponentialRampToValueAtTime(180, c.currentTime + 0.09);
+    g.gain.setValueAtTime(0.15, c.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + 0.1);
+    o.connect(g); g.connect(c.destination);
+    o.start(); o.stop(c.currentTime + 0.12);
+  }catch(e){}
+}
+
+/* ============================================================
+   СОХРАНЕНИЕ В БРАУЗЕРЕ
+   ============================================================ */
+const SAVE_KEY = 'antistress_save_v4';
+function defaultState(){
+  return {
+    coins: 300,
+    theme: 'dark',
+    toys: { bubble: { skins:['classic'], active:'classic' } }
+  };
+}
+let state = (() => {
+  try{
+    const raw = localStorage.getItem(SAVE_KEY);
+    if(raw){
+      const p = JSON.parse(raw);
+      if(p && p.toys) return Object.assign(defaultState(), p);
+    }
+    // миграция со старых версий
+    for(const k of ['antistress_save_v3','antistress_save_v2']){
+      const old = localStorage.getItem(k);
+      if(old){
+        const p = JSON.parse(old);
+        if(p && p.toys) return Object.assign(defaultState(), p);
+      }
+    }
+  }catch(e){}
+  return defaultState();
+})();
+function save(){
+  try{ localStorage.setItem(SAVE_KEY, JSON.stringify(state)); }catch(e){}
+}
+window.addEventListener('beforeunload', save);
+
+function renderCoins(){ $('#coins').textContent = state.coins; }
+function bumpCoins(){ const el = $('.coins'); el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
+function addCoins(n){ state.coins += n; save(); renderCoins(); bumpCoins(); }
+
+function toast(msg, ok = true){
+  const t = document.createElement('div');
+  t.className = 'toast' + (ok ? '' : ' bad');
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => { t.classList.add('out'); setTimeout(() => t.remove(), 320); }, 1800);
+}
+
+/* ============================================================
+   ТЕМЫ
+   ============================================================ */
+const THEMES = [
+  { id:'dark',      name:'Тёмная',      preview:'linear-gradient(135deg,#a855f7,#22d3ee)' },
+  { id:'light',     name:'Светлая',     preview:'linear-gradient(135deg,#6366f1,#0ea5e9)' },
+  { id:'neon',      name:'Неон',        preview:'linear-gradient(135deg,#ff00ff,#00ffff)' },
+  { id:'sunset',    name:'Закат',       preview:'linear-gradient(135deg,#f97316,#facc15)' },
+  { id:'ocean',     name:'Океан',       preview:'linear-gradient(135deg,#0ea5e9,#67e8f9)' },
+  { id:'forest',    name:'Лес',         preview:'linear-gradient(135deg,#22c55e,#a3e635)' },
+  { id:'cyberpunk', name:'Киберпанк',   preview:'linear-gradient(135deg,#ec4899,#22d3ee)' },
+  { id:'candy',     name:'Карамель',    preview:'linear-gradient(135deg,#ec4899,#a855f7)' },
+  { id:'mono',      name:'Монохром',    preview:'linear-gradient(135deg,#d4d4d8,#52525b)' },
+  { id:'retro',     name:'Ретро',       preview:'linear-gradient(135deg,#d97706,#fde047)' },
+];
+
+function applyTheme(id){
+  if(!THEMES.find(t => t.id === id)) id = 'dark';
+  document.documentElement.setAttribute('data-theme', id);
+  state.theme = id;
+  save();
+  renderThemeSwatches();
+}
+
+function renderThemeSwatches(){
+  const box = $('#themeSwatches');
+  box.innerHTML = '';
+  THEMES.forEach(t => {
+    const sw = document.createElement('div');
+    sw.className = 'theme-swatch' + (state.theme === t.id ? ' active' : '');
+    sw.style.background = t.preview;
+    sw.title = t.name;
+    sw.onclick = () => {
+      applyTheme(t.id);
+      beep(680, 0.08, 'sine', 0.07);
+      toast(`Тема: ${t.name} 🎨`);
+    };
+    box.appendChild(sw);
+  });
+}
+
+$('#themeBtn').onclick = e => {
+  e.stopPropagation();
+  $('#themeMenu').classList.toggle('open');
+  beep(560, 0.05, 'sine', 0.05);
+};
+document.addEventListener('click', e => {
+  if(!e.target.closest('.theme-wrap')) $('#themeMenu').classList.remove('open');
+});
+
+/* ============================================================
+   АНТИСТРЕССЫ + СКИНЫ
+   ============================================================ */
+const TOYS = [
+  { id:'bubble', name:'Пузырчатая плёнка', emoji:'🫧', price:0,
+    desc:'80 пузырьков, которые так и просятся, чтобы их лопнули',
+    skins:[
+      { id:'classic', name:'Классика',  price:0,  colors:{a:'#d8ecff',b:'#6aa9e8',c:'#2b5b91'} },
+      { id:'neon',    name:'Неон',      price:60, colors:{a:'#a5f3fc',b:'#22d3ee',c:'#0891b2'} },
+      { id:'pink',    name:'Розовая',   price:60, colors:{a:'#fbcfe8',b:'#f472b6',c:'#9d174d'} },
+      { id:'mint',    name:'Мята',      price:80, colors:{a:'#d1fae5',b:'#34d399',c:'#065f46'} },
+      { id:'sunset',  name:'Закат',     price:120,colors:{a:'#fed7aa',b:'#f97316',c:'#7c2d12'} },
+      { id:'purple',  name:'Сиреневый', price:120,colors:{a:'#e9d5ff',b:'#a855f7',c:'#4c1d95'} },
+      { id:'ice',     name:'Лёд',       price:150,colors:{a:'#e0f2fe',b:'#38bdf8',c:'#0c4a6e'} },
+      { id:'lava',    name:'Лава',      price:180,colors:{a:'#fecaca',b:'#ef4444',c:'#7f1d1d'} },
+      { id:'galaxy',  name:'Галактика', price:220,colors:{a:'#c4b5fd',b:'#6366f1',c:'#1e1b4b'} },
+      { id:'gold',    name:'Золото',    price:280,colors:{a:'#fef3c7',b:'#fbbf24',c:'#b45309'} },
+    ]},
+  { id:'spinner', name:'Спиннер', emoji:'🌀', price:150,
+    desc:'Раскрути и наблюдай, как он крутится и замедляется',
+    skins:[
+      { id:'classic', name:'Фиолет',  price:0,  colors:{a:'#e9d5ff',b:'#a855f7',c:'#6d28d9'} },
+      { id:'blue',    name:'Синий',   price:80, colors:{a:'#bae6fd',b:'#3b82f6',c:'#1e40af'} },
+      { id:'green',   name:'Зелёный', price:80, colors:{a:'#bbf7d0',b:'#22c55e',c:'#14532d'} },
+      { id:'pink',    name:'Розовый', price:100,colors:{a:'#fbcfe8',b:'#ec4899',c:'#9d174d'} },
+      { id:'red',     name:'Красный', price:120,colors:{a:'#fecaca',b:'#dc2626',c:'#7f1d3a'} },
+      { id:'cyan',    name:'Циан',    price:140,colors:{a:'#a5f3fc',b:'#06b6d4',c:'#164e63'} },
+      { id:'rainbow', name:'Радуга',  price:200,colors:{a:'#fef08a',b:'#a855f7',c:'#ec4899'} },
+      { id:'gold',    name:'Золото',  price:250,colors:{a:'#fef3c7',b:'#fbbf24',c:'#b45309'} },
+    ]},
+  { id:'ball', name:'Мяч-антистресс', emoji:'🔴', price:250,
+    desc:'Сжимай его сколько душе угодно — он всё стерпит',
+    skins:[
+      { id:'red',     name:'Красный',  price:0,  colors:{a:'#ff9fb1',b:'#e11d48',c:'#7f1d3a'} },
+      { id:'blue',    name:'Синий',    price:80, colors:{a:'#bae6fd',b:'#3b82f6',c:'#1e3a8a'} },
+      { id:'green',   name:'Зелёный',  price:80, colors:{a:'#bbf7d0',b:'#22c55e',c:'#14532d'} },
+      { id:'purple',  name:'Фиолет',   price:120,colors:{a:'#e9d5ff',b:'#a855f7',c:'#4c1d95'} },
+      { id:'yellow',  name:'Жёлтый',   price:120,colors:{a:'#fef08a',b:'#eab308',c:'#713f12'} },
+      { id:'aqua',    name:'Аква',     price:150,colors:{a:'#a5f3fc',b:'#06b6d4',c:'#164e63'} },
+      { id:'lava',    name:'Лава',     price:180,colors:{a:'#fed7aa',b:'#f97316',c:'#7c2d12'} },
+      { id:'galaxy',  name:'Галактика',price:250,colors:{a:'#c4b5fd',b:'#6366f1',c:'#1e1b4b'} },
+      { id:'rainbow', name:'Радужный', price:280,colors:{a:'#fef08a',b:'#a855f7',c:'#ec4899'} },
+      { id:'gold',    name:'Золото',   price:350,colors:{a:'#fef3c7',b:'#fbbf24',c:'#92400e'} },
+    ]},
+  { id:'slime', name:'Слайм', emoji:'🟣', price:400,
+    desc:'Тяни и мни вязкую массу — она тянется за пальцем',
+    skins:[
+      { id:'green',   name:'Зелёный',   price:0,  colors:{a:'#b9fbe0',b:'#34d399',c:'#047857'} },
+      { id:'purple',  name:'Фиолет',    price:80, colors:{a:'#e9d5ff',b:'#a855f7',c:'#6d28d9'} },
+      { id:'pink',    name:'Розовый',   price:80, colors:{a:'#fbcfe8',b:'#ec4899',c:'#9d174d'} },
+      { id:'blue',    name:'Голубой',   price:100,colors:{a:'#bae6fd',b:'#0ea5e9',c:'#0c4a6e'} },
+      { id:'cyan',    name:'Циан',      price:120,colors:{a:'#a5f3fc',b:'#06b6d4',c:'#164e63'} },
+      { id:'yellow',  name:'Лимонный',  price:120,colors:{a:'#fef9c3',b:'#facc15',c:'#713f12'} },
+      { id:'orange',  name:'Апельсин',  price:150,colors:{a:'#fed7aa',b:'#f97316',c:'#7c2d12'} },
+      { id:'mint',    name:'Мята',      price:150,colors:{a:'#a7f3d0',b:'#10b981',c:'#064e3b'} },
+      { id:'gold',    name:'Золото',    price:250,colors:{a:'#fef3c7',b:'#fbbf24',c:'#92400e'} },
+      { id:'lava',    name:'Лава',      price:300,colors:{a:'#fecaca',b:'#ef4444',c:'#7f1d1d'} },
+      { id:'ice',     name:'Лёд',       price:300,colors:{a:'#e0f2fe',b:'#38bdf8',c:'#0c4a6e'} },
+      { id:'galaxy',  name:'Галактика', price:400,colors:{a:'#c4b5fd',b:'#6366f1',c:'#1e1b4b'} },
+      { id:'toxic',   name:'Токсин',    price:400,colors:{a:'#d9f99d',b:'#84cc16',c:'#365314'} },
+      { id:'blood',   name:'Кровь',     price:450,colors:{a:'#fecaca',b:'#dc2626',c:'#450a0a'} },
+      { id:'rainbow', name:'Радуга',    price:600,colors:{a:'#fef08a',b:'#a855f7',c:'#ec4899'} },
+    ]},
+  { id:'cat', name:'Сквиш-котик', emoji:'🐱', price:600,
+    desc:'Мяу! Сжимай котика и слушай, как он мурлычет',
+    skins:[
+      { id:'classic',  name:'Обычный',  price:0,  emoji:'🐱',   colors:{a:'#fbbf24',b:'#f59e0b',c:'#b45309'} },
+      { id:'black',    name:'Чёрный',   price:150,emoji:'🐈‍⬛', colors:{a:'#9ca3af',b:'#1f2937',c:'#000000'} },
+      { id:'orange',   name:'Рыжий',    price:150,emoji:'🐈',   colors:{a:'#fdba74',b:'#ea580c',c:'#7c2d12'} },
+      { id:'white',    name:'Белый',    price:180,emoji:'🐈',   colors:{a:'#f9fafb',b:'#e5e7eb',c:'#9ca3af'} },
+      { id:'cow',      name:'Коровка',  price:250,emoji:'🐮',   colors:{a:'#fbcfe8',b:'#ec4899',c:'#9d174d'} },
+      { id:'tiger',    name:'Тигр',     price:300,emoji:'🐯',   colors:{a:'#fed7aa',b:'#ea580c',c:'#1f2937'} },
+      { id:'calico',   name:'Трёхцвет', price:320,emoji:'🐱',   colors:{a:'#fed7aa',b:'#92400e',c:'#1f2937'} },
+      { id:'siamese',  name:'Сиамский', price:350,emoji:'🐈',   colors:{a:'#fde68a',b:'#78350f',c:'#0c0a09'} },
+      { id:'pink',     name:'Розовый',  price:400,emoji:'🐱',   colors:{a:'#fbcfe8',b:'#ec4899',c:'#831843'} },
+      { id:'gold',     name:'Золотой',  price:600,emoji:'🦁',   colors:{a:'#fef3c7',b:'#fbbf24',c:'#92400e'} },
+    ]},
+  { id:'popit', name:'Поп-ит', emoji:'🟦', price:800,
+    desc:'Нажимай кружочки — они щёлкают и выворачиваются',
+    skins:[
+      { id:'rainbow', name:'Радужный', price:0,  colors:{a:'#fbcfe8',b:'#a855f7',c:'#0891b2'} },
+      { id:'pastel',  name:'Пастель',  price:150,colors:{a:'#fef3c7',b:'#fbcfe8',c:'#bfdbfe'} },
+      { id:'neon',    name:'Неон',     price:250,colors:{a:'#a5f3fc',b:'#22d3ee',c:'#84cc16'} },
+      { id:'ocean',   name:'Океан',    price:280,colors:{a:'#bae6fd',b:'#0ea5e9',c:'#0c4a6e'} },
+      { id:'sunset',  name:'Закат',    price:300,colors:{a:'#fed7aa',b:'#f97316',c:'#7c2d12'} },
+      { id:'purple',  name:'Фиолет',   price:320,colors:{a:'#e9d5ff',b:'#a855f7',c:'#4c1d95'} },
+      { id:'green',   name:'Изумруд',  price:350,colors:{a:'#bbf7d0',b:'#22c55e',c:'#14532d'} },
+      { id:'red',     name:'Алый',     price:380,colors:{a:'#fecaca',b:'#dc2626',c:'#7f1d3a'} },
+      { id:'gold',    name:'Золото',   price:500,colors:{a:'#fef3c7',b:'#fbbf24',c:'#92400e'} },
+    ]},
+  { id:'fidgetcube', name:'Кубик-антистресс', emoji:'🧊', price:1000,
+    desc:'Крути кубик — у каждой грани свой характер',
+    skins:[
+      { id:'dark',    name:'Тёмный',   price:0,  colors:{a:'#6b7280',b:'#1f2937',c:'#000000'} },
+      { id:'light',   name:'Светлый',  price:120,colors:{a:'#f3f4f6',b:'#d1d5db',c:'#6b7280'} },
+      { id:'pink',    name:'Розовый',  price:200,colors:{a:'#fbcfe8',b:'#ec4899',c:'#9d174d'} },
+      { id:'forest',  name:'Лес',      price:250,colors:{a:'#bbf7d0',b:'#16a34a',c:'#14532d'} },
+      { id:'blue',    name:'Синий',    price:280,colors:{a:'#bae6fd',b:'#3b82f6',c:'#1e40af'} },
+      { id:'purple',  name:'Фиолет',   price:320,colors:{a:'#e9d5ff',b:'#a855f7',c:'#4c1d95'} },
+      { id:'galaxy',  name:'Галактика',price:400,colors:{a:'#c4b5fd',b:'#6366f1',c:'#1e1b4b'} },
+      { id:'red',     name:'Красный',  price:450,colors:{a:'#fecaca',b:'#dc2626',c:'#7f1d3a'} },
+      { id:'gold',    name:'Золото',   price:650,colors:{a:'#fef3c7',b:'#fbbf24',c:'#92400e'} },
+    ]},
+  { id:'sand', name:'Кинетический песок', emoji:'⚪', price:1300,
+    desc:'Рисуй и разравнивай песок пальцем — успокаивает',
+    skins:[
+      { id:'sand',   name:'Песочный',  price:0,  colors:{a:'#fef3c7',b:'#d97706',c:'#78350f'} },
+      { id:'blue',   name:'Голубой',   price:200,colors:{a:'#e0f2fe',b:'#0ea5e9',c:'#0c4a6e'} },
+      { id:'pink',   name:'Розовый',   price:200,colors:{a:'#fce7f3',b:'#ec4899',c:'#831843'} },
+      { id:'green',  name:'Зелёный',   price:200,colors:{a:'#bbf7d0',b:'#22c55e',c:'#14532d'} },
+      { id:'purple', name:'Фиолет',    price:250,colors:{a:'#e9d5ff',b:'#a855f7',c:'#4c1d95'} },
+      { id:'black',  name:'Чёрный',    price:300,colors:{a:'#4b5563',b:'#111827',c:'#000000'} },
+      { id:'red',    name:'Красный',   price:350,colors:{a:'#fecaca',b:'#dc2626',c:'#450a0a'} },
+      { id:'cyan',   name:'Циан',      price:380,colors:{a:'#a5f3fc',b:'#06b6d4',c:'#164e63'} },
+      { id:'white',  name:'Белый',     price:420,colors:{a:'#f9fafb',b:'#e5e7eb',c:'#6b7280'} },
+      { id:'gold',   name:'Золото',    price:600,colors:{a:'#fef3c7',b:'#fbbf24',c:'#78350f'} },
+    ]},
+  { id:'infinity', name:'Инфинити-куб', emoji:'♾️', price:1600,
+    desc:'Бесконечно складывающиеся кубики — залипательно',
+    skins:[
+      { id:'classic', name:'Классика', price:0,  colors:{a:'#e9d5ff',b:'#a855f7',c:'#4c1d95'} },
+      { id:'blue',    name:'Синий',    price:200,colors:{a:'#bae6fd',b:'#3b82f6',c:'#1e3a8a'} },
+      { id:'pink',    name:'Розовый',  price:250,colors:{a:'#fbcfe8',b:'#ec4899',c:'#9d174d'} },
+      { id:'aqua',    name:'Аква',     price:280,colors:{a:'#a5f3fc',b:'#06b6d4',c:'#164e63'} },
+      { id:'red',     name:'Красный',  price:320,colors:{a:'#fecaca',b:'#dc2626',c:'#7f1d3a'} },
+      { id:'green',   name:'Зелёный',  price:350,colors:{a:'#bbf7d0',b:'#22c55e',c:'#14532d'} },
+      { id:'gold',    name:'Золото',   price:600,colors:{a:'#fef3c7',b:'#fbbf24',c:'#92400e'} },
+      { id:'galaxy',  name:'Галактика',price:700,colors:{a:'#c4b5fd',b:'#6366f1',c:'#1e1b4b'} },
+      { id:'rainbow', name:'Радуга',   price:900,colors:{a:'#fef08a',b:'#a855f7',c:'#ec4899'} },
+    ]},
+  { id:'smiley', name:'Сквиш-смайлик', emoji:'😊', price:2200,
+    desc:'Мордочка, которая меняется, когда её сжимаешь',
+    skins:[
+      { id:'yellow', name:'Жёлтый',  price:0,  emoji:'😊', colors:{a:'#fef3c7',b:'#fbbf24',c:'#b45309'} },
+      { id:'green',  name:'Зелёный', price:250,emoji:'🤢', colors:{a:'#bbf7d0',b:'#22c55e',c:'#14532d'} },
+      { id:'pink',   name:'Розовый', price:250,emoji:'🥰', colors:{a:'#fbcfe8',b:'#ec4899',c:'#9d174d'} },
+      { id:'blue',   name:'Синий',   price:300,emoji:'😎', colors:{a:'#bae6fd',b:'#3b82f6',c:'#1e3a8a'} },
+      { id:'purple', name:'Фиолет',  price:350,emoji:'😈', colors:{a:'#e9d5ff',b:'#a855f7',c:'#4c1d95'} },
+      { id:'red',    name:'Красный', price:400,emoji:'😡', colors:{a:'#fecaca',b:'#dc2626',c:'#7f1d3a'} },
+      { id:'green2', name:'Мятный',  price:420,emoji:'🥳', colors:{a:'#a7f3d0',b:'#10b981',c:'#064e3b'} },
+      { id:'ocean',  name:'Океан',   price:450,emoji:'🤤', colors:{a:'#a5f3fc',b:'#06b6d4',c:'#164e63'} },
+      { id:'lava',   name:'Лава',    price:480,emoji:'🥵', colors:{a:'#fed7aa',b:'#f97316',c:'#7c2d12'} },
+      { id:'gold',   name:'Золото',  price:800,emoji:'🤑', colors:{a:'#fef3c7',b:'#fbbf24',c:'#92400e'} },
+    ]},
+  /* НОВЫЕ */
+  { id:'balloon', name:'Воздушный шарик', emoji:'🎈', price:500,
+    desc:'Надувай шарик кликами, пока он не лопнет!',
+    skins:[
+      { id:'red',    name:'Красный', price:0,  colors:{a:'#fecaca',b:'#dc2626',c:'#7f1d3a'} },
+      { id:'blue',   name:'Синий',   price:80, colors:{a:'#bae6fd',b:'#3b82f6',c:'#1e3a8a'} },
+      { id:'yellow', name:'Жёлтый',  price:80, colors:{a:'#fef08a',b:'#eab308',c:'#713f12'} },
+      { id:'pink',   name:'Розовый', price:100,colors:{a:'#fbcfe8',b:'#ec4899',c:'#9d174d'} },
+      { id:'green',  name:'Зелёный', price:120,colors:{a:'#bbf7d0',b:'#22c55e',c:'#14532d'} },
+      { id:'gold',   name:'Золото',  price:250,colors:{a:'#fef3c7',b:'#fbbf24',c:'#92400e'} },
+    ]},
+  { id:'piano', name:'Мини-пианино', emoji:'🎹', price:900,
+    desc:'Нажимай клавиши и импровизируй',
+    skins:[
+      { id:'classic', name:'Классика', price:0,  colors:{a:'#f9fafb',b:'#e5e7eb',c:'#1f2937'} },
+      { id:'rainbow', name:'Радуга',   price:150,colors:{a:'#fef08a',b:'#a855f7',c:'#ec4899'} },
+      { id:'neon',    name:'Неон',     price:200,colors:{a:'#a5f3fc',b:'#22d3ee',c:'#84cc16'} },
+      { id:'warm',    name:'Тёплый',   price:250,colors:{a:'#fed7aa',b:'#f97316',c:'#7c2d12'} },
+      { id:'ocean',   name:'Океан',    price:300,colors:{a:'#bae6fd',b:'#0ea5e9',c:'#0c4a6e'} },
+    ]},
+  { id:'magicball', name:'Магический шар', emoji:'🔮', price:1500,
+    desc:'Задай вопрос в голове и кликни — шар ответит',
+    skins:[
+      { id:'purple', name:'Мистический', price:0,  colors:{a:'#c4b5fd',b:'#6366f1',c:'#1e1b4b'} },
+      { id:'blue',   name:'Ледяной',     price:200,colors:{a:'#a5f3fc',b:'#06b6d4',c:'#164e63'} },
+      { id:'red',    name:'Огненный',    price:250,colors:{a:'#fecaca',b:'#dc2626',c:'#450a0a'} },
+      { id:'green',  name:'Изумруд',     price:280,colors:{a:'#bbf7d0',b:'#10b981',c:'#064e3b'} },
+      { id:'gold',   name:'Золотой',     price:500,colors:{a:'#fef3c7',b:'#fbbf24',c:'#92400e'} },
+      { id:'void',   name:'Пустота',     price:700,colors:{a:'#6b7280',b:'#111827',c:'#000000'} },
+    ]},
+  { id:'yoyo', name:'Йо-йо', emoji:'🪀', price:700,
+    desc:'Двигай мышью вверх-вниз — йо-йо раскачивается',
+    skins:[
+      { id:'red',    name:'Красный', price:0,  colors:{a:'#fecaca',b:'#dc2626',c:'#7f1d3a'} },
+      { id:'blue',   name:'Синий',   price:100,colors:{a:'#bae6fd',b:'#3b82f6',c:'#1e3a8a'} },
+      { id:'green',  name:'Зелёный', price:100,colors:{a:'#bbf7d0',b:'#22c55e',c:'#14532d'} },
+      { id:'yellow', name:'Жёлтый',  price:120,colors:{a:'#fef08a',b:'#eab308',c:'#713f12'} },
+      { id:'purple', name:'Фиолет',  price:150,colors:{a:'#e9d5ff',b:'#a855f7',c:'#4c1d95'} },
+      { id:'galaxy', name:'Галактика',price:300,colors:{a:'#c4b5fd',b:'#6366f1',c:'#1e1b4b'} },
+    ]},
+];
+
+function getToy(id){ return TOYS.find(t => t.id === id); }
+function getSkin(toy, skinId){ return toy.skins.find(s => s.id === skinId); }
+function isOwned(id){ return !!state.toys[id]; }
+function activeSkin(toyId){
+  const owned = state.toys[toyId];
+  const toy = getToy(toyId);
+  return getSkin(toy, owned.active) || toy.skins[0];
+}
+
+/* ============================================================
+   ТАБЫ
+   ============================================================ */
+$$('.tabs button').forEach(btn => {
+  btn.onclick = () => {
+    $$('.tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    $$('.tab-panel').forEach(p => p.classList.remove('active'));
+    $('#tab-' + btn.dataset.tab).classList.add('active');
+    beep(620, 0.04, 'sine', 0.05);
+  };
+});
+
+/* ============================================================
+   РАБОТЫ (15 штук)
+   ============================================================ */
+const JOBS = [
+  { id:'warehouse', name:'Склад',           emoji:'📦', desc:'Спамь коробки — каждая +3 🪙 за 5 секунд',         reward:'до 90 🪙' },
+  { id:'courier',   name:'Курьер',          emoji:'🚴', desc:'Догоняй движущийся пакет 6 секунд, +5 за каждый',   reward:'до 70 🪙' },
+  { id:'writing',   name:'Копирайтинг',     emoji:'✍️', desc:'Зажми и держи кнопку — монеты капают за секунду',   reward:'до 60 🪙' },
+  { id:'qa',        name:'Тестировщик игр', emoji:'🎮', desc:'Жми «БАГ!» пока он не пропал. +6 за клик',          reward:'до 90 🪙' },
+  { id:'cleaner',   name:'Уборка',          emoji:'🧹', desc:'Кликай пятна — каждое +4 🪙 за 6 секунд',           reward:'до 80 🪙' },
+  { id:'barista',   name:'Бариста',         emoji:'☕', desc:'Повторяй последовательность из 3 ингредиентов',     reward:'до 100 🪙' },
+  { id:'programmer',name:'Программист',     emoji:'💻', desc:'Жми правильный символ кода, пока он виден',         reward:'до 120 🪙' },
+  { id:'cook',      name:'Повар',           emoji:'🍕', desc:'Собирай заказ по рецепту — 3 ингредиента подряд',   reward:'до 110 🪙' },
+  { id:'musician',  name:'Музыкант',        emoji:'🎵', desc:'Играй ноты в такт — жми когда нота в зоне',         reward:'до 100 🪙' },
+  { id:'librarian', name:'Библиотекарь',    emoji:'📚', desc:'Найди все пары одинаковых книг за 20 секунд',       reward:'до 90 🪙' },
+  { id:'fisher',    name:'Рыбак',           emoji:'🎣', desc:'Останови поплавок в зелёной зоне — +8 за рыбу',     reward:'до 80 🪙' },
+  { id:'photographer',name:'Фотограф',      emoji:'📸', desc:'Лови движущийся объект в кадре — +7 за снимок',     reward:'до 90 🪙' },
+  { id:'trainer',   name:'Тренер',          emoji:'🏋️', desc:'Жми кнопку в ритм метронома — +5 за попадание',    reward:'до 85 🪙' },
+  { id:'chemist',   name:'Химик',           emoji:'🧪', desc:'Смешай реагенты по порядку цвета',                  reward:'до 100 🪙' },
+  { id:'pilot',     name:'Пилот',           emoji:'🚀', desc:'Отстреливай астероиды кликами — +6 за каждый',      reward:'до 120 🪙' },
+];
+
+function renderJobs(){
+  const grid = $('#jobsGrid');
+  grid.innerHTML = '';
+  JOBS.forEach(job => {
+    const tile = document.createElement('div');
+    tile.className = 'job-tile';
+    tile.innerHTML = `
+      <div class="job-emoji">${job.emoji}</div>
+      <div class="job-name">${job.name}</div>
+      <div class="job-desc">${job.desc}</div>
+      <div class="job-reward">💰 ${job.reward}</div>`;
+    tile.onclick = () => openJob(job.id);
+    grid.appendChild(tile);
+  });
+}
+
+/* ============================================================
+   МОДАЛКА
+   ============================================================ */
+let modalCleanup = null;
+function closeModal(){
+  if(modalCleanup){ try{ modalCleanup(); }catch(e){} modalCleanup = null; }
+  $('#modal').classList.remove('open');
+  $('#modalStage').innerHTML = '';
+}
+$('#modalClose').onclick = closeModal;
+$('#modal').addEventListener('click', e => { if(e.target.id === 'modal') closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+function openModal(title){
+  $('#modalTitle').textContent = title;
+  $('#modalStage').innerHTML = '';
+  $('#modal').classList.add('open');
+  modalCleanup = null;
+  return new Promise(r => requestAnimationFrame(() => r()));
+}
+
+async function openJob(jobId){
+  const job = JOBS.find(j => j.id === jobId);
+  if(!job) return;
+  await openModal(`${job.emoji} ${job.name}`);
+  const stage = $('#modalStage');
+  const renderer = JOB_RENDERERS[jobId];
+  if(renderer){
+    const cleanup = renderer(stage, addCoins);
+    if(typeof cleanup === 'function') modalCleanup = cleanup;
+  }
+}
+
+/* ============================================================
+   ХЕЛПЕРЫ ДЛЯ РАБОТ
+   ============================================================ */
+function makeTimerBar(stage){
+  return stage.insertAdjacentHTML('beforeend', `
+    <div class="toy-bar">
+      <span id="_jTimer">⏱ —</span>
+      <span id="_jScore">💰 0</span>
+    </div>`) || { timer: stage.querySelector('#_jTimer'), score: stage.querySelector('#_jScore') };
+}
+
+function resultHTML(emoji, score, text){
+  return `<div class="job-result">
+    <div class="big">${emoji}</div>
+    <div class="reward">+${score} 🪙</div>
+    <div style="color:var(--muted);font-size:.85rem">${text}</div>
+    <button class="btn" id="_jClose">Закрыть</button>
+  </div>`;
+}
+function bindClose(stage){
+  const b = stage.querySelector('#_jClose');
+  if(b) b.onclick = closeModal;
+}
+
+/* ============================================================
+   РЕАЛИЗАЦИИ РАБОТ
+   ============================================================ */
+const JOB_RENDERERS = {};
+
+/* Склад */
+JOB_RENDERERS.warehouse = (stage, onDone) => {
+  stage.innerHTML = `<div class="job-area" id="a"></div>
+    <div class="toy-bar"><span id="t">⏱ 5.0 с</span><span id="s">💰 0</span></div>`;
+  const area = stage.querySelector('#a'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let score = 0, alive = true, raf = null;
+  const DUR = 5000, start = performance.now();
+  function spawn(){
+    if(!alive) return;
+    const b = document.createElement('div'); b.className='box'; b.textContent='📦';
+    b.style.left = rnd(4,82)+'%'; b.style.top = rnd(4,78)+'%';
+    b.onclick = () => { if(!alive) return; score+=3; sEl.textContent=`💰 ${score}`;
+      beep(480+Math.random()*300,.05,'square',.06); b.style.transform='scale(1.5)';
+      b.style.opacity='0'; setTimeout(()=>b.remove(),180); };
+    area.appendChild(b); setTimeout(()=>{ if(alive) b.remove(); }, 900);
+  }
+  const iv = setInterval(spawn, 280);
+  function tick(now){
+    if(!alive) return;
+    const left = Math.max(0, DUR-(now-start));
+    tEl.textContent = `⏱ ${(left/1000).toFixed(1)} с`;
+    if(left<=0){ finish(); return; }
+    raf = requestAnimationFrame(tick);
+  }
+  function finish(){
+    if(!alive) return; alive=false; clearInterval(iv); if(raf) cancelAnimationFrame(raf);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    area.innerHTML = resultHTML('🎉', score, 'Отличная смена на складе!'); bindClose(area);
+  }
+  raf = requestAnimationFrame(tick);
+  return () => { alive=false; clearInterval(iv); if(raf) cancelAnimationFrame(raf); };
+};
+
+/* Курьер */
+JOB_RENDERERS.courier = (stage, onDone) => {
+  stage.innerHTML = `<div class="target-area" id="a"></div>
+    <div class="toy-bar"><span id="t">⏱ 6.0 с</span><span id="s">💰 0</span></div>`;
+  const area = stage.querySelector('#a'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let score = 0, alive = true, raf = null;
+  const DUR = 6000, start = performance.now();
+  const target = document.createElement('div');
+  target.className = 'target'; target.textContent = '📦';
+  let tx = 100, ty = 100, vx = 2.2, vy = 1.8;
+  target.onclick = () => {
+    if(!alive) return;
+    score += 5; sEl.textContent = `💰 ${score}`;
+    beep(600+Math.random()*300, .06, 'square', .06);
+    const r = area.getBoundingClientRect();
+    tx = rnd(20, r.width-60); ty = rnd(20, r.height-60);
+    vx = rnd(-2.6,2.6)||2; vy = rnd(-2.4,2.4)||2;
+  };
+  area.appendChild(target);
+  function loop(now){
+    if(!alive) return;
+    const r = area.getBoundingClientRect();
+    tx += vx; ty += vy;
+    if(tx<4 || tx>r.width-56){ vx*=-1; tx = Math.max(4,Math.min(r.width-56,tx)); }
+    if(ty<4 || ty>r.height-56){ vy*=-1; ty = Math.max(4,Math.min(r.height-56,ty)); }
+    target.style.left = tx+'px'; target.style.top = ty+'px';
+    const left = Math.max(0, DUR-(now-start));
+    tEl.textContent = `⏱ ${(left/1000).toFixed(1)} с`;
+    if(left<=0){ finish(); return; }
+    raf = requestAnimationFrame(loop);
+  }
+  function finish(){
+    if(!alive) return; alive=false; if(raf) cancelAnimationFrame(raf);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    area.innerHTML = resultHTML('🚴', score, 'Все посылки доставлены!'); bindClose(area);
+  }
+  raf = requestAnimationFrame(loop);
+  return () => { alive=false; if(raf) cancelAnimationFrame(raf); };
+};
+
+/* Копирайтинг */
+JOB_RENDERERS.writing = (stage, onDone) => {
+  stage.innerHTML = `<div class="hold-wrap">
+    <button class="hold-btn" id="hb">УДЕРЖИВАЙ</button>
+    <div style="display:flex;gap:20px;font-weight:700">
+      <span>⏱ <span id="t">0.0</span> с</span><span>💰 <span id="s">0</span></span>
+    </div>
+    <div class="hint">Держи кнопку — монеты капают со временем</div>
+  </div>`;
+  const btn = stage.querySelector('#hb'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let holding=false, alive=true, score=0, secs=0, startHold=0, accum=0, raf=null;
+  function down(e){ e.preventDefault(); if(!alive||holding) return;
+    holding=true; btn.classList.add('holding'); startHold=performance.now(); beep(440,.06); }
+  function up(){ if(!holding) return; holding=false; btn.classList.remove('holding');
+    accum += (performance.now()-startHold)/1000; }
+  btn.addEventListener('pointerdown', down);
+  window.addEventListener('pointerup', up);
+  window.addEventListener('pointercancel', up);
+  function loop(){
+    if(!alive) return;
+    secs = accum + (holding ? (performance.now()-startHold)/1000 : 0);
+    score = Math.min(60, Math.floor(secs*4));
+    tEl.textContent = secs.toFixed(1); sEl.textContent = score;
+    if(secs>=15){ finish(); return; }
+    raf = requestAnimationFrame(loop);
+  }
+  function finish(){
+    if(!alive) return; alive=false; if(raf) cancelAnimationFrame(raf);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    stage.innerHTML = `<div class="job-result" style="height:320px">
+      <div class="big">✍️</div><div class="reward">+${score} 🪙</div>
+      <div style="color:var(--muted);font-size:.85rem">Статья готова!</div>
+      <button class="btn" id="_jClose">Закрыть</button></div>`;
+    bindClose(stage);
+  }
+  raf = requestAnimationFrame(loop);
+  return () => { alive=false; if(raf) cancelAnimationFrame(raf);
+    window.removeEventListener('pointerup', up);
+    window.removeEventListener('pointercancel', up); };
+};
+
+/* Тестировщик */
+JOB_RENDERERS.qa = (stage, onDone) => {
+  stage.innerHTML = `<div class="react-area" id="a"></div>
+    <div class="toy-bar"><span id="t">⏱ 6.0 с</span><span id="s">💰 0</span></div>`;
+  const area = stage.querySelector('#a'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let score=0, alive=true, raf=null, toId=null;
+  const DUR=6000, start=performance.now();
+  function spawn(){
+    if(!alive) return;
+    const r = area.getBoundingClientRect();
+    const bad = Math.random()<0.2;
+    const b = document.createElement('button');
+    b.className = 'react-btn'+(bad?' bad':''); b.textContent = bad?'ЛОЖНЫЙ':'БАГ!';
+    b.style.left = Math.max(6, rnd(6, r.width-130))+'px';
+    b.style.top  = Math.max(6, rnd(6, r.height-70))+'px';
+    b.onclick = () => {
+      if(!alive) return;
+      if(!bad){ score+=6; sEl.textContent=`💰 ${score}`; beep(700,.06,'square',.08); }
+      else { score=Math.max(0,score-4); sEl.textContent=`💰 ${score}`; beep(180,.12,'sawtooth',.07); }
+      b.remove();
+    };
+    area.appendChild(b);
+    setTimeout(()=>b.remove(), bad?900:1300);
+    toId = setTimeout(spawn, rnd(400,900));
+  }
+  toId = setTimeout(spawn, 500);
+  function loop(now){
+    if(!alive) return;
+    const left = Math.max(0, DUR-(now-start));
+    tEl.textContent = `⏱ ${(left/1000).toFixed(1)} с`;
+    if(left<=0){ finish(); return; }
+    raf = requestAnimationFrame(loop);
+  }
+  function finish(){
+    if(!alive) return; alive=false; if(raf) cancelAnimationFrame(raf);
+    if(toId) clearTimeout(toId);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    area.innerHTML = resultHTML('🎮', score, 'Смена окончена!'); bindClose(area);
+  }
+  raf = requestAnimationFrame(loop);
+  return () => { alive=false; if(raf) cancelAnimationFrame(raf); if(toId) clearTimeout(toId); };
+};
+
+/* Уборка */
+JOB_RENDERERS.cleaner = (stage, onDone) => {
+  stage.innerHTML = `<div class="spots-area" id="a"></div>
+    <div class="toy-bar"><span id="t">⏱ 6.0 с</span><span id="s">💰 0</span></div>`;
+  const area = stage.querySelector('#a'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let score=0, alive=true, raf=null;
+  const DUR=6000, start=performance.now();
+  function spawn(){
+    if(!alive) return;
+    const sp = document.createElement('div'); sp.className='spot';
+    const r = area.getBoundingClientRect();
+    sp.style.left = rnd(4,r.width-70)+'px'; sp.style.top = rnd(4,r.height-70)+'px';
+    sp.onclick = e => { e.stopPropagation(); if(!alive) return;
+      score+=4; sEl.textContent=`💰 ${score}`;
+      beep(560+Math.random()*400,.05,'sine',.07);
+      sp.style.transform='scale(.6)'; sp.style.opacity='0';
+      setTimeout(()=>sp.remove(),200); };
+    area.appendChild(sp);
+    setTimeout(()=>{ if(alive && sp.parentNode) sp.remove(); }, 1500);
+  }
+  const iv = setInterval(spawn, 500); spawn();
+  function loop(now){
+    if(!alive) return;
+    const left = Math.max(0, DUR-(now-start));
+    tEl.textContent = `⏱ ${(left/1000).toFixed(1)} с`;
+    if(left<=0){ finish(); return; }
+    raf = requestAnimationFrame(loop);
+  }
+  function finish(){
+    if(!alive) return; alive=false; clearInterval(iv); if(raf) cancelAnimationFrame(raf);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    area.innerHTML = resultHTML('🧹', score, 'Всё вычищено!'); bindClose(area);
+  }
+  raf = requestAnimationFrame(loop);
+  return () => { alive=false; clearInterval(iv); if(raf) cancelAnimationFrame(raf); };
+};
+
+/* Бариста */
+JOB_RENDERERS.barista = (stage, onDone) => {
+  stage.innerHTML = `<div class="job-area" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
+    <div style="color:var(--muted);font-size:.85rem">Повтори последовательность</div>
+    <div style="font-size:2.5rem" id="seq">— — —</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px">
+      <button data-c="0" style="width:64px;height:64px;border-radius:14px;border:none;cursor:pointer;font-size:1.8rem;background:linear-gradient(135deg,#b45309,#78350f);color:#fff;font-family:inherit">☕</button>
+      <button data-c="1" style="width:64px;height:64px;border-radius:14px;border:none;cursor:pointer;font-size:1.8rem;background:linear-gradient(135deg,#22d3ee,#0e7490);color:#04222b;font-family:inherit">💧</button>
+      <button data-c="2" style="width:64px;height:64px;border-radius:14px;border:none;cursor:pointer;font-size:1.8rem;background:linear-gradient(135deg,#fcd34d,#a16207);color:#2b1a00;font-family:inherit">🥛</button>
+    </div></div>
+    <div class="toy-bar"><span id="t">⏱ 20 с</span><span id="s">💰 0</span></div>`;
+  const seqEl = stage.querySelector('#seq');
+  const tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  const btns = [...stage.querySelectorAll('[data-c]')];
+  let alive=true, score=0, left=20, target=[], prog=0;
+  function redraw(){ seqEl.textContent = target.map((_,i)=>i<prog?'✅':'❓').join(' '); }
+  function newOrder(){
+    target = [Math.floor(Math.random()*3), Math.floor(Math.random()*3), Math.floor(Math.random()*3)];
+    prog = 0; redraw();
+  }
+  btns.forEach(b => b.onclick = () => {
+    if(!alive) return;
+    const i = +b.dataset.c;
+    if(i === target[prog]){
+      prog++; beep(600+prog*100,.05,'square',.06); redraw();
+      if(prog === target.length){
+        score += 12; sEl.textContent = `💰 ${score}`;
+        beep(900,.12); setTimeout(()=>beep(1100,.14),90);
+        newOrder();
+      }
+    } else { beep(180,.14,'sawtooth',.07); prog = 0; redraw(); }
+  });
+  newOrder();
+  const iv = setInterval(() => {
+    if(!alive) return;
+    left--; tEl.textContent = `⏱ ${left} с`;
+    if(left<=0) finish();
+  }, 1000);
+  function finish(){
+    if(!alive) return; alive=false; clearInterval(iv);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    stage.querySelector('.job-area').innerHTML = resultHTML('☕', score, 'Смена окончена!');
+    bindClose(stage);
+  }
+  return () => { alive=false; clearInterval(iv); };
+};
+
+/* Программист */
+JOB_RENDERERS.programmer = (stage, onDone) => {
+  const SYM = ['{','}',';','=','<','>','(',')','[',']','+','*'];
+  stage.innerHTML = `<div class="code-area">
+    <div style="color:var(--muted);font-size:.85rem">Нажми правильный символ кода</div>
+    <div class="code-symbol" id="sym">{</div>
+    <div class="code-keys" id="keys"></div>
+  </div>
+  <div class="toy-bar"><span id="t">⏱ 8.0 с</span><span id="s">💰 0</span></div>`;
+  const symEl = stage.querySelector('#sym'), keysBox = stage.querySelector('#keys');
+  const tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let alive=true, score=0, cur=null, raf=null;
+  const DUR=8000, start=performance.now();
+  function newSym(){
+    cur = SYM[Math.floor(Math.random()*SYM.length)];
+    symEl.textContent = cur;
+    symEl.style.animation = 'none'; void symEl.offsetWidth;
+    symEl.style.animation = 'codePop .3s cubic-bezier(.34,1.56,.64,1)';
+    keysBox.innerHTML = '';
+    const set = new Set([cur]);
+    while(set.size < 4) set.add(SYM[Math.floor(Math.random()*SYM.length)]);
+    [...set].sort(()=>Math.random()-.5).forEach(s => {
+      const b = document.createElement('button'); b.textContent = s;
+      b.onclick = () => {
+        if(!alive) return;
+        if(s === cur){ score+=8; sEl.textContent=`💰 ${score}`; beep(700,.06,'square',.08); newSym(); }
+        else { score=Math.max(0,score-3); sEl.textContent=`💰 ${score}`; beep(180,.12,'sawtooth',.07); }
+      };
+      keysBox.appendChild(b);
+    });
+  }
+  newSym();
+  function loop(now){
+    if(!alive) return;
+    const left = Math.max(0, DUR-(now-start));
+    tEl.textContent = `⏱ ${(left/1000).toFixed(1)} с`;
+    if(left<=0){ finish(); return; }
+    raf = requestAnimationFrame(loop);
+  }
+  function finish(){
+    if(!alive) return; alive=false; if(raf) cancelAnimationFrame(raf);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    stage.querySelector('.code-area').innerHTML = resultHTML('💻', score, 'Код закоммичен!');
+    bindClose(stage);
+  }
+  raf = requestAnimationFrame(loop);
+  return () => { alive=false; if(raf) cancelAnimationFrame(raf); };
+};
+
+/* Повар */
+JOB_RENDERERS.cook = (stage, onDone) => {
+  const ING = ['🍅','🧀','🥓','🍄','🥬','🧅','🥚','🌶️','🍖'];
+  stage.innerHTML = `<div class="cook-area">
+    <div style="text-align:center;color:var(--muted);font-size:.85rem">Собери заказ по рецепту</div>
+    <div class="recipe" id="rec"></div>
+    <div class="ingredients" id="ing"></div>
+  </div>
+  <div class="toy-bar"><span id="t">⏱ 12 с</span><span id="s">💰 0</span></div>`;
+  const recEl = stage.querySelector('#rec'), ingBox = stage.querySelector('#ing');
+  const tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let alive=true, score=0, left=12, recipe=[], prog=0;
+  function redraw(){ recEl.innerHTML = recipe.map((it,i)=>`<span class="${i<prog?'done':''}">${it}</span>`).join(''); }
+  function newRecipe(){
+    recipe = [0,0,0].map(()=>ING[Math.floor(Math.random()*ING.length)]);
+    prog = 0; redraw();
+  }
+  function renderIng(){
+    ingBox.innerHTML = '';
+    const show = new Set(recipe);
+    while(show.size < 6) show.add(ING[Math.floor(Math.random()*ING.length)]);
+    [...show].sort(()=>Math.random()-.5).forEach(it => {
+      const b = document.createElement('button'); b.textContent = it;
+      b.onclick = () => {
+        if(!alive) return;
+        if(it === recipe[prog]){
+          prog++; beep(600+prog*100,.05,'square',.06); redraw();
+          if(prog === recipe.length){
+            score += 10; sEl.textContent=`💰 ${score}`;
+            beep(900,.12); setTimeout(()=>beep(1100,.14),90);
+            newRecipe(); renderIng();
+          }
+        } else { beep(180,.14,'sawtooth',.07); prog = 0; redraw(); }
+      };
+      ingBox.appendChild(b);
+    });
+  }
+  newRecipe(); renderIng();
+  const iv = setInterval(() => {
+    if(!alive) return;
+    left--; tEl.textContent = `⏱ ${left} с`;
+    if(left<=0) finish();
+  }, 1000);
+  function finish(){
+    if(!alive) return; alive=false; clearInterval(iv);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    stage.querySelector('.cook-area').innerHTML = resultHTML('🍕', score, 'Все заказы готовы!');
+    bindClose(stage);
+  }
+  return () => { alive=false; clearInterval(iv); };
+};
+
+/* Музыкант */
+JOB_RENDERERS.musician = (stage, onDone) => {
+  stage.innerHTML = `<div class="music-area" id="a">
+    <div class="lane" style="left:0"></div>
+    <div class="lane" style="left:33.33%"></div>
+    <div class="lane" style="left:66.66%"></div>
+    <div class="lane-zone" style="left:0;right:0"></div>
+  </div>
+  <div class="toy-bar"><span id="t">⏱ 8.0 с</span><span id="s">💰 0</span></div>`;
+  const area = stage.querySelector('#a'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let alive=true, score=0, raf=null, noteToId=null;
+  const DUR=8000, start=performance.now();
+  const COLORS = ['#f472b6','#22d3ee','#a855f7'];
+  const EMOJI  = ['❤️','💙','💜'];
+  const NOTES  = ['🎵','🎶','🎼'];
+  for(let i=0;i<3;i++){
+    const b = document.createElement('button');
+    b.className='lane-btn'; b.style.left = (i*33.33+16.66)+'%';
+    b.textContent = EMOJI[i]; b.style.borderColor = COLORS[i];
+    b.onclick = () => {
+      if(!alive) return;
+      const r = area.getBoundingClientRect();
+      let hit = false;
+      area.querySelectorAll('.note').forEach(n => {
+        if(+n.dataset.lane !== i) return;
+        const y = parseFloat(n.dataset.y);
+        if(y >= r.height-130 && y <= r.height-20){
+          hit = true; score+=5; sEl.textContent=`💰 ${score}`;
+          beep(600+i*200,.07,'triangle',.09); n.remove();
+        }
+      });
+      if(!hit) beep(200,.06,'sawtooth',.04);
+      b.style.background = hit ? '#22c55e33' : '#f8717133';
+      setTimeout(()=>{ b.style.background = 'var(--btn-bg)'; }, 120);
+    };
+    area.appendChild(b);
+  }
+  const notes = [];
+  function spawn(){
+    if(!alive) return;
+    const lane = Math.floor(Math.random()*3);
+    const el = document.createElement('div');
+    el.className = 'note'; el.textContent = NOTES[Math.floor(Math.random()*NOTES.length)];
+    el.style.left = (lane*33.33+16.66)+'%';
+    el.style.background = `radial-gradient(circle at 34% 28%, #fff, ${COLORS[lane]} 60%, ${COLORS[lane]})`;
+    el.style.color = COLORS[lane]; el.style.top = '-50px';
+    el.dataset.lane = lane; el.dataset.y = -50;
+    area.appendChild(el);
+    notes.push({ el, y:-50, speed: 3.5+Math.random()*1.5 });
+    setTimeout(()=>{ if(el.parentNode && alive){ el.style.opacity='0'; setTimeout(()=>el.remove(),200); } }, 4000);
+    noteToId = setTimeout(spawn, 500+Math.random()*400);
+  }
+  spawn();
+  function loop(now){
+    if(!alive) return;
+    notes.forEach(n => {
+      if(!n.el.parentNode) return;
+      n.y += n.speed; n.el.dataset.y = n.y; n.el.style.top = n.y+'px';
+    });
+    const left = Math.max(0, DUR-(now-start));
+    tEl.textContent = `⏱ ${(left/1000).toFixed(1)} с`;
+    if(left<=0){ finish(); return; }
+    raf = requestAnimationFrame(loop);
+  }
+  function finish(){
+    if(!alive) return; alive=false; if(raf) cancelAnimationFrame(raf); if(noteToId) clearTimeout(noteToId);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    area.innerHTML = resultHTML('🎵', score, 'Концерт удался!');
+    bindClose(area);
+  }
+  raf = requestAnimationFrame(loop);
+  return () => { alive=false; if(raf) cancelAnimationFrame(raf); if(noteToId) clearTimeout(noteToId); };
+};
+
+/* Библиотекарь */
+JOB_RENDERERS.librarian = (stage, onDone) => {
+  const BOOKS = ['📕','📗','📘','📙','📔','📓'];
+  const pairs = 4;
+  const chosen = BOOKS.slice(0, pairs);
+  const deck = [...chosen, ...chosen].sort(()=>Math.random()-.5);
+  stage.innerHTML = `<div class="lib-area" id="a"></div>
+    <div class="toy-bar"><span id="t">⏱ 20 с</span><span id="s">💰 0</span></div>`;
+  const area = stage.querySelector('#a'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let alive=true, score=0, left=20, flipped=[], matched=0, lock=false;
+  deck.forEach((book, i) => {
+    const c = document.createElement('div');
+    c.className = 'lib-card'; c.dataset.book = book; c.dataset.i = i;
+    c.innerHTML = '<span class="back">📖</span>';
+    c.onclick = () => {
+      if(!alive || lock || c.classList.contains('flipped') || c.classList.contains('matched')) return;
+      c.classList.add('flipped'); c.textContent = book;
+      beep(520+Math.random()*200,.05,'sine',.06);
+      flipped.push(c);
+      if(flipped.length === 2){
+        lock = true;
+        const [a,b] = flipped;
+        if(a.dataset.book === b.dataset.book){
+          setTimeout(() => {
+            a.classList.add('matched'); b.classList.add('matched');
+            a.textContent = b.textContent = '✅';
+            matched++; score += 6; sEl.textContent = `💰 ${score}`;
+            beep(800,.1); setTimeout(()=>beep(1000,.12),90);
+            flipped=[]; lock=false;
+            if(matched===pairs) setTimeout(()=>finish(true),300);
+          }, 250);
+        } else {
+          setTimeout(() => {
+            a.classList.remove('flipped'); b.classList.remove('flipped');
+            a.innerHTML = '<span class="back">📖</span>';
+            b.innerHTML = '<span class="back">📖</span>';
+            flipped=[]; lock=false;
+          }, 700);
+        }
+      }
+    };
+    area.appendChild(c);
+  });
+  const iv = setInterval(() => {
+    if(!alive) return;
+    left--; tEl.textContent = `⏱ ${left} с`;
+    if(left<=0) finish(false);
+  }, 1000);
+  function finish(perfect){
+    if(!alive) return; alive=false; clearInterval(iv);
+    if(perfect) score += 15;
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    area.innerHTML = resultHTML(perfect ? '📚✨' : '📚', score, perfect ? 'Все пары найдены!' : 'Смена окончена');
+    bindClose(area);
+  }
+  return () => { alive=false; clearInterval(iv); };
+};
+
+/* Рыбак */
+JOB_RENDERERS.fisher = (stage, onDone) => {
+  stage.innerHTML = `<div class="fish-area">
+    <div class="fish-emoji">🐟</div>
+    <div class="fish-scale" id="sc">
+      <div class="fish-zone" id="zone"></div>
+      <div class="fish-marker" id="mk"></div>
+    </div>
+    <button class="btn" id="cast" style="margin-top:14px">🎣 Забросить (нажми в зелёной зоне)</button>
+    <div style="color:var(--muted);font-size:.85rem" id="info">Поймано: 0 / 10</div>
+  </div>
+  <div class="toy-bar"><span id="t">⏱ 12 с</span><span id="s">💰 0</span></div>`;
+  const sc = stage.querySelector('#sc'), zone = stage.querySelector('#zone'), mk = stage.querySelector('#mk');
+  const tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s'), infoEl = stage.querySelector('#info');
+  const castBtn = stage.querySelector('#cast');
+  let alive = true, score = 0, left = 12, caught = 0, maxAttempts = 10;
+  let pos = 0, dir = 1, speed = 2.2, zoneStart = 0.4, zoneW = 0.2, raf = null;
+
+  function newZone(){
+    zoneW = 0.15 + Math.random()*0.12;
+    zoneStart = Math.random()*(1 - zoneW - 0.04) + 0.02;
+    zone.style.left = (zoneStart*100)+'%';
+    zone.style.width = (zoneW*100)+'%';
+  }
+  newZone();
+
+  function loop(){
+    if(!alive) return;
+    pos += dir * speed;
+    if(pos > 1){ pos = 1; dir = -1; }
+    if(pos < 0){ pos = 0; dir = 1; }
+    mk.style.left = (pos*100)+'%';
+    raf = requestAnimationFrame(loop);
+  }
+  raf = requestAnimationFrame(loop);
+
+  castBtn.onclick = () => {
+    if(!alive) return;
+    const inZone = pos >= zoneStart && pos <= zoneStart + zoneW;
+    if(inZone){
+      score += 8; caught++;
+      sEl.textContent = `💰 ${score}`;
+      infoEl.textContent = `Поймано: ${caught} / ${maxAttempts}`;
+      beep(700, .1, 'sine', .09); setTimeout(()=>beep(900,.12),90);
+      newZone();
+      if(caught >= maxAttempts){ finish(); return; }
+    } else {
+      beep(200, .12, 'sawtooth', .07);
+      infoEl.textContent = `Поймано: ${caught} / ${maxAttempts}`;
+    }
+  };
+
+  const iv = setInterval(() => {
+    if(!alive) return;
+    left--; tEl.textContent = `⏱ ${left} с`;
+    if(left<=0) finish();
+  }, 1000);
+
+  function finish(){
+    if(!alive) return; alive=false; clearInterval(iv);
+    if(raf) cancelAnimationFrame(raf);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    stage.querySelector('.fish-area').innerHTML = resultHTML('🎣', score, `Поймано рыб: ${caught}`);
+    bindClose(stage);
+  }
+  return () => { alive=false; clearInterval(iv); if(raf) cancelAnimationFrame(raf); };
+};
+
+/* Фотограф */
+JOB_RENDERERS.photographer = (stage, onDone) => {
+  stage.innerHTML = `<div class="photo-area" id="a">
+    <div class="photo-frame"></div>
+  </div>
+  <div class="toy-bar"><span id="t">⏱ 10 с</span><span id="s">💰 0</span></div>`;
+  const area = stage.querySelector('#a'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let alive=true, score=0, left=10, raf=null;
+  const OBJECTS = ['🐦','🦋','🐝','🌸','🍃','⭐'];
+  let tx = 100, ty = 100, vx = 1.8, vy = 1.6;
+
+  function spawn(){
+    if(!alive) return;
+    const r = area.getBoundingClientRect();
+    const el = document.createElement('div');
+    el.className = 'photo-target';
+    el.textContent = OBJECTS[Math.floor(Math.random()*OBJECTS.length)];
+    el.style.left = rnd(20, r.width-60)+'px';
+    el.style.top  = rnd(20, r.height-60)+'px';
+    area.appendChild(el);
+    el.dataset.vx = rnd(-2, 2) || 1.5;
+    el.dataset.vy = rnd(-2, 2) || 1.5;
+
+    el.onclick = () => {
+      if(!alive) return;
+      const r2 = area.getBoundingClientRect();
+      const cx = r2.width/2, cy = r2.height/2;
+      const ex = parseFloat(el.style.left) + 20;
+      const ey = parseFloat(el.style.top) + 20;
+      const inFrame = Math.hypot(ex - cx, ey - cy) < 55;
+      if(inFrame){
+        score += 7; sEl.textContent = `💰 ${score}`;
+        beep(800, .1, 'triangle', .09); setTimeout(()=>beep(1000,.1),70);
+      } else {
+        beep(200, .1, 'sawtooth', .06);
+      }
+      el.remove();
+    };
+  }
+
+  const iv = setInterval(spawn, 900);
+  spawn();
+
+  function loop(){
+    if(!alive) return;
+    const r = area.getBoundingClientRect();
+    area.querySelectorAll('.photo-target').forEach(el => {
+      let x = parseFloat(el.style.left), y = parseFloat(el.style.top);
+      let vx = +el.dataset.vx, vy = +el.dataset.vy;
+      x += vx; y += vy;
+      if(x < 4 || x > r.width-44){ vx *= -1; x = Math.max(4, Math.min(r.width-44, x)); }
+      if(y < 4 || y > r.height-44){ vy *= -1; y = Math.max(4, Math.min(r.height-44, y)); }
+      el.style.left = x+'px'; el.style.top = y+'px';
+      el.dataset.vx = vx; el.dataset.vy = vy;
+    });
+    raf = requestAnimationFrame(loop);
+  }
+  raf = requestAnimationFrame(loop);
+
+  const cIv = setInterval(() => {
+    if(!alive) return;
+    left--; tEl.textContent = `⏱ ${left} с`;
+    if(left<=0) finish();
+  }, 1000);
+
+  function finish(){
+    if(!alive) return; alive=false;
+    clearInterval(iv); clearInterval(cIv); if(raf) cancelAnimationFrame(raf);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    area.innerHTML = resultHTML('📸', score, 'Фотосессия окончена!');
+    bindClose(area);
+  }
+  return () => { alive=false; clearInterval(iv); clearInterval(cIv); if(raf) cancelAnimationFrame(raf); };
+};
+
+/* Тренер */
+JOB_RENDERERS.trainer = (stage, onDone) => {
+  stage.innerHTML = `<div class="trainer-area">
+    <div style="color:var(--muted);font-size:.9rem">Жми кнопку в ритм метроному!</div>
+    <button class="trainer-btn" id="tb">💪 ЖАТЬ!</button>
+    <div style="color:var(--muted);font-size:.85rem">Попаданий: <b id="hits" style="color:#4ade80">0</b></div>
+  </div>
+  <div class="toy-bar"><span id="t">⏱ 12 с</span><span id="s">💰 0</span></div>`;
+  const btn = stage.querySelector('#tb');
+  const tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  const hitsEl = stage.querySelector('#hits');
+  let alive=true, score=0, hits=0, left=12;
+  let beatWindow = false;
+  let iv = null, wi = null;
+
+  function beat(){
+    if(!alive) return;
+    beatWindow = true;
+    btn.classList.add('pulse');
+    beep(500, .05, 'square', .06);
+    setTimeout(()=>{
+      beatWindow = false;
+      btn.classList.remove('pulse');
+    }, 420);
+  }
+  iv = setInterval(beat, 900);
+  setTimeout(beat, 200);
+
+  btn.onclick = () => {
+    if(!alive) return;
+    if(beatWindow){
+      hits++; score += 5;
+      hitsEl.textContent = hits; sEl.textContent = `💰 ${score}`;
+      btn.classList.add('hit');
+      beep(800, .08, 'sine', .09);
+      setTimeout(()=>btn.classList.remove('hit'), 160);
+      beatWindow = false;
+      btn.classList.remove('pulse');
+    } else {
+      btn.classList.add('miss');
+      beep(200, .1, 'sawtooth', .06);
+      setTimeout(()=>btn.classList.remove('miss'), 160);
+    }
+  };
+
+  const cIv = setInterval(() => {
+    if(!alive) return;
+    left--; tEl.textContent = `⏱ ${left} с`;
+    if(left<=0) finish();
+  }, 1000);
+
+  function finish(){
+    if(!alive) return; alive=false;
+    clearInterval(iv); clearInterval(cIv);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    stage.querySelector('.trainer-area').innerHTML = resultHTML('🏋️', score, `Попаданий: ${hits}`);
+    bindClose(stage);
+  }
+  return () => { alive=false; clearInterval(iv); clearInterval(cIv); };
+};
+
+/* Химик */
+JOB_RENDERERS.chemist = (stage, onDone) => {
+  const REAGENTS = [
+    { e:'🔴', col:'#dc2626' },
+    { e:'🔵', col:'#3b82f6' },
+    { e:'🟢', col:'#22c55e' },
+    { e:'🟡', col:'#eab308' },
+    { e:'🟣', col:'#a855f7' },
+    { e:'🟠', col:'#f97316' },
+  ];
+  stage.innerHTML = `<div class="chem-area">
+    <div style="color:var(--muted);font-size:.85rem">Смешай реагенты в правильном порядке</div>
+    <div class="chem-recipe" id="rec"></div>
+    <div class="chem-buttons" id="btns"></div>
+  </div>
+  <div class="toy-bar"><span id="t">⏱ 12 с</span><span id="s">💰 0</span></div>`;
+  const recEl = stage.querySelector('#rec'), btnsBox = stage.querySelector('#btns');
+  const tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let alive=true, score=0, left=12, recipe=[], prog=0;
+
+  function redraw(){
+    recEl.innerHTML = recipe.map((r,i)=>`<span class="${i<prog?'done':''}">${r.e}</span>`).join('');
+  }
+  function newRecipe(){
+    recipe = [0,0,0].map(()=>REAGENTS[Math.floor(Math.random()*REAGENTS.length)]);
+    prog = 0; redraw();
+  }
+  REAGENTS.forEach((r, i) => {
+    const b = document.createElement('button');
+    b.style.background = `radial-gradient(circle at 34% 28%, #fff5, ${r.col})`;
+    b.textContent = r.e;
+    b.onclick = () => {
+      if(!alive) return;
+      if(r === recipe[prog]){
+        prog++; beep(600+prog*100, .06, 'square', .06); redraw();
+        if(prog === recipe.length){
+          score += 11; sEl.textContent = `💰 ${score}`;
+          beep(900,.12); setTimeout(()=>beep(1100,.14),90);
+          newRecipe();
+        }
+      } else { beep(180,.14,'sawtooth',.07); prog = 0; redraw(); }
+    };
+    btnsBox.appendChild(b);
+  });
+  newRecipe();
+
+  const iv = setInterval(() => {
+    if(!alive) return;
+    left--; tEl.textContent = `⏱ ${left} с`;
+    if(left<=0) finish();
+  }, 1000);
+
+  function finish(){
+    if(!alive) return; alive=false; clearInterval(iv);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    stage.querySelector('.chem-area').innerHTML = resultHTML('🧪', score, 'Опыты завершены!');
+    bindClose(stage);
+  }
+  return () => { alive=false; clearInterval(iv); };
+};
+
+/* Пилот */
+JOB_RENDERERS.pilot = (stage, onDone) => {
+  stage.innerHTML = `<div class="pilot-area" id="a"></div>
+    <div class="toy-bar"><span id="t">⏱ 10 с</span><span id="s">💰 0</span></div>`;
+  const area = stage.querySelector('#a'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  let alive=true, score=0, left=10, raf=null;
+  const stars = [];
+  const r = area.getBoundingClientRect();
+  for(let i=0;i<30;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*100+'%';
+    s.style.width = s.style.height = (1+Math.random()*2)+'px';
+    s.style.animationDelay = (Math.random()*2)+'s';
+    area.appendChild(s);
+    stars.push(s);
+  }
+
+  function spawn(){
+    if(!alive) return;
+    const r = area.getBoundingClientRect();
+    const a = document.createElement('div');
+    a.className = 'asteroid';
+    a.textContent = Math.random() < .3 ? '☄️' : '🪨';
+    a.style.left = rnd(10, r.width - 50)+'px';
+    a.style.top = '-40px';
+    a.dataset.speed = rnd(0.8, 2.2);
+    area.appendChild(a);
+    a.onclick = () => {
+      if(!alive) return;
+      score += 6; sEl.textContent = `💰 ${score}`;
+      beep(700, .06, 'square', .08);
+      a.style.transform = 'scale(1.5)'; a.style.opacity = '0';
+      setTimeout(()=>a.remove(), 180);
+    };
+  }
+  const iv = setInterval(spawn, 550); spawn();
+
+  function loop(){
+    if(!alive) return;
+    const r = area.getBoundingClientRect();
+    area.querySelectorAll('.asteroid').forEach(a => {
+      let y = parseFloat(a.style.top);
+      y += +a.dataset.speed;
+      a.style.top = y+'px';
+      if(y > r.height + 40){
+        if(alive) beep(180, .08, 'sawtooth', .05);
+        a.remove();
+      }
+    });
+    raf = requestAnimationFrame(loop);
+  }
+  raf = requestAnimationFrame(loop);
+
+  const cIv = setInterval(() => {
+    if(!alive) return;
+    left--; tEl.textContent = `⏱ ${left} с`;
+    if(left<=0) finish();
+  }, 1000);
+
+  function finish(){
+    if(!alive) return; alive=false;
+    clearInterval(iv); clearInterval(cIv); if(raf) cancelAnimationFrame(raf);
+    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
+    area.innerHTML = resultHTML('🚀', score, 'Полёт завершён!');
+    bindClose(area);
+  }
+  return () => { alive=false; clearInterval(iv); clearInterval(cIv); if(raf) cancelAnimationFrame(raf); };
+};
+
+/* ============================================================
+   МАГАЗИН
+   ============================================================ */
+function renderShop(){
+  const grid = $('#shopGrid');
+  grid.innerHTML = '';
+  TOYS.forEach(t => {
+    const owned = isOwned(t.id);
+    const card = document.createElement('div');
+    card.className = 'shop-card' + (owned ? ' owned' : '');
+    card.innerHTML = `
+      <div class="toy-emoji">${t.emoji}</div>
+      <div class="toy-name">${t.name}</div>
+      <div class="toy-desc">${t.desc}</div>
+      <div class="toy-actions">
+        ${owned
+          ? `<button class="buy-btn skin-btn" data-act="skins">🎨 Скины (${state.toys[t.id].skins.length}/${t.skins.length})</button>`
+          : `<button class="buy-btn" data-act="buy">Купить · ${t.price} 🪙</button>`}
+      </div>`;
+    const btn = card.querySelector('button');
+    if(owned) btn.onclick = () => openSkins(t.id);
+    else btn.onclick = () => buyToy(t);
+    grid.appendChild(card);
+  });
+}
+
+function buyToy(t){
+  if(state.coins < t.price){ toast('Не хватает монет!', false); beep(150,.18,'sawtooth',.07); return; }
+  state.coins -= t.price;
+  state.toys[t.id] = { skins:['classic'], active:'classic' };
+  save();
+  renderCoins(); bumpCoins(); renderShop(); renderToys();
+  toast(`Куплено: ${t.name}! 🎉`);
+  beep(680,.09); setTimeout(()=>beep(920,.14),100);
+}
+
+/* ============================================================
+   МОИ ИГРУШКИ
+   ============================================================ */
+function renderToys(){
+  const grid = $('#toysGrid');
+  const owned = TOYS.filter(t => isOwned(t.id));
+  if(!owned.length){
+    grid.innerHTML = `<div class="empty">
+      У тебя пока нет антистрессов 😢<br>
+      Заработай монет на работе 💼 и купи их в магазине 🛒!
+    </div>`;
+    return;
+  }
+  grid.innerHTML = '';
+  owned.forEach(t => {
+    const ownedSkin = state.toys[t.id];
+    const skin = getSkin(t, ownedSkin.active) || t.skins[0];
+    const emoji = skin.emoji || t.emoji;
+    const card = document.createElement('div');
+    card.className = 'shop-card owned';
+    card.innerHTML = `
+      <div class="toy-emoji" style="
+        color:${skin.colors.b};
+        text-shadow: 0 0 26px ${skin.colors.b}88, 0 6px 14px #0008;
+      ">${emoji}</div>
+      <div class="toy-name">${t.name}</div>
+      <div class="toy-desc">Нажми, чтобы поиграть</div>
+      <div class="toy-actions">
+        <button class="buy-btn" data-act="play">▶ Играть</button>
+        <button class="buy-btn skin-btn" data-act="skins">🎨 Скины (${ownedSkin.skins.length}/${t.skins.length})</button>
+      </div>`;
+    card.querySelector('[data-act="play"]').onclick = e => { e.stopPropagation(); openToy(t.id); };
+    card.querySelector('[data-act="skins"]').onclick = e => { e.stopPropagation(); openSkins(t.id); };
+    grid.appendChild(card);
+  });
+}
+
+/* ============================================================
+   СКИНЫ
+   ============================================================ */
+async function openSkins(toyId){
+  const toy = getToy(toyId);
+  if(!toy) return;
+  await openModal(`🎨 Скины: ${toy.name}`);
+  const stage = $('#modalStage');
+  const owned = state.toys[toyId];
+  const grid = document.createElement('div');
+  grid.className = 'skin-grid';
+
+  toy.skins.forEach(skin => {
+    const isSkinOwned = owned.skins.includes(skin.id);
+    const isActive = owned.active === skin.id;
+    const card = document.createElement('div');
+    card.className = 'skin-card' + (isActive ? ' active' : '') + (isSkinOwned ? ' owned' : '');
+    card.innerHTML = `
+      <div class="skin-preview" style="
+        background: radial-gradient(circle at 32% 26%, ${skin.colors.a}, ${skin.colors.b} 55%, ${skin.colors.c});
+      ">${skin.emoji || ''}</div>
+      <div class="skin-name">${skin.name}</div>
+      ${ isActive
+          ? `<button class="buy-btn" disabled>✓ Выбран</button>`
+          : isSkinOwned
+            ? `<button class="buy-btn" data-act="select">Выбрать</button>`
+            : `<button class="buy-btn" data-act="buy">${skin.price} 🪙</button>` }
+    `;
+    const btn = card.querySelector('button');
+    if(!isActive && isSkinOwned) btn.onclick = () => selectSkin(toyId, skin.id);
+    else if(!isSkinOwned) btn.onclick = () => buySkin(toyId, skin);
+    grid.appendChild(card);
+  });
+
+  stage.appendChild(grid);
+}
+
+function buySkin(toyId, skin){
+  if(state.coins < skin.price){ toast('Не хватает монет!', false); beep(150,.18,'sawtooth',.07); return; }
+  state.coins -= skin.price;
+  state.toys[toyId].skins.push(skin.id);
+  state.toys[toyId].active = skin.id;
+  save();
+  renderCoins(); bumpCoins(); renderShop(); renderToys();
+  toast(`Скин «${skin.name}» куплен и выбран! 🎨`);
+  beep(680,.09); setTimeout(()=>beep(920,.14),100);
+  openSkins(toyId);
+}
+
+function selectSkin(toyId, skinId){
+  state.toys[toyId].active = skinId;
+  save();
+  renderShop(); renderToys();
+  beep(560,.06,'sine',.06);
+  toast('Скин применён ✨');
+  openSkins(toyId);
+}
+
+/* ============================================================
+   ОТКРЫТИЕ ИГРУШКИ
+   ============================================================ */
+async function openToy(id){
+  const toy = getToy(id);
+  if(!toy || !isOwned(id)) return;
+  const skin = activeSkin(id);
+  await openModal(`${skin.emoji || toy.emoji} ${toy.name}`);
+  const stage = $('#modalStage');
+  const renderer = TOY_RENDERERS[id];
+  if(renderer){
+    const cleanup = renderer(stage, skin);
+    if(typeof cleanup === 'function') modalCleanup = cleanup;
+  }
+}
+
+/* ============================================================
+   ИГРУШКИ
+   ============================================================ */
+const TOY_RENDERERS = {};
+
+TOY_RENDERERS.bubble = (stage, skin) => {
+  const TOTAL = 80;
+  stage.innerHTML = `<div class="bubble-wrap" id="bw"></div>
+    <div class="toy-bar">
+      <span id="c">Лопнуто: 0 / ${TOTAL}</span>
+      <button id="r">🔄 Восстановить</button>
+    </div>`;
+  const wrap = stage.querySelector('#bw'), cnt = stage.querySelector('#c');
+  let popped = 0;
+  function makeB(){
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.style.background = `radial-gradient(circle at 32% 26%, ${skin.colors.a}, ${skin.colors.b} 45%, ${skin.colors.c})`;
+    b.onclick = () => {
+      if(b.classList.contains('popped')) return;
+      b.classList.add('popped'); popSound(); popped++;
+      cnt.textContent = `Лопнуто: ${popped} / ${TOTAL}`;
+      if(popped === TOTAL){
+        setTimeout(() => {
+          toast('Все пузырьки лопнуты! 🫧✨');
+          [0,100,200,300,420].forEach((d,i)=>setTimeout(()=>beep(600+i*130,.1,'triangle',.08),d));
+        }, 150);
+      }
+    };
+    return b;
+  }
+  function fill(){
+    wrap.innerHTML = ''; popped = 0;
+    cnt.textContent = `Лопнуто: 0 / ${TOTAL}`;
+    for(let i=0;i<TOTAL;i++) wrap.appendChild(makeB());
+  }
+  fill();
+  stage.querySelector('#r').onclick = () => { fill(); beep(400,.08); };
+  return null;
+};
+
+TOY_RENDERERS.spinner = (stage, skin) => {
+  stage.innerHTML = `<div class="spinner-wrap">
+    <div class="fidget" id="f">
+      <div class="arm"></div><div class="arm"></div><div class="arm"></div>
+      <div class="cap"></div>
+    </div></div>
+    <p class="hint">Кликни по спиннеру, чтобы раскрутить 🔄</p>`;
+  const el = stage.querySelector('#f');
+  el.querySelectorAll('.arm').forEach(a => {
+    a.style.background = `radial-gradient(circle at 34% 28%, ${skin.colors.a}, ${skin.colors.b} 52%, ${skin.colors.c})`;
+    a.style.borderColor = skin.colors.c;
+  });
+  const cap = el.querySelector('.cap');
+  cap.style.background = `radial-gradient(circle at 34% 28%, ${skin.colors.a}, ${skin.colors.b} 60%, ${skin.colors.c})`;
+  cap.style.borderColor = skin.colors.c;
+  let angle=0, vel=0, raf=null, alive=true;
+  function loop(){
+    if(!alive) return;
+    vel *= .988; angle += vel;
+    el.style.transform = `rotate(${angle}deg)`;
+    if(Math.abs(vel) > .08) raf = requestAnimationFrame(loop);
+    else { vel = 0; raf = null; }
+  }
+  el.onclick = () => { vel += 22 + Math.random()*16; beep(340,.05); if(!raf) loop(); };
+  return () => { alive=false; if(raf) cancelAnimationFrame(raf); };
+};
+
+TOY_RENDERERS.ball = (stage, skin) => {
+  stage.innerHTML = `<div class="ball-stage"><div class="stress-ball" id="sb">😌</div></div>
+    <p class="hint">Зажми мяч и держи 👆</p>`;
+  const ball = stage.querySelector('#sb');
+  ball.style.background = `radial-gradient(circle at 34% 26%, ${skin.colors.a}, ${skin.colors.b} 55%, ${skin.colors.c})`;
+  ball.style.boxShadow = `inset -12px -16px 28px #00000066, 0 16px 34px -10px ${skin.colors.b}aa`;
+  let sq = false;
+  function down(e){ e.preventDefault(); if(sq) return; sq=true;
+    ball.classList.add('squeezed'); ball.textContent='😵'; beep(150,.13); }
+  function up(){ if(!sq) return; sq=false;
+    ball.classList.remove('squeezed'); ball.textContent='😌'; beep(480,.1); }
+  ball.addEventListener('pointerdown', down);
+  window.addEventListener('pointerup', up);
+  window.addEventListener('pointercancel', up);
+  return () => {
+    window.removeEventListener('pointerup', up);
+    window.removeEventListener('pointercancel', up);
+  };
+};
+
+TOY_RENDERERS.slime = (stage, skin) => {
+  stage.innerHTML = `<div class="slime-stage" id="a"><div class="slime" id="el"></div></div>
+    <p class="hint">Води пальцем — слайм потянется за тобой 🟣</p>`;
+  const area = stage.querySelector('#a'), el = stage.querySelector('#el');
+  el.style.background = `radial-gradient(circle at 33% 28%, ${skin.colors.a}, ${skin.colors.b} 46%, ${skin.colors.c})`;
+  el.style.boxShadow = `inset -10px -14px 26px #00000055, 0 0 44px ${skin.colors.b}66`;
+  let x = area.clientWidth/2, y = area.clientHeight/2, tx = x, ty = y, raf=null, alive=true;
+  function setT(e){
+    const r = area.getBoundingClientRect();
+    tx = Math.max(20, Math.min(r.width-20, e.clientX-r.left));
+    ty = Math.max(20, Math.min(r.height-20, e.clientY-r.top));
+  }
+  function dn(e){ area.setPointerCapture?.(e.pointerId); setT(e); beep(260,.06); }
+  function mv(e){ if(e.buttons) setT(e); }
+  area.addEventListener('pointerdown', dn);
+  area.addEventListener('pointermove', mv);
+  function loop(){
+    if(!alive) return;
+    const dx = tx-x, dy = ty-y;
+    x += dx*.13; y += dy*.13;
+    const sp = Math.hypot(dx,dy);
+    const sx = 1 + Math.min(sp/240, .75);
+    const sy = 1 - Math.min(sp/400, .45);
+    const rot = Math.atan2(dy,dx)*180/Math.PI;
+    el.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg) scale(${sx}, ${sy})`;
+    raf = requestAnimationFrame(loop);
+  }
+  loop();
+  return () => {
+    alive=false; if(raf) cancelAnimationFrame(raf);
+    area.removeEventListener('pointerdown', dn);
+    area.removeEventListener('pointermove', mv);
+  };
+};
+
+TOY_RENDERERS.cat = (stage, skin) => {
+  stage.innerHTML = `<div class="cat-stage" id="cs">
+    <div class="squish-cat" id="c" style="filter: drop-shadow(0 12px 26px ${skin.colors.b}88)">${skin.emoji||'🐱'}</div>
+    </div>
+    <p class="hint">Кликай по котику — он мяукает и сжимается 🐾</p>`;
+  const cs = stage.querySelector('#cs'), cat = stage.querySelector('#c');
+  const words = ['Мяу!','Мур~','Мяу-мяу!','♡','Мррр'];
+  cat.onclick = e => {
+    cat.classList.remove('squish'); void cat.offsetWidth; cat.classList.add('squish');
+    beep(560 + Math.random()*340, .13, 'sine', .09);
+    const r = cs.getBoundingClientRect();
+    const f = document.createElement('div');
+    f.className = 'float-text';
+    f.textContent = words[Math.floor(Math.random()*words.length)];
+    f.style.left = (e.clientX-r.left)+'px';
+    f.style.top = (e.clientY-r.top-20)+'px';
+    cs.appendChild(f);
+    setTimeout(()=>f.remove(), 900);
+  };
+  return null;
+};
+
+TOY_RENDERERS.popit = (stage, skin) => {
+  stage.innerHTML = `<div class="popit-wrap"><div class="popit-grid" id="p"></div></div>
+    <p class="hint">Нажимай кружочки — они выворачиваются 👆</p>`;
+  const grid = stage.querySelector('#p');
+  const H = [
+    [0,1,1,0,0,1,1,0],[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1],[1,1,1,1,1,1,1,1],
+    [0,1,1,1,1,1,1,0],[0,0,1,1,1,1,0,0],[0,0,0,1,1,0,0,0],[0,0,0,0,0,0,0,0],
+  ];
+  H.flat().forEach(c => {
+    const d = document.createElement('div');
+    if(!c) d.style.visibility = 'hidden';
+    d.style.aspectRatio = '1'; d.style.borderRadius = '50%';
+    d.style.transition = 'transform .12s, background .2s';
+    d.style.background = `radial-gradient(circle at 32% 26%, ${skin.colors.a}, ${skin.colors.b} 55%, ${skin.colors.c})`;
+    d.style.boxShadow = `inset 0 -3px 6px #00000055, 0 2px 5px #00000044`;
+    if(c){
+      d.style.cursor = 'pointer';
+      d.onclick = () => {
+        if(d.dataset.pop){
+          d.dataset.pop = '';
+          d.style.transform = '';
+          d.style.background = `radial-gradient(circle at 32% 26%, ${skin.colors.a}, ${skin.colors.b} 55%, ${skin.colors.c})`;
+          d.style.boxShadow = `inset 0 -3px 6px #00000055, 0 2px 5px #00000044`;
+        } else {
+          d.dataset.pop = '1';
+          d.style.transform = 'scale(.78)';
+          d.style.background = `radial-gradient(circle at 50% 50%, ${skin.colors.c}, ${skin.colors.a})`;
+          d.style.boxShadow = `inset 0 3px 8px #000a`;
+        }
+        popSound();
+      };
+    }
+    grid.appendChild(d);
+  });
+  return null;
+};
+
+TOY_RENDERERS.fidgetcube = (stage, skin) => {
+  stage.innerHTML = `<div class="cube-stage"><div class="cube-face" id="cf"></div></div>
+    <p class="hint">Кликни по кубику, чтобы перевернуть грань 🎲</p>`;
+  const face = stage.querySelector('#cf');
+  const F = ['🔘','🎚️','🕹️','⭕','◾','⚫'];
+  let i = 0;
+  function update(){
+    face.textContent = F[i];
+    face.style.background = `radial-gradient(circle at 34% 26%, ${skin.colors.a}, ${skin.colors.b} 55%, ${skin.colors.c})`;
+    face.style.border = `4px solid ${skin.colors.c}`;
+  }
+  update();
+  face.onclick = () => {
+    face.classList.add('flip');
+    beep(500+i*80, .06, 'square', .06);
+    setTimeout(() => { i = (i+1)%F.length; update(); face.classList.remove('flip'); }, 220);
+  };
+  return null;
+};
+
+TOY_RENDERERS.sand = (stage, skin) => {
+  stage.innerHTML = `<div class="sand-wrap" id="w"><canvas id="c"></canvas></div>
+    <div class="toy-bar">
+      <span>Рисуй пальцем по песку 🏖️</span>
+      <button id="r">🔄 Разровнять</button>
+    </div>`;
+  const canvas = stage.querySelector('#c'), wrap = stage.querySelector('#w'), ctx = canvas.getContext('2d');
+  function fill(){
+    const g = ctx.createLinearGradient(0,0,0,canvas.height);
+    g.addColorStop(0, skin.colors.a); g.addColorStop(.5, skin.colors.b); g.addColorStop(1, skin.colors.c);
+    ctx.fillStyle = g; ctx.fillRect(0,0,canvas.width,canvas.height);
+  }
+  function resize(){ canvas.width = wrap.clientWidth; canvas.height = wrap.clientHeight; fill(); }
+  let drawing = false;
+  function draw(e){
+    const r = canvas.getBoundingClientRect();
+    const x = e.clientX-r.left, y = e.clientY-r.top;
+    const g = ctx.createRadialGradient(x,y,2,x,y,24);
+    g.addColorStop(0, skin.colors.c); g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x,y,24,0,Math.PI*2); ctx.fill();
+  }
+  function dn(e){ drawing = true; draw(e); }
+  function up(){ drawing = false; }
+  function mv(e){ if(drawing) draw(e); }
+  canvas.addEventListener('pointerdown', dn);
+  window.addEventListener('pointerup', up);
+  canvas.addEventListener('pointermove', mv);
+  stage.querySelector('#r').onclick = () => { fill(); beep(400,.08); };
+  requestAnimationFrame(resize); setTimeout(resize, 50);
+  return () => {
+    canvas.removeEventListener('pointerdown', dn);
+    window.removeEventListener('pointerup', up);
+    canvas.removeEventListener('pointermove', mv);
+  };
+};
+
+TOY_RENDERERS.infinity = (stage, skin) => {
+  stage.innerHTML = `<div class="inf-stage">
+    <div class="inf-cube" id="ic">
+      <div class="face" style="transform: translateZ(60px)"></div>
+      <div class="face" style="transform: rotateY(180deg) translateZ(60px)"></div>
+      <div class="face" style="transform: rotateY(90deg) translateZ(60px)"></div>
+      <div class="face" style="transform: rotateY(-90deg) translateZ(60px)"></div>
+      <div class="face" style="transform: rotateX(90deg) translateZ(60px)"></div>
+      <div class="face" style="transform: rotateX(-90deg) translateZ(60px)"></div>
+    </div></div>
+    <p class="hint">Кликни, чтобы запустить/остановить вращение ♾️</p>`;
+  const cube = stage.querySelector('#ic');
+  cube.querySelectorAll('.face').forEach(f => {
+    f.style.background = `radial-gradient(circle at 34% 26%, ${skin.colors.a}, ${skin.colors.b} 55%, ${skin.colors.c})`;
+  });
+  cube.onclick = () => {
+    cube.classList.toggle('spin');
+    beep(cube.classList.contains('spin') ? 620 : 420, .08);
+  };
+  return null;
+};
+
+TOY_RENDERERS.smiley = (stage, skin) => {
+  stage.innerHTML = `<div class="cat-stage" id="ss">
+    <div class="squish-cat" id="sm" style="filter: drop-shadow(0 12px 26px ${skin.colors.b}88)">${skin.emoji||'😊'}</div>
+    </div>
+    <p class="hint">Сжимай смайлик — он меняет выражение 👆</p>`;
+  const st = stage.querySelector('#ss'), face = stage.querySelector('#sm');
+  const happy = skin.emoji || '😊';
+  let dn = false;
+  face.addEventListener('pointerdown', e => {
+    e.preventDefault(); if(dn) return; dn = true;
+    face.classList.remove('squish'); void face.offsetWidth; face.classList.add('squish');
+    face.textContent = '😵';
+    beep(200, .12); 
+    const r = st.getBoundingClientRect();
+    const f = document.createElement('div');
+    f.className = 'float-text'; f.textContent = 'ой!';
+    f.style.left = (e.clientX-r.left)+'px';
+    f.style.top  = (e.clientY-r.top-20)+'px';
+    st.appendChild(f); setTimeout(()=>f.remove(), 900);
+  });
+  window.addEventListener('pointerup', () => {
+    if(!dn) return; dn = false;
+    face.textContent = happy;
+    beep(480, .1);
+  });
+  return () => { dn = false; };
+};
+
+/* Шарик */
+TOY_RENDERERS.balloon = (stage, skin) => {
+  stage.innerHTML = `<div class="balloon-stage" id="a">
+    <div class="balloon" id="b" style="color:${skin.colors.b}">🎈</div>
+  </div>
+  <div class="toy-bar">
+    <span>Кликай, чтобы надуть (0 / 12)</span>
+    <button id="r">🔄 Заново</button>
+  </div>`;
+  const area = stage.querySelector('#a'), balloon = stage.querySelector('#b');
+  let size = 6, count = 0;
+  const MAX = 12;
+  const infoEl = stage.querySelector('.toy-bar span');
+  function refresh(){
+    balloon.style.fontSize = size + 'rem';
+    infoEl.textContent = `Кликай, чтобы надуть (${count} / ${MAX})`;
+  }
+  refresh();
+  balloon.onclick = () => {
+    if(count >= MAX) return;
+    count++;
+    size += 0.45;
+    refresh();
+    balloon.classList.remove('pulse'); void balloon.offsetWidth; balloon.classList.add('pulse');
+    beep(400 + count*40, .06, 'sine', .06);
+    if(count >= MAX){
+      setTimeout(() => {
+        balloon.classList.add('burst');
+        popSound();
+        toast('Шарик лопнул! 🎈💥');
+        [0,80,160,250].forEach((d,i)=>setTimeout(()=>beep(900+i*150,.1,'triangle',.09),d));
+      }, 200);
+    }
+  };
+  stage.querySelector('#r').onclick = () => {
+    balloon.classList.remove('burst');
+    balloon.style.color = skin.colors.b;
+    size = 6; count = 0; refresh();
+    beep(500,.08);
+  };
+  return null;
+};
+
+/* Пианино */
+TOY_RENDERERS.piano = (stage, skin) => {
+  const NOTES = [
+    { note: 261.63, label: 'До',  col: 'linear-gradient(180deg,#ffffff,#e5e7eb)' },
+    { note: 293.66, label: 'Ре',  col: 'linear-gradient(180deg,#ffffff,#d1d5db)' },
+    { note: 329.63, label: 'Ми',  col: 'linear-gradient(180deg,#fef3c7,#fcd34d)' },
+    { note: 349.23, label: 'Фа',  col: 'linear-gradient(180deg,#fef3c7,#fbbf24)' },
+    { note: 392.00, label: 'Соль',col: 'linear-gradient(180deg,#bbf7d0,#4ade80)' },
+    { note: 440.00, label: 'Ля',  col: 'linear-gradient(180deg,#bae6fd,#60a5fa)' },
+    { note: 493.88, label: 'Си',  col: 'linear-gradient(180deg,#e9d5ff,#a855f7)' },
+    { note: 523.25, label: 'До²', col: 'linear-gradient(180deg,#fbcfe8,#ec4899)' },
+  ];
+  stage.innerHTML = `<div class="piano-stage">
+    <div class="piano" id="p"></div>
+  </div>
+  <p class="hint">Нажимай клавиши и играй мелодии 🎵</p>`;
+  const piano = stage.querySelector('#p');
+  NOTES.forEach((n, i) => {
+    const k = document.createElement('button');
+    k.className = 'piano-key';
+    k.textContent = n.label;
+    k.style.background = skin.id === 'classic' ? n.col
+      : `linear-gradient(180deg, ${skin.colors.a}, ${skin.colors.b} 60%, ${skin.colors.c})`;
+    k.style.color = skin.id === 'classic' ? '#1f2937' : '#fff';
+    k.style.textShadow = '0 1px 3px #0008';
+    k.style.fontWeight = '800';
+    k.onclick = () => {
+      k.classList.add('playing');
+      setTimeout(()=>k.classList.remove('playing'), 130);
+      if(soundOn){
+        try{
+          const c = ac(), o = c.createOscillator(), g = c.createGain();
+          o.type = 'triangle'; o.frequency.value = n.note;
+          g.gain.setValueAtTime(.14, c.currentTime);
+          g.gain.exponentialRampToValueAtTime(.0001, c.currentTime + .6);
+          o.connect(g); g.connect(c.destination);
+          o.start(); o.stop(c.currentTime + .62);
+        }catch(e){}
+      }
+    };
+    piano.appendChild(k);
+  });
+  return null;
+};
+
+/* Магический шар */
+TOY_RENDERERS.magicball = (stage, skin) => {
+  const ANSWERS = [
+    'Определённо да ✨','Скорее всего 🌀','Знаки говорят да 🌟','Бесспорно 💫',
+    'Не могу предсказать 🔮','Спроси позже ⏳','Сконцентрируйся 🧘','Не рассчитывай 😶',
+    'Мой ответ — нет ❌','Очень сомнительно 🌫️','Перспективы хорошие 🌈','Всё в твоих руках 💪',
+  ];
+  stage.innerHTML = `<div class="magic-stage">
+    <div class="magic-ball" id="mb" style="
+      background: radial-gradient(circle at 30% 25%, ${skin.colors.a}, ${skin.colors.b} 45%, ${skin.colors.c});
+      box-shadow: inset -14px -20px 40px #00000099, inset 14px 12px 30px #ffffff22,
+        0 20px 50px -14px ${skin.colors.b}aa, 0 0 60px ${skin.colors.b}66;
+    ">🔮</div>
+    <div class="magic-answer" id="ans">Задай вопрос в голове и кликни по шару…</div>
+  </div>`;
+  const ball = stage.querySelector('#mb'), ans = stage.querySelector('#ans');
+  let last = -1;
+  ball.onclick = () => {
+    ball.classList.remove('shake'); void ball.offsetWidth; ball.classList.add('shake');
+    let idx;
+    do { idx = Math.floor(Math.random()*ANSWERS.length); } while(idx === last && ANSWERS.length > 1);
+    last = idx;
+    ans.textContent = ANSWERS[idx];
+    ans.classList.remove('show'); void ans.offsetWidth; ans.classList.add('show');
+    beep(440, .1, 'sine', .08);
+    setTimeout(()=>beep(660, .14, 'sine', .08), 100);
+  };
+  return null;
+};
+
+/* Йо-йо */
+TOY_RENDERERS.yoyo = (stage, skin) => {
+  stage.innerHTML = `<div class="yoyo-stage" id="a">
+    <div class="yoyo-string" id="str"></div>
+    <div class="yoyo" id="yy" style="
+      background: radial-gradient(circle at 34% 28%, ${skin.colors.a}, ${skin.colors.b} 55%, ${skin.colors.c});
+      color: ${skin.colors.b};
+    ">🪀</div>
+  </div>
+  <p class="hint">Води мышью вверх-вниз или пальцем 📱</p>`;
+  const area = stage.querySelector('#a'), str = stage.querySelector('#str'), yoyo = stage.querySelector('#yy');
+  let y = area.clientHeight/2, ty = y, raf = null, alive = true;
+  function setT(e){
+    const r = area.getBoundingClientRect();
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    ty = Math.max(40, Math.min(r.height-40, clientY - r.top));
+  }
+  function onMove(e){ if(e.buttons || e.touches) setT(e); }
+  function onDown(e){ setT(e); e.preventDefault?.(); }
+  area.addEventListener('pointerdown', onDown);
+  area.addEventListener('pointermove', onMove);
+  function loop(){
+    if(!alive) return;
+    y += (ty - y) * 0.22;
+    yoyo.style.top = y + 'px';
+    str.style.height = y + 'px';
+    raf = requestAnimationFrame(loop);
+  }
+  loop();
+  return () => {
+    alive = false; if(raf) cancelAnimationFrame(raf);
+    area.removeEventListener('pointerdown', onDown);
+    area.removeEventListener('pointermove', onMove);
+  };
+};
+
+/* ============================================================
+   ЗВУК
+   ============================================================ */
+$('#soundBtn').onclick = () => {
+  soundOn = !soundOn;
+  $('#soundBtn').textContent = soundOn ? '🔊' : '🔇';
+  if(soundOn) beep(700, .08);
+};
+
+/* ============================================================
+   СТАРТ
+   ============================================================ */
+applyTheme(state.theme || 'dark');
+renderCoins();
+renderJobs();
+renderShop();
+renderToys();
+</script>
+</body>
+</html>
