@@ -952,13 +952,14 @@ header{
    TELEGRAM INIT
    ============================================================ */
 const TG = window.Telegram?.WebApp;
-const IN_TG = !!(TG && TG.initData && TG.initData.length > 0);
+// Заглушка временно отключена для тестов
+const IN_TG = true;
 
-/* Заглушка вне ТГ */
-if(!IN_TG){
-  document.getElementById('blocker').classList.remove('hidden');
-} else {
-  document.getElementById('app').style.display = 'block';
+// Заглушку всегда скрываем, приложение всегда показываем
+document.getElementById('blocker').classList.add('hidden');
+document.getElementById('app').style.display = 'block';
+
+if(TG){
   try {
     TG.ready();
     TG.expand();
