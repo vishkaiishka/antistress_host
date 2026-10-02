@@ -3,11 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AntiStress — Работы, антистрессы и темы</title>
+<title>AntiStress — Кликер</title>
+<script>
+(function(){
+  try{
+    var theme = 'dark';
+    var raw = localStorage.getItem('antistress_save_v5');
+    if(!raw) raw = localStorage.getItem('antistress_save_v4');
+    if(raw){
+      var p = JSON.parse(raw);
+      if(p && p.theme) theme = p.theme;
+    }
+    document.documentElement.setAttribute('data-theme', theme);
+  }catch(e){}
+})();
+</script>
 <style>
-/* ============================================================
-   ТЕМЫ
-   ============================================================ */
 [data-theme="dark"]{
   --bg-1:#2a1b4d; --bg-2:#0d0b1a;
   --header-bg:rgba(18,13,36,.88); --header-border:rgba(168,85,247,.22);
@@ -158,7 +169,6 @@ body{
 }
 h2{margin:0 0 14px;font-size:1.15rem}
 
-/* HEADER */
 header{
   position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:10px;
   padding:12px 18px;background:var(--header-bg);backdrop-filter:blur(14px);
@@ -177,7 +187,6 @@ header{
   width:40px;height:40px;border-radius:12px;cursor:pointer;font-size:1.05rem;transition:.2s;}
 .icon-btn:hover{background:var(--btn-hover)}
 
-/* THEME PICKER */
 .theme-wrap{position:relative}
 .theme-menu{
   position:absolute;top:48px;right:0;z-index:100;
@@ -198,7 +207,6 @@ header{
   color:#fff;font-weight:900;font-size:1rem;text-shadow:0 1px 3px #000c;
 }
 
-/* TABS */
 .tabs{display:flex;gap:8px;padding:16px 18px 0;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button{flex:0 0 auto;padding:11px 18px;border-radius:13px;
@@ -211,7 +219,154 @@ header{
 .tab-panel.active{display:block;animation:fadeIn .35s}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-/* JOB GRID */
+/* ============================================================
+   КЛИКЕР
+   ============================================================ */
+.clicker-wrap{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+}
+@media(min-width:700px){
+  .clicker-wrap{grid-template-columns:1fr 1fr;}
+  .clicker-wrap .clicker-left{grid-column:1/-1;}
+}
+.clicker-left{
+  text-align:center;
+  background:linear-gradient(160deg,var(--card-1),var(--card-2));
+  border:1px solid var(--border);
+  border-radius:26px;
+  padding:30px 20px;
+}
+.clicker-stats{
+  display:flex;
+  justify-content:center;
+  gap:26px;
+  flex-wrap:wrap;
+  margin-bottom:22px;
+  font-size:.9rem;
+  color:var(--muted);
+}
+.clicker-stats b{color:var(--text);font-size:1.05rem;display:block;margin-top:2px}
+.big-coin{
+  width:200px;height:200px;
+  margin:0 auto;
+  border-radius:50%;
+  background:radial-gradient(circle at 32% 28%, #fef3c7, #fbbf24 45%, #b45309);
+  border:none;
+  cursor:pointer;
+  font-size:6rem;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:
+    0 20px 50px -12px #fbbf2488,
+    inset 0 -14px 30px #7c2d1277,
+    inset 0 14px 30px #ffffff88;
+  transition:transform .08s cubic-bezier(.34,1.56,.64,1);
+  user-select:none;
+  position:relative;
+}
+.big-coin:hover{transform:scale(1.03)}
+.big-coin:active{transform:scale(.92)}
+.big-coin.pop{animation:coinPop .18s}
+@keyframes coinPop{
+  0%{transform:scale(.92)}
+  60%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+.float-coin{
+  position:fixed;
+  pointer-events:none;
+  font-weight:900;
+  font-size:1.4rem;
+  color:var(--gold);
+  text-shadow:0 2px 10px #000a, 0 0 20px var(--gold);
+  animation:coinFloatUp 1s ease-out forwards;
+  z-index:500;
+}
+@keyframes coinFloatUp{
+  0%{opacity:1;transform:translate(-50%,0) scale(.7)}
+  100%{opacity:0;transform:translate(-50%,-100px) scale(1.4)}
+}
+.clicker-hint{
+  margin-top:18px;
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+.upgrades-title{
+  margin:0 0 12px;
+  font-size:1rem;
+  font-weight:800;
+  display:flex;align-items:center;gap:8px;
+}
+.upgrades-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+.upg-card{
+  background:linear-gradient(160deg,var(--card-1),var(--card-2));
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:14px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+  transition:.2s;
+}
+.upg-card:hover{border-color:var(--border-hover)}
+.upg-icon{
+  font-size:2.2rem;
+  width:52px;height:52px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:14px;
+  background:var(--input-bg);
+  flex-shrink:0;
+}
+.upg-info{flex:1;text-align:left;min-width:0}
+.upg-name{font-weight:800;font-size:.92rem;margin-bottom:2px}
+.upg-desc{color:var(--muted);font-size:.75rem;line-height:1.3;margin-bottom:4px}
+.upg-level{color:var(--accent-2);font-size:.75rem;font-weight:700}
+.upg-buy{
+  flex-shrink:0;
+  padding:10px 14px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-weight:800;
+  font-size:.82rem;
+  font-family:inherit;
+  background:linear-gradient(135deg,#22c55e,#15803d);
+  color:#fff;
+  transition:.2s;
+  min-width:100px;
+}
+.upg-buy:hover:not(:disabled){filter:brightness(1.15)}
+.upg-buy:disabled{
+  background:var(--btn-bg);
+  color:var(--muted);
+  cursor:default;
+}
+.upg-buy.max{
+  background:linear-gradient(135deg,#a855f7,#7c3aed);
+}
+
+.tabs .badge{
+  display:inline-block;
+  background:#ef4444;
+  color:#fff;
+  border-radius:9px;
+  padding:1px 7px;
+  font-size:.7rem;
+  margin-left:5px;
+  font-weight:900;
+  animation:badgePulse 1s infinite;
+}
+@keyframes badgePulse{0%,100%{opacity:1}50%{opacity:.6}}
+
+/* ============================================================
+   ОБЩИЕ СТИЛИ
+   ============================================================ */
 .grid-jobs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
 .job-tile{background:linear-gradient(160deg,var(--card-1),var(--card-2));
   border:1px solid var(--border);border-radius:20px;padding:22px 18px;
@@ -224,7 +379,6 @@ header{
 .job-desc{color:var(--muted);font-size:.78rem;line-height:1.4;margin-bottom:10px;min-height:2.2em}
 .job-reward{color:var(--gold);font-weight:700;font-size:.82rem}
 
-/* CARDS */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
 .shop-card{background:linear-gradient(160deg,var(--card-1),var(--card-2));
   border:1px solid var(--border);border-radius:20px;padding:20px 16px;text-align:center;
@@ -247,7 +401,6 @@ header{
 .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 20px;
   font-size:.95rem;line-height:1.8}
 
-/* SKINS */
 .skin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
 .skin-card{background:var(--btn-bg);border:1px solid var(--border);border-radius:16px;
   padding:14px;text-align:center;transition:.2s;}
@@ -259,7 +412,6 @@ header{
 .skin-name{font-weight:700;font-size:.82rem;margin-bottom:10px}
 .skin-card .buy-btn{padding:8px;font-size:.75rem}
 
-/* MODAL */
 .modal{position:fixed;inset:0;background:var(--overlay);backdrop-filter:blur(8px);
   display:none;align-items:center;justify-content:center;padding:16px;z-index:200;}
 .modal.open{display:flex}
@@ -280,7 +432,6 @@ header{
   color:#04222b;}
 .btn:hover{transform:translateY(-2px)}
 
-/* TOY GAMES */
 .bubble-wrap{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;
   padding:14px;background:var(--input-bg);border-radius:18px;user-select:none;}
 .bubble{aspect-ratio:1;border-radius:50%;cursor:pointer;
@@ -362,7 +513,6 @@ header{
 .inf-cube .face{position:absolute;width:120px;height:120px;border-radius:14px;
   border:2px solid #00000044;opacity:.95;box-shadow:inset 0 0 30px #00000055;}
 
-/* balloon */
 .balloon-stage{display:flex;align-items:center;justify-content:center;height:320px;
   position:relative;overflow:hidden}
 .balloon{font-size:6rem;line-height:1;cursor:pointer;user-select:none;
@@ -372,7 +522,6 @@ header{
 .balloon.burst{animation:burstOut .5s forwards}
 @keyframes burstOut{to{opacity:0;transform:scale(2.5) rotate(30deg)}}
 
-/* piano */
 .piano-stage{padding:14px 0}
 .piano{display:flex;justify-content:center;gap:4px;padding:14px;background:var(--input-bg);border-radius:18px}
 .piano-key{width:44px;height:160px;border-radius:0 0 10px 10px;cursor:pointer;
@@ -381,14 +530,10 @@ header{
 .piano-key:active,.piano-key.playing{transform:translateY(4px) scale(.96);
   filter:brightness(1.2)}
 
-/* magic ball */
 .magic-stage{display:flex;flex-direction:column;align-items:center;justify-content:center;
   height:340px;gap:20px}
 .magic-ball{width:180px;height:180px;border-radius:50%;cursor:pointer;
   display:flex;align-items:center;justify-content:center;font-size:4.5rem;
-  background:radial-gradient(circle at 30% 25%, #312e81, #1e1b4b 45%, #0a0618);
-  box-shadow:inset -14px -20px 40px #00000099, inset 14px 12px 30px #ffffff22,
-    0 20px 50px -14px #4c1d95aa, 0 0 60px #4c1d9566;
   transition:transform .2s;}
 .magic-ball:active{transform:scale(.94)}
 .magic-ball.shake{animation:magicShake .5s}
@@ -405,7 +550,6 @@ header{
 .magic-answer.show{animation:ansIn .35s}
 @keyframes ansIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
 
-/* yoyo */
 .yoyo-stage{position:relative;height:340px;border-radius:20px;
   background:var(--input-bg);overflow:hidden;border:1px solid var(--border);
   touch-action:none;cursor:ns-resize;}
@@ -416,7 +560,6 @@ header{
   font-size:2rem;will-change:top;
   box-shadow:inset -8px -10px 18px #00000055, 0 0 30px currentColor;}
 
-/* JOB GAMES */
 .job-area{position:relative;height:320px;background:var(--input-bg);border-radius:20px;
   overflow:hidden;border:1px solid var(--border);}
 .job-area .box{position:absolute;font-size:2.4rem;cursor:pointer;user-select:none;
@@ -510,16 +653,15 @@ header{
 .lib-card.matched{background:linear-gradient(160deg,#22c55e,#15803d);
   cursor:default;opacity:.7}
 
-/* fishing */
 .fish-area{height:320px;background:var(--input-bg);border-radius:20px;
   position:relative;overflow:hidden;border:1px solid var(--border);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:20px;}
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;}
 .fish-scale{position:relative;width:100%;max-width:400px;height:38px;border-radius:19px;
   background:linear-gradient(90deg, #1e3a8a, #0891b2, #22c55e, #eab308, #dc2626);
   border:2px solid var(--border);overflow:hidden;}
 .fish-zone{position:absolute;top:0;bottom:0;background:#22c55e88;
   border-left:2px solid #4ade80;border-right:2px solid #4ade80;
-  box-shadow:0 0 20px #4ade80aa;}
+  box-shadow:0 0 20px #4ade80aa;transition:background .15s, box-shadow .15s;}
 .fish-marker{position:absolute;top:-6px;bottom:-6px;width:5px;background:#fff;
   border-radius:3px;box-shadow:0 0 14px #fff, 0 0 4px #000;
   transform:translateX(-50%);}
@@ -527,7 +669,6 @@ header{
 @keyframes fishSwim{0%,100%{transform:translateX(-8px) rotate(-5deg)}
   50%{transform:translateX(8px) rotate(5deg)}}
 
-/* photo */
 .photo-area{position:relative;height:320px;border-radius:20px;overflow:hidden;
   background:linear-gradient(160deg,#1e1b4b,#0a0618);border:1px solid var(--border);cursor:crosshair;}
 .photo-target{position:absolute;font-size:2.6rem;cursor:pointer;
@@ -541,7 +682,6 @@ header{
 .photo-frame::before{left:-6px;top:-6px;border-right:none;border-bottom:none}
 .photo-frame::after{right:-6px;bottom:-6px;border-left:none;border-top:none}
 
-/* trainer */
 .trainer-area{height:320px;background:var(--input-bg);border-radius:20px;
   position:relative;overflow:hidden;border:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;}
@@ -556,7 +696,6 @@ header{
 .trainer-btn.pulse{animation:beatPulse .5s}
 @keyframes beatPulse{0%{transform:scale(1)}30%{transform:scale(1.12)}100%{transform:scale(1)}}
 
-/* chemist */
 .chem-area{height:320px;background:var(--input-bg);border-radius:20px;
   padding:20px;border:1px solid var(--border);
   display:flex;flex-direction:column;align-items:center;gap:16px;justify-content:center;}
@@ -570,7 +709,6 @@ header{
 .chem-buttons button:hover{transform:scale(1.08)}
 .chem-buttons button:active{transform:scale(.92)}
 
-/* pilot */
 .pilot-area{position:relative;height:320px;overflow:hidden;border-radius:20px;
   background:linear-gradient(180deg,#020010,#0a0520);
   border:1px solid var(--border);cursor:crosshair;}
@@ -599,6 +737,7 @@ header{
   .skin-grid{grid-template-columns:repeat(2,1fr)}
   .theme-menu{width:210px;grid-template-columns:repeat(4,1fr)}
   .piano-key{width:34px;height:120px}
+  .big-coin{width:160px;height:160px;font-size:5rem}
 }
 </style>
 </head>
@@ -617,21 +756,44 @@ header{
 </header>
 
 <nav class="tabs">
-  <button data-tab="work" class="active">💼 Работа</button>
+  <button data-tab="clicker">🪙 Кликер</button>
+  <button data-tab="work">💼 Работа</button>
   <button data-tab="shop">🛒 Магазин</button>
   <button data-tab="toys">🧸 Мои игрушки</button>
 </nav>
 
 <main>
-  <section class="tab-panel active" id="tab-work">
+  <section class="tab-panel active" id="tab-clicker">
+    <div class="clicker-wrap">
+      <div class="clicker-left">
+        <div class="clicker-stats">
+          <div>За клик<b id="perClick">1 🪙</b></div>
+          <div>В секунду<b id="perSec">0 🪙</b></div>
+          <div>Всего кликов<b id="totalClicks">0</b></div>
+          <div>Заработано<b id="totalEarned">0 🪙</b></div>
+        </div>
+        <button class="big-coin" id="bigCoin">🪙</button>
+        <div class="clicker-hint">Жми по монете — каждая даёт монеты. Апгрейды ниже!</div>
+      </div>
+
+      <div>
+        <h3 class="upgrades-title">⚡ Улучшения</h3>
+        <div class="upgrades-grid" id="upgradesGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tab-panel" id="tab-work">
     <h2>💼 Способы заработка</h2>
     <p style="color:var(--muted);font-size:.85rem;margin:0 0 16px">Выбери подработку и заработай монеты на антистрессы</p>
     <div class="grid-jobs" id="jobsGrid"></div>
   </section>
+
   <section class="tab-panel" id="tab-shop">
     <h2>🛒 Магазин антистрессов</h2>
     <div class="grid" id="shopGrid"></div>
   </section>
+
   <section class="tab-panel" id="tab-toys">
     <h2>🧸 Мои антистрессы</h2>
     <div class="grid" id="toysGrid"></div>
@@ -652,7 +814,6 @@ header{
    ============================================================ */
 const $  = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const wait = ms => new Promise(r => setTimeout(r, ms));
 const rnd  = (a,b) => a + Math.random() * (b - a);
 
 let audioCtx = null, soundOn = true;
@@ -683,14 +844,81 @@ function popSound(){
 }
 
 /* ============================================================
-   СОХРАНЕНИЕ В БРАУЗЕРЕ
+   СОХРАНЕНИЕ (v5 — с апгрейдами)
    ============================================================ */
-const SAVE_KEY = 'antistress_save_v4';
+const SAVE_KEY = 'antistress_save_v5';
+
+/* Апгрейды кликера */
+const UPGRADES = [
+  {
+    id: 'click1', icon: '👆', name: 'Крепкий палец',
+    desc: '+1 монета за клик', baseCost: 50, costMult: 1.7, maxLevel: 50,
+    effect: (lvl) => ({ clickBonus: lvl })
+  },
+  {
+    id: 'click2', icon: '💪', name: 'Титановый палец',
+    desc: '+5 монет за клик', baseCost: 500, costMult: 1.9, maxLevel: 30,
+    effect: (lvl) => ({ clickBonus: lvl * 5 })
+  },
+  {
+    id: 'click3', icon: '⚡', name: 'Молния в руке',
+    desc: '+25 монет за клик', baseCost: 5000, costMult: 2.1, maxLevel: 20,
+    effect: (lvl) => ({ clickBonus: lvl * 25 })
+  },
+  {
+    id: 'mult',  icon: '✨', name: 'Множитель клика',
+    desc: '×1.5 к силе клика за уровень', baseCost: 2000, costMult: 2.5, maxLevel: 15,
+    effect: (lvl) => ({ clickMult: Math.pow(1.5, lvl) })
+  },
+  {
+    id: 'auto1', icon: '🤖', name: 'Автокликер I',
+    desc: '+1 монета в секунду', baseCost: 200, costMult: 1.8, maxLevel: 40,
+    effect: (lvl) => ({ autoBonus: lvl })
+  },
+  {
+    id: 'auto2', icon: '🦾', name: 'Автокликер II',
+    desc: '+10 монет в секунду', baseCost: 3000, costMult: 2.0, maxLevel: 30,
+    effect: (lvl) => ({ autoBonus: lvl * 10 })
+  },
+  {
+    id: 'auto3', icon: '🏭', name: 'Фабрика монет',
+    desc: '+150 монет в секунду', baseCost: 40000, costMult: 2.3, maxLevel: 20,
+    effect: (lvl) => ({ autoBonus: lvl * 150 })
+  },
+  {
+    id: 'automult', icon: '🌀', name: 'Множитель авто',
+    desc: '×1.5 к автоклику за уровень', baseCost: 15000, costMult: 2.6, maxLevel: 12,
+    effect: (lvl) => ({ autoMult: Math.pow(1.5, lvl) })
+  },
+  {
+    id: 'crit', icon: '🎯', name: 'Критический удар',
+    desc: '+5% шанс крита, ×10 монет', baseCost: 1000, costMult: 2.0, maxLevel: 15,
+    effect: (lvl) => ({ critChance: lvl * 0.05 })
+  },
+  {
+    id: 'combo', icon: '🔥', name: 'Комбо',
+    desc: 'Быстрые клики дают бонус (до ×3)', baseCost: 3000, costMult: 2.2, maxLevel: 10,
+    effect: (lvl) => ({ comboMax: lvl })
+  },
+];
+function getUpgrade(id){ return UPGRADES.find(u => u.id === id); }
+function upgradeCost(upg, currentLevel){
+  return Math.floor(upg.baseCost * Math.pow(upg.costMult, currentLevel));
+}
+
 function defaultState(){
   return {
     coins: 300,
     theme: 'dark',
-    toys: { bubble: { skins:['classic'], active:'classic' } }
+    soundOn: true,
+    toys: { bubble: { skins:['classic'], active:'classic' } },
+    clicker: {
+      clicks: 0,
+      totalEarned: 0,
+      levels: {},
+      lastClickTime: 0,
+      comboCount: 0,
+    },
   };
 }
 let state = (() => {
@@ -698,10 +926,13 @@ let state = (() => {
     const raw = localStorage.getItem(SAVE_KEY);
     if(raw){
       const p = JSON.parse(raw);
-      if(p && p.toys) return Object.assign(defaultState(), p);
+      if(p && p.toys){
+        const merged = Object.assign(defaultState(), p);
+        merged.clicker = Object.assign(defaultState().clicker, p.clicker || {});
+        return merged;
+      }
     }
-    // миграция со старых версий
-    for(const k of ['antistress_save_v3','antistress_save_v2']){
+    for(const k of ['antistress_save_v4','antistress_save_v3','antistress_save_v2']){
       const old = localStorage.getItem(k);
       if(old){
         const p = JSON.parse(old);
@@ -716,9 +947,18 @@ function save(){
 }
 window.addEventListener('beforeunload', save);
 
-function renderCoins(){ $('#coins').textContent = state.coins; }
+/* Дебаунс-сохранение (автокликер сохраняет часто) */
+let saveTimer = null;
+function saveDebounced(){
+  if(saveTimer) return;
+  saveTimer = setTimeout(() => { saveTimer = null; save(); }, 1000);
+}
+
+function renderCoins(){
+  $('#coins').textContent = Math.floor(state.coins).toLocaleString('ru-RU');
+}
 function bumpCoins(){ const el = $('.coins'); el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
-function addCoins(n){ state.coins += n; save(); renderCoins(); bumpCoins(); }
+function addCoins(n){ state.coins += n; saveDebounced(); renderCoins(); bumpCoins(); }
 
 function toast(msg, ok = true){
   const t = document.createElement('div');
@@ -729,57 +969,186 @@ function toast(msg, ok = true){
 }
 
 /* ============================================================
-   ТЕМЫ
+   КЛИКЕР: расчёт бонусов
    ============================================================ */
-const THEMES = [
-  { id:'dark',      name:'Тёмная',      preview:'linear-gradient(135deg,#a855f7,#22d3ee)' },
-  { id:'light',     name:'Светлая',     preview:'linear-gradient(135deg,#6366f1,#0ea5e9)' },
-  { id:'neon',      name:'Неон',        preview:'linear-gradient(135deg,#ff00ff,#00ffff)' },
-  { id:'sunset',    name:'Закат',       preview:'linear-gradient(135deg,#f97316,#facc15)' },
-  { id:'ocean',     name:'Океан',       preview:'linear-gradient(135deg,#0ea5e9,#67e8f9)' },
-  { id:'forest',    name:'Лес',         preview:'linear-gradient(135deg,#22c55e,#a3e635)' },
-  { id:'cyberpunk', name:'Киберпанк',   preview:'linear-gradient(135deg,#ec4899,#22d3ee)' },
-  { id:'candy',     name:'Карамель',    preview:'linear-gradient(135deg,#ec4899,#a855f7)' },
-  { id:'mono',      name:'Монохром',    preview:'linear-gradient(135deg,#d4d4d8,#52525b)' },
-  { id:'retro',     name:'Ретро',       preview:'linear-gradient(135deg,#d97706,#fde047)' },
-];
-
-function applyTheme(id){
-  if(!THEMES.find(t => t.id === id)) id = 'dark';
-  document.documentElement.setAttribute('data-theme', id);
-  state.theme = id;
-  save();
-  renderThemeSwatches();
+function getClickerBonuses(){
+  let clickBonus = 0;
+  let clickMult = 1;
+  let autoBonus = 0;
+  let autoMult = 1;
+  let critChance = 0;
+  let comboMax = 0;
+  UPGRADES.forEach(u => {
+    const lvl = state.clicker.levels[u.id] || 0;
+    if(lvl <= 0) return;
+    const eff = u.effect(lvl);
+    if(eff.clickBonus) clickBonus += eff.clickBonus;
+    if(eff.clickMult) clickMult *= eff.clickMult;
+    if(eff.autoBonus) autoBonus += eff.autoBonus;
+    if(eff.autoMult) autoMult *= eff.autoMult;
+    if(eff.critChance) critChance += eff.critChance;
+    if(eff.comboMax) comboMax += eff.comboMax;
+  });
+  return { clickBonus, clickMult, autoBonus, autoMult, critChance, comboMax };
 }
 
-function renderThemeSwatches(){
-  const box = $('#themeSwatches');
-  box.innerHTML = '';
-  THEMES.forEach(t => {
-    const sw = document.createElement('div');
-    sw.className = 'theme-swatch' + (state.theme === t.id ? ' active' : '');
-    sw.style.background = t.preview;
-    sw.title = t.name;
-    sw.onclick = () => {
-      applyTheme(t.id);
-      beep(680, 0.08, 'sine', 0.07);
-      toast(`Тема: ${t.name} 🎨`);
-    };
-    box.appendChild(sw);
+function getPerClick(){
+  const b = getClickerBonuses();
+  return Math.max(1, Math.floor((1 + b.clickBonus) * b.clickMult));
+}
+function getPerSec(){
+  const b = getClickerBonuses();
+  return Math.floor(b.autoBonus * b.autoMult);
+}
+
+/* ============================================================
+   КЛИКЕР: отрисовка
+   ============================================================ */
+function renderClickerStats(){
+  $('#perClick').textContent = getPerClick() + ' 🪙';
+  $('#perSec').textContent = getPerSec() + ' 🪙';
+  $('#totalClicks').textContent = state.clicker.clicks.toLocaleString('ru-RU');
+  $('#totalEarned').textContent = Math.floor(state.clicker.totalEarned).toLocaleString('ru-RU') + ' 🪙';
+}
+
+function renderUpgrades(){
+  const grid = $('#upgradesGrid');
+  grid.innerHTML = '';
+  UPGRADES.forEach(u => {
+    const lvl = state.clicker.levels[u.id] || 0;
+    const isMax = lvl >= u.maxLevel;
+    const cost = upgradeCost(u, lvl);
+    const canBuy = !isMax && state.coins >= cost;
+
+    const card = document.createElement('div');
+    card.className = 'upg-card';
+    card.innerHTML = `
+      <div class="upg-icon">${u.icon}</div>
+      <div class="upg-info">
+        <div class="upg-name">${u.name}</div>
+        <div class="upg-desc">${u.desc}</div>
+        <div class="upg-level">Уровень ${lvl} / ${u.maxLevel}</div>
+      </div>
+      <button class="upg-buy ${isMax ? 'max' : ''}" ${isMax || !canBuy ? 'disabled' : ''}>
+        ${isMax ? '★ МАКС' : `${cost.toLocaleString('ru-RU')} 🪙`}
+      </button>
+    `;
+    const btn = card.querySelector('button');
+    if(!isMax) btn.onclick = () => buyUpgrade(u.id);
+    grid.appendChild(card);
   });
 }
 
-$('#themeBtn').onclick = e => {
-  e.stopPropagation();
-  $('#themeMenu').classList.toggle('open');
-  beep(560, 0.05, 'sine', 0.05);
-};
-document.addEventListener('click', e => {
-  if(!e.target.closest('.theme-wrap')) $('#themeMenu').classList.remove('open');
-});
+function buyUpgrade(id){
+  const u = getUpgrade(id);
+  if(!u) return;
+  const lvl = state.clicker.levels[u.id] || 0;
+  if(lvl >= u.maxLevel) return;
+  const cost = upgradeCost(u, lvl);
+  if(state.coins < cost){
+    toast('Не хватает монет!', false);
+    beep(150, .18, 'sawtooth', .07);
+    return;
+  }
+  state.coins -= cost;
+  state.clicker.levels[u.id] = lvl + 1;
+  save();
+  renderCoins(); bumpCoins();
+  renderUpgrades(); renderClickerStats();
+  beep(680, .09); setTimeout(() => beep(920, .14), 100);
+  toast(`${u.icon} ${u.name} — уровень ${lvl + 1}!`);
+}
 
 /* ============================================================
-   АНТИСТРЕССЫ + СКИНЫ
+   КЛИКЕР: клик по монете
+   ============================================================ */
+function floatCoins(x, y, amount, crit = false){
+  const el = document.createElement('div');
+  el.className = 'float-coin';
+  el.textContent = (crit ? '💥 +' : '+') + amount;
+  if(crit) el.style.color = '#f97316';
+  if(crit) el.style.fontSize = '1.9rem';
+  el.style.left = x + 'px';
+  el.style.top = y + 'px';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 1000);
+}
+
+function doClick(e){
+  const b = getClickerBonuses();
+  let amount = getPerClick();
+
+  // Комбо: если кликаем быстрее 500 мс подряд — бонус
+  const now = performance.now();
+  if(now - state.clicker.lastClickTime < 500){
+    state.clicker.comboCount = Math.min(state.clicker.comboCount + 1, 30);
+  } else {
+    state.clicker.comboCount = 0;
+  }
+  state.clicker.lastClickTime = now;
+
+  if(b.comboMax > 0){
+    const comboBonus = Math.min(state.clicker.comboCount / 10, b.comboMax * 0.2);
+    amount = Math.floor(amount * (1 + comboBonus));
+  }
+
+  // Крит
+  const isCrit = b.critChance > 0 && Math.random() < b.critChance;
+  if(isCrit) amount *= 10;
+
+  state.coins += amount;
+  state.clicker.clicks++;
+  state.clicker.totalEarned += amount;
+
+  const rect = e.currentTarget.getBoundingClientRect();
+  const cx = e.clientX || (rect.left + rect.width/2);
+  const cy = e.clientY || (rect.top + rect.height/2);
+  floatCoins(cx, cy, amount, isCrit);
+
+  beep(isCrit ? 1200 : 720 + Math.random()*160, .06, 'triangle', .08);
+  if(isCrit) setTimeout(() => beep(1500, .1, 'sine', .09), 60);
+
+  // Анимация
+  const coin = $('#bigCoin');
+  coin.classList.remove('pop'); void coin.offsetWidth; coin.classList.add('pop');
+
+  saveDebounced();
+  renderCoins(); bumpCoins();
+  renderClickerStats();
+  renderUpgrades();
+}
+
+$('#bigCoin').addEventListener('click', doClick);
+
+/* ============================================================
+   КЛИКЕР: автодоход (rAF)
+   ============================================================ */
+let lastAutoTick = performance.now();
+let autoAccum = 0;
+function autoTick(now){
+  const dt = (now - lastAutoTick) / 1000;
+  lastAutoTick = now;
+
+  const perSec = getPerSec();
+  if(perSec > 0){
+    const earned = perSec * dt;
+    state.coins += earned;
+    state.clicker.totalEarned += earned;
+    autoAccum += earned;
+    // Обновляем UI ~5 раз в секунду
+    if(autoAccum >= 1){
+      autoAccum = 0;
+      renderCoins();
+      renderClickerStats();
+      saveDebounced();
+    }
+  }
+  requestAnimationFrame(autoTick);
+}
+requestAnimationFrame(autoTick);
+
+/* ============================================================
+   ДАННЫЕ ИГРУШЕК
    ============================================================ */
 const TOYS = [
   { id:'bubble', name:'Пузырчатая плёнка', emoji:'🫧', price:0,
@@ -922,7 +1291,6 @@ const TOYS = [
       { id:'lava',   name:'Лава',    price:480,emoji:'🥵', colors:{a:'#fed7aa',b:'#f97316',c:'#7c2d12'} },
       { id:'gold',   name:'Золото',  price:800,emoji:'🤑', colors:{a:'#fef3c7',b:'#fbbf24',c:'#92400e'} },
     ]},
-  /* НОВЫЕ */
   { id:'balloon', name:'Воздушный шарик', emoji:'🎈', price:500,
     desc:'Надувай шарик кликами, пока он не лопнет!',
     skins:[
@@ -964,14 +1332,91 @@ const TOYS = [
     ]},
 ];
 
+/* ============================================================
+   МИГРАЦИЯ
+   ============================================================ */
+(function migrateSave(){
+  let changed = false;
+  Object.keys(state.toys).forEach(id => {
+    const toy = TOYS.find(t => t.id === id);
+    if(!toy) return;
+    const entry = state.toys[id];
+    if(!entry || typeof entry !== 'object') return;
+    if(!Array.isArray(entry.skins)) { entry.skins = []; changed = true; }
+    const valid = entry.skins.filter(sid => toy.skins.find(s => s.id === sid));
+    if(valid.length !== entry.skins.length){ changed = true; }
+    entry.skins = valid;
+    if(!toy.skins.find(s => s.id === entry.active)){
+      if(entry.skins.length) entry.active = entry.skins[0];
+      else { entry.skins = [toy.skins[0].id]; entry.active = toy.skins[0].id; }
+      changed = true;
+    }
+    if(!entry.skins.includes(entry.active)){
+      entry.skins.push(entry.active);
+      changed = true;
+    }
+  });
+  if(changed) save();
+})();
+
 function getToy(id){ return TOYS.find(t => t.id === id); }
 function getSkin(toy, skinId){ return toy.skins.find(s => s.id === skinId); }
 function isOwned(id){ return !!state.toys[id]; }
 function activeSkin(toyId){
   const owned = state.toys[toyId];
   const toy = getToy(toyId);
+  if(!owned || !toy) return toy ? toy.skins[0] : null;
   return getSkin(toy, owned.active) || toy.skins[0];
 }
+
+/* ============================================================
+   ТЕМЫ
+   ============================================================ */
+const THEMES = [
+  { id:'dark',      name:'Тёмная',    preview:'linear-gradient(135deg,#a855f7,#22d3ee)' },
+  { id:'light',     name:'Светлая',   preview:'linear-gradient(135deg,#6366f1,#0ea5e9)' },
+  { id:'neon',      name:'Неон',      preview:'linear-gradient(135deg,#ff00ff,#00ffff)' },
+  { id:'sunset',    name:'Закат',     preview:'linear-gradient(135deg,#f97316,#facc15)' },
+  { id:'ocean',     name:'Океан',     preview:'linear-gradient(135deg,#0ea5e9,#67e8f9)' },
+  { id:'forest',    name:'Лес',       preview:'linear-gradient(135deg,#22c55e,#a3e635)' },
+  { id:'cyberpunk', name:'Киберпанк', preview:'linear-gradient(135deg,#ec4899,#22d3ee)' },
+  { id:'candy',     name:'Карамель',  preview:'linear-gradient(135deg,#ec4899,#a855f7)' },
+  { id:'mono',      name:'Монохром',  preview:'linear-gradient(135deg,#d4d4d8,#52525b)' },
+  { id:'retro',     name:'Ретро',     preview:'linear-gradient(135deg,#d97706,#fde047)' },
+];
+function applyTheme(id){
+  if(!THEMES.find(t => t.id === id)) id = 'dark';
+  document.documentElement.setAttribute('data-theme', id);
+  state.theme = id;
+  save();
+  renderThemeSwatches();
+}
+function renderThemeSwatches(){
+  const box = $('#themeSwatches');
+  if(!box) return;
+  box.innerHTML = '';
+  THEMES.forEach(t => {
+    const sw = document.createElement('div');
+    sw.className = 'theme-swatch' + (state.theme === t.id ? ' active' : '');
+    sw.style.background = t.preview;
+    sw.title = t.name;
+    sw.onclick = () => {
+      applyTheme(t.id);
+      beep(680, 0.08, 'sine', 0.07);
+      toast(`Тема: ${t.name} 🎨`);
+      $('#themeMenu').classList.remove('open');
+    };
+    box.appendChild(sw);
+  });
+}
+$('#themeBtn').onclick = e => {
+  e.stopPropagation();
+  $('#themeMenu').classList.toggle('open');
+  beep(560, 0.05, 'sine', 0.05);
+};
+document.addEventListener('click', e => {
+  if(!e.target.closest('.theme-wrap')) $('#themeMenu').classList.remove('open');
+});
 
 /* ============================================================
    ТАБЫ
@@ -987,7 +1432,7 @@ $$('.tabs button').forEach(btn => {
 });
 
 /* ============================================================
-   РАБОТЫ (15 штук)
+   РАБОТЫ (сокращены — все 15 на месте)
    ============================================================ */
 const JOBS = [
   { id:'warehouse', name:'Склад',           emoji:'📦', desc:'Спамь коробки — каждая +3 🪙 за 5 секунд',         reward:'до 90 🪙' },
@@ -1006,7 +1451,6 @@ const JOBS = [
   { id:'chemist',   name:'Химик',           emoji:'🧪', desc:'Смешай реагенты по порядку цвета',                  reward:'до 100 🪙' },
   { id:'pilot',     name:'Пилот',           emoji:'🚀', desc:'Отстреливай астероиды кликами — +6 за каждый',      reward:'до 120 🪙' },
 ];
-
 function renderJobs(){
   const grid = $('#jobsGrid');
   grid.innerHTML = '';
@@ -1035,15 +1479,13 @@ function closeModal(){
 $('#modalClose').onclick = closeModal;
 $('#modal').addEventListener('click', e => { if(e.target.id === 'modal') closeModal(); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
-
 function openModal(title){
+  if(modalCleanup){ try{ modalCleanup(); }catch(e){} modalCleanup = null; }
   $('#modalTitle').textContent = title;
   $('#modalStage').innerHTML = '';
   $('#modal').classList.add('open');
-  modalCleanup = null;
   return new Promise(r => requestAnimationFrame(() => r()));
 }
-
 async function openJob(jobId){
   const job = JOBS.find(j => j.id === jobId);
   if(!job) return;
@@ -1055,18 +1497,6 @@ async function openJob(jobId){
     if(typeof cleanup === 'function') modalCleanup = cleanup;
   }
 }
-
-/* ============================================================
-   ХЕЛПЕРЫ ДЛЯ РАБОТ
-   ============================================================ */
-function makeTimerBar(stage){
-  return stage.insertAdjacentHTML('beforeend', `
-    <div class="toy-bar">
-      <span id="_jTimer">⏱ —</span>
-      <span id="_jScore">💰 0</span>
-    </div>`) || { timer: stage.querySelector('#_jTimer'), score: stage.querySelector('#_jScore') };
-}
-
 function resultHTML(emoji, score, text){
   return `<div class="job-result">
     <div class="big">${emoji}</div>
@@ -1081,11 +1511,10 @@ function bindClose(stage){
 }
 
 /* ============================================================
-   РЕАЛИЗАЦИИ РАБОТ
+   РАБОТЫ (реализации — все на месте, включая Рыбака)
    ============================================================ */
 const JOB_RENDERERS = {};
 
-/* Склад */
 JOB_RENDERERS.warehouse = (stage, onDone) => {
   stage.innerHTML = `<div class="job-area" id="a"></div>
     <div class="toy-bar"><span id="t">⏱ 5.0 с</span><span id="s">💰 0</span></div>`;
@@ -1118,7 +1547,6 @@ JOB_RENDERERS.warehouse = (stage, onDone) => {
   return () => { alive=false; clearInterval(iv); if(raf) cancelAnimationFrame(raf); };
 };
 
-/* Курьер */
 JOB_RENDERERS.courier = (stage, onDone) => {
   stage.innerHTML = `<div class="target-area" id="a"></div>
     <div class="toy-bar"><span id="t">⏱ 6.0 с</span><span id="s">💰 0</span></div>`;
@@ -1128,6 +1556,7 @@ JOB_RENDERERS.courier = (stage, onDone) => {
   const target = document.createElement('div');
   target.className = 'target'; target.textContent = '📦';
   let tx = 100, ty = 100, vx = 2.2, vy = 1.8;
+  target.style.left = tx + 'px'; target.style.top = ty + 'px';
   target.onclick = () => {
     if(!alive) return;
     score += 5; sEl.textContent = `💰 ${score}`;
@@ -1158,7 +1587,6 @@ JOB_RENDERERS.courier = (stage, onDone) => {
   return () => { alive=false; if(raf) cancelAnimationFrame(raf); };
 };
 
-/* Копирайтинг */
 JOB_RENDERERS.writing = (stage, onDone) => {
   stage.innerHTML = `<div class="hold-wrap">
     <button class="hold-btn" id="hb">УДЕРЖИВАЙ</button>
@@ -1199,7 +1627,6 @@ JOB_RENDERERS.writing = (stage, onDone) => {
     window.removeEventListener('pointercancel', up); };
 };
 
-/* Тестировщик */
 JOB_RENDERERS.qa = (stage, onDone) => {
   stage.innerHTML = `<div class="react-area" id="a"></div>
     <div class="toy-bar"><span id="t">⏱ 6.0 с</span><span id="s">💰 0</span></div>`;
@@ -1242,7 +1669,6 @@ JOB_RENDERERS.qa = (stage, onDone) => {
   return () => { alive=false; if(raf) cancelAnimationFrame(raf); if(toId) clearTimeout(toId); };
 };
 
-/* Уборка */
 JOB_RENDERERS.cleaner = (stage, onDone) => {
   stage.innerHTML = `<div class="spots-area" id="a"></div>
     <div class="toy-bar"><span id="t">⏱ 6.0 с</span><span id="s">💰 0</span></div>`;
@@ -1279,7 +1705,6 @@ JOB_RENDERERS.cleaner = (stage, onDone) => {
   return () => { alive=false; clearInterval(iv); if(raf) cancelAnimationFrame(raf); };
 };
 
-/* Бариста */
 JOB_RENDERERS.barista = (stage, onDone) => {
   stage.innerHTML = `<div class="job-area" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
     <div style="color:var(--muted);font-size:.85rem">Повтори последовательность</div>
@@ -1326,7 +1751,6 @@ JOB_RENDERERS.barista = (stage, onDone) => {
   return () => { alive=false; clearInterval(iv); };
 };
 
-/* Программист */
 JOB_RENDERERS.programmer = (stage, onDone) => {
   const SYM = ['{','}',';','=','<','>','(',')','[',']','+','*'];
   stage.innerHTML = `<div class="code-area">
@@ -1375,7 +1799,6 @@ JOB_RENDERERS.programmer = (stage, onDone) => {
   return () => { alive=false; if(raf) cancelAnimationFrame(raf); };
 };
 
-/* Повар */
 JOB_RENDERERS.cook = (stage, onDone) => {
   const ING = ['🍅','🧀','🥓','🍄','🥬','🧅','🥚','🌶️','🍖'];
   stage.innerHTML = `<div class="cook-area">
@@ -1427,7 +1850,6 @@ JOB_RENDERERS.cook = (stage, onDone) => {
   return () => { alive=false; clearInterval(iv); };
 };
 
-/* Музыкант */
 JOB_RENDERERS.musician = (stage, onDone) => {
   stage.innerHTML = `<div class="music-area" id="a">
     <div class="lane" style="left:0"></div>
@@ -1501,7 +1923,6 @@ JOB_RENDERERS.musician = (stage, onDone) => {
   return () => { alive=false; if(raf) cancelAnimationFrame(raf); if(noteToId) clearTimeout(noteToId); };
 };
 
-/* Библиотекарь */
 JOB_RENDERERS.librarian = (stage, onDone) => {
   const BOOKS = ['📕','📗','📘','📙','📔','📓'];
   const pairs = 4;
@@ -1559,7 +1980,6 @@ JOB_RENDERERS.librarian = (stage, onDone) => {
   return () => { alive=false; clearInterval(iv); };
 };
 
-/* Рыбак */
 JOB_RENDERERS.fisher = (stage, onDone) => {
   stage.innerHTML = `<div class="fish-area">
     <div class="fish-emoji">🐟</div>
@@ -1567,77 +1987,100 @@ JOB_RENDERERS.fisher = (stage, onDone) => {
       <div class="fish-zone" id="zone"></div>
       <div class="fish-marker" id="mk"></div>
     </div>
-    <button class="btn" id="cast" style="margin-top:14px">🎣 Забросить (нажми в зелёной зоне)</button>
-    <div style="color:var(--muted);font-size:.85rem" id="info">Поймано: 0 / 10</div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:center">
+      <button class="btn" id="cast">🎣 Забросить</button>
+      <div style="display:flex;flex-direction:column;gap:2px;font-size:.82rem;color:var(--muted)">
+        <span>Поймано: <b id="caught" style="color:#4ade80">0</b> / <b>10</b></span>
+        <span>Промахов: <b id="miss" style="color:#f87171">0</b></span>
+      </div>
+    </div>
+    <div id="fb" style="min-height:26px;font-weight:800;font-size:1rem;transition:color .2s"></div>
   </div>
   <div class="toy-bar"><span id="t">⏱ 12 с</span><span id="s">💰 0</span></div>`;
-  const sc = stage.querySelector('#sc'), zone = stage.querySelector('#zone'), mk = stage.querySelector('#mk');
-  const tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s'), infoEl = stage.querySelector('#info');
+  const zone = stage.querySelector('#zone');
+  const mk = stage.querySelector('#mk');
+  const tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
+  const caughtEl = stage.querySelector('#caught'), missEl = stage.querySelector('#miss');
+  const fbEl = stage.querySelector('#fb');
   const castBtn = stage.querySelector('#cast');
-  let alive = true, score = 0, left = 12, caught = 0, maxAttempts = 10;
-  let pos = 0, dir = 1, speed = 2.2, zoneStart = 0.4, zoneW = 0.2, raf = null;
-
+  let alive = true, score = 0, left = 12, caught = 0, miss = 0;
+  const MAX = 10;
+  let pos = 0.5, dir = 1, speed = 0.018;
+  let zoneStart = 0.4, zoneW = 0.2;
+  let raf = null, zoneFlashTimer = null, castLock = false;
   function newZone(){
-    zoneW = 0.15 + Math.random()*0.12;
-    zoneStart = Math.random()*(1 - zoneW - 0.04) + 0.02;
-    zone.style.left = (zoneStart*100)+'%';
-    zone.style.width = (zoneW*100)+'%';
+    zoneW = 0.16 + Math.random() * 0.12;
+    zoneStart = Math.random() * (1 - zoneW - 0.04) + 0.02;
+    zone.style.left = (zoneStart * 100) + '%';
+    zone.style.width = (zoneW * 100) + '%';
   }
   newZone();
-
+  function updateMarker(){ mk.style.left = (pos * 100) + '%'; }
+  updateMarker();
   function loop(){
     if(!alive) return;
     pos += dir * speed;
-    if(pos > 1){ pos = 1; dir = -1; }
-    if(pos < 0){ pos = 0; dir = 1; }
-    mk.style.left = (pos*100)+'%';
+    if(pos >= 1){ pos = 1; dir = -1; }
+    if(pos <= 0){ pos = 0; dir = 1; }
+    updateMarker();
     raf = requestAnimationFrame(loop);
   }
   raf = requestAnimationFrame(loop);
-
   castBtn.onclick = () => {
-    if(!alive) return;
+    if(!alive || castLock) return;
     const inZone = pos >= zoneStart && pos <= zoneStart + zoneW;
     if(inZone){
+      castLock = true;
       score += 8; caught++;
-      sEl.textContent = `💰 ${score}`;
-      infoEl.textContent = `Поймано: ${caught} / ${maxAttempts}`;
-      beep(700, .1, 'sine', .09); setTimeout(()=>beep(900,.12),90);
+      sEl.textContent = `💰 ${score}`; caughtEl.textContent = caught;
+      fbEl.textContent = '🎣 Есть рыба! +8 🪙'; fbEl.style.color = '#4ade80';
+      beep(700, .1, 'sine', .09); setTimeout(() => beep(900, .12), 90);
+      zone.style.background = '#4ade80cc'; zone.style.boxShadow = '0 0 40px #4ade80ff';
+      if(zoneFlashTimer) clearTimeout(zoneFlashTimer);
+      zoneFlashTimer = setTimeout(() => { zone.style.background = ''; zone.style.boxShadow = ''; }, 350);
       newZone();
-      if(caught >= maxAttempts){ finish(); return; }
+      setTimeout(() => { castLock = false; }, 180);
+      if(caught >= MAX){ finish(); }
     } else {
+      miss++; missEl.textContent = miss;
+      fbEl.textContent = '💨 Мимо...'; fbEl.style.color = '#f87171';
       beep(200, .12, 'sawtooth', .07);
-      infoEl.textContent = `Поймано: ${caught} / ${maxAttempts}`;
+      zone.style.background = '#f8717188';
+      if(zoneFlashTimer) clearTimeout(zoneFlashTimer);
+      zoneFlashTimer = setTimeout(() => { zone.style.background = ''; }, 200);
     }
   };
-
+  function onKey(e){
+    if(e.code === 'Space' || e.key === ' '){ e.preventDefault(); castBtn.click(); }
+  }
+  document.addEventListener('keydown', onKey);
   const iv = setInterval(() => {
     if(!alive) return;
     left--; tEl.textContent = `⏱ ${left} с`;
-    if(left<=0) finish();
+    if(left <= 0) finish();
   }, 1000);
-
   function finish(){
-    if(!alive) return; alive=false; clearInterval(iv);
-    if(raf) cancelAnimationFrame(raf);
-    onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
-    stage.querySelector('.fish-area').innerHTML = resultHTML('🎣', score, `Поймано рыб: ${caught}`);
+    if(!alive) return;
+    alive = false; clearInterval(iv); if(raf) cancelAnimationFrame(raf);
+    if(zoneFlashTimer) clearTimeout(zoneFlashTimer);
+    document.removeEventListener('keydown', onKey);
+    onDone(score); beep(700, .1); setTimeout(() => beep(950, .16), 110);
+    stage.querySelector('.fish-area').innerHTML = resultHTML('🎣', score, `Поймано: ${caught} · Промахов: ${miss}`);
     bindClose(stage);
   }
-  return () => { alive=false; clearInterval(iv); if(raf) cancelAnimationFrame(raf); };
+  return () => {
+    alive = false; clearInterval(iv); if(raf) cancelAnimationFrame(raf);
+    if(zoneFlashTimer) clearTimeout(zoneFlashTimer);
+    document.removeEventListener('keydown', onKey);
+  };
 };
 
-/* Фотограф */
 JOB_RENDERERS.photographer = (stage, onDone) => {
-  stage.innerHTML = `<div class="photo-area" id="a">
-    <div class="photo-frame"></div>
-  </div>
-  <div class="toy-bar"><span id="t">⏱ 10 с</span><span id="s">💰 0</span></div>`;
+  stage.innerHTML = `<div class="photo-area" id="a"><div class="photo-frame"></div></div>
+    <div class="toy-bar"><span id="t">⏱ 10 с</span><span id="s">💰 0</span></div>`;
   const area = stage.querySelector('#a'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
   let alive=true, score=0, left=10, raf=null;
   const OBJECTS = ['🐦','🦋','🐝','🌸','🍃','⭐'];
-  let tx = 100, ty = 100, vx = 1.8, vy = 1.6;
-
   function spawn(){
     if(!alive) return;
     const r = area.getBoundingClientRect();
@@ -1649,27 +2092,20 @@ JOB_RENDERERS.photographer = (stage, onDone) => {
     area.appendChild(el);
     el.dataset.vx = rnd(-2, 2) || 1.5;
     el.dataset.vy = rnd(-2, 2) || 1.5;
-
     el.onclick = () => {
       if(!alive) return;
       const r2 = area.getBoundingClientRect();
       const cx = r2.width/2, cy = r2.height/2;
       const ex = parseFloat(el.style.left) + 20;
       const ey = parseFloat(el.style.top) + 20;
-      const inFrame = Math.hypot(ex - cx, ey - cy) < 55;
-      if(inFrame){
+      if(Math.hypot(ex - cx, ey - cy) < 55){
         score += 7; sEl.textContent = `💰 ${score}`;
         beep(800, .1, 'triangle', .09); setTimeout(()=>beep(1000,.1),70);
-      } else {
-        beep(200, .1, 'sawtooth', .06);
-      }
+      } else beep(200, .1, 'sawtooth', .06);
       el.remove();
     };
   }
-
-  const iv = setInterval(spawn, 900);
-  spawn();
-
+  const iv = setInterval(spawn, 900); spawn();
   function loop(){
     if(!alive) return;
     const r = area.getBoundingClientRect();
@@ -1685,13 +2121,11 @@ JOB_RENDERERS.photographer = (stage, onDone) => {
     raf = requestAnimationFrame(loop);
   }
   raf = requestAnimationFrame(loop);
-
   const cIv = setInterval(() => {
     if(!alive) return;
     left--; tEl.textContent = `⏱ ${left} с`;
     if(left<=0) finish();
   }, 1000);
-
   function finish(){
     if(!alive) return; alive=false;
     clearInterval(iv); clearInterval(cIv); if(raf) cancelAnimationFrame(raf);
@@ -1702,7 +2136,6 @@ JOB_RENDERERS.photographer = (stage, onDone) => {
   return () => { alive=false; clearInterval(iv); clearInterval(cIv); if(raf) cancelAnimationFrame(raf); };
 };
 
-/* Тренер */
 JOB_RENDERERS.trainer = (stage, onDone) => {
   stage.innerHTML = `<div class="trainer-area">
     <div style="color:var(--muted);font-size:.9rem">Жми кнопку в ритм метроному!</div>
@@ -1713,23 +2146,15 @@ JOB_RENDERERS.trainer = (stage, onDone) => {
   const btn = stage.querySelector('#tb');
   const tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
   const hitsEl = stage.querySelector('#hits');
-  let alive=true, score=0, hits=0, left=12;
-  let beatWindow = false;
-  let iv = null, wi = null;
-
+  let alive=true, score=0, hits=0, left=12, beatWindow = false, iv = null;
   function beat(){
     if(!alive) return;
     beatWindow = true;
     btn.classList.add('pulse');
     beep(500, .05, 'square', .06);
-    setTimeout(()=>{
-      beatWindow = false;
-      btn.classList.remove('pulse');
-    }, 420);
+    setTimeout(()=>{ beatWindow = false; btn.classList.remove('pulse'); }, 420);
   }
-  iv = setInterval(beat, 900);
-  setTimeout(beat, 200);
-
+  iv = setInterval(beat, 900); setTimeout(beat, 200);
   btn.onclick = () => {
     if(!alive) return;
     if(beatWindow){
@@ -1738,21 +2163,18 @@ JOB_RENDERERS.trainer = (stage, onDone) => {
       btn.classList.add('hit');
       beep(800, .08, 'sine', .09);
       setTimeout(()=>btn.classList.remove('hit'), 160);
-      beatWindow = false;
-      btn.classList.remove('pulse');
+      beatWindow = false; btn.classList.remove('pulse');
     } else {
       btn.classList.add('miss');
       beep(200, .1, 'sawtooth', .06);
       setTimeout(()=>btn.classList.remove('miss'), 160);
     }
   };
-
   const cIv = setInterval(() => {
     if(!alive) return;
     left--; tEl.textContent = `⏱ ${left} с`;
     if(left<=0) finish();
   }, 1000);
-
   function finish(){
     if(!alive) return; alive=false;
     clearInterval(iv); clearInterval(cIv);
@@ -1763,15 +2185,10 @@ JOB_RENDERERS.trainer = (stage, onDone) => {
   return () => { alive=false; clearInterval(iv); clearInterval(cIv); };
 };
 
-/* Химик */
 JOB_RENDERERS.chemist = (stage, onDone) => {
   const REAGENTS = [
-    { e:'🔴', col:'#dc2626' },
-    { e:'🔵', col:'#3b82f6' },
-    { e:'🟢', col:'#22c55e' },
-    { e:'🟡', col:'#eab308' },
-    { e:'🟣', col:'#a855f7' },
-    { e:'🟠', col:'#f97316' },
+    { e:'🔴', col:'#dc2626' },{ e:'🔵', col:'#3b82f6' },{ e:'🟢', col:'#22c55e' },
+    { e:'🟡', col:'#eab308' },{ e:'🟣', col:'#a855f7' },{ e:'🟠', col:'#f97316' },
   ];
   stage.innerHTML = `<div class="chem-area">
     <div style="color:var(--muted);font-size:.85rem">Смешай реагенты в правильном порядке</div>
@@ -1782,7 +2199,6 @@ JOB_RENDERERS.chemist = (stage, onDone) => {
   const recEl = stage.querySelector('#rec'), btnsBox = stage.querySelector('#btns');
   const tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
   let alive=true, score=0, left=12, recipe=[], prog=0;
-
   function redraw(){
     recEl.innerHTML = recipe.map((r,i)=>`<span class="${i<prog?'done':''}">${r.e}</span>`).join('');
   }
@@ -1790,7 +2206,7 @@ JOB_RENDERERS.chemist = (stage, onDone) => {
     recipe = [0,0,0].map(()=>REAGENTS[Math.floor(Math.random()*REAGENTS.length)]);
     prog = 0; redraw();
   }
-  REAGENTS.forEach((r, i) => {
+  REAGENTS.forEach((r) => {
     const b = document.createElement('button');
     b.style.background = `radial-gradient(circle at 34% 28%, #fff5, ${r.col})`;
     b.textContent = r.e;
@@ -1808,13 +2224,11 @@ JOB_RENDERERS.chemist = (stage, onDone) => {
     btnsBox.appendChild(b);
   });
   newRecipe();
-
   const iv = setInterval(() => {
     if(!alive) return;
     left--; tEl.textContent = `⏱ ${left} с`;
     if(left<=0) finish();
   }, 1000);
-
   function finish(){
     if(!alive) return; alive=false; clearInterval(iv);
     onDone(score); beep(700,.1); setTimeout(()=>beep(950,.16),110);
@@ -1824,14 +2238,11 @@ JOB_RENDERERS.chemist = (stage, onDone) => {
   return () => { alive=false; clearInterval(iv); };
 };
 
-/* Пилот */
 JOB_RENDERERS.pilot = (stage, onDone) => {
   stage.innerHTML = `<div class="pilot-area" id="a"></div>
     <div class="toy-bar"><span id="t">⏱ 10 с</span><span id="s">💰 0</span></div>`;
   const area = stage.querySelector('#a'), tEl = stage.querySelector('#t'), sEl = stage.querySelector('#s');
   let alive=true, score=0, left=10, raf=null;
-  const stars = [];
-  const r = area.getBoundingClientRect();
   for(let i=0;i<30;i++){
     const s = document.createElement('div');
     s.className = 'star';
@@ -1840,9 +2251,7 @@ JOB_RENDERERS.pilot = (stage, onDone) => {
     s.style.width = s.style.height = (1+Math.random()*2)+'px';
     s.style.animationDelay = (Math.random()*2)+'s';
     area.appendChild(s);
-    stars.push(s);
   }
-
   function spawn(){
     if(!alive) return;
     const r = area.getBoundingClientRect();
@@ -1862,7 +2271,6 @@ JOB_RENDERERS.pilot = (stage, onDone) => {
     };
   }
   const iv = setInterval(spawn, 550); spawn();
-
   function loop(){
     if(!alive) return;
     const r = area.getBoundingClientRect();
@@ -1878,13 +2286,11 @@ JOB_RENDERERS.pilot = (stage, onDone) => {
     raf = requestAnimationFrame(loop);
   }
   raf = requestAnimationFrame(loop);
-
   const cIv = setInterval(() => {
     if(!alive) return;
     left--; tEl.textContent = `⏱ ${left} с`;
     if(left<=0) finish();
   }, 1000);
-
   function finish(){
     if(!alive) return; alive=false;
     clearInterval(iv); clearInterval(cIv); if(raf) cancelAnimationFrame(raf);
@@ -1896,7 +2302,7 @@ JOB_RENDERERS.pilot = (stage, onDone) => {
 };
 
 /* ============================================================
-   МАГАЗИН
+   МАГАЗИН И ИГРУШКИ
    ============================================================ */
 function renderShop(){
   const grid = $('#shopGrid');
@@ -1911,8 +2317,8 @@ function renderShop(){
       <div class="toy-desc">${t.desc}</div>
       <div class="toy-actions">
         ${owned
-          ? `<button class="buy-btn skin-btn" data-act="skins">🎨 Скины (${state.toys[t.id].skins.length}/${t.skins.length})</button>`
-          : `<button class="buy-btn" data-act="buy">Купить · ${t.price} 🪙</button>`}
+          ? `<button class="buy-btn skin-btn">🎨 Скины (${state.toys[t.id].skins.length}/${t.skins.length})</button>`
+          : `<button class="buy-btn">Купить · ${t.price} 🪙</button>`}
       </div>`;
     const btn = card.querySelector('button');
     if(owned) btn.onclick = () => openSkins(t.id);
@@ -1920,27 +2326,23 @@ function renderShop(){
     grid.appendChild(card);
   });
 }
-
 function buyToy(t){
   if(state.coins < t.price){ toast('Не хватает монет!', false); beep(150,.18,'sawtooth',.07); return; }
   state.coins -= t.price;
-  state.toys[t.id] = { skins:['classic'], active:'classic' };
+  const firstSkin = t.skins[0].id;
+  state.toys[t.id] = { skins:[firstSkin], active:firstSkin };
   save();
-  renderCoins(); bumpCoins(); renderShop(); renderToys();
+  renderCoins(); bumpCoins(); renderShop(); renderToys(); renderUpgrades();
   toast(`Куплено: ${t.name}! 🎉`);
   beep(680,.09); setTimeout(()=>beep(920,.14),100);
 }
-
-/* ============================================================
-   МОИ ИГРУШКИ
-   ============================================================ */
 function renderToys(){
   const grid = $('#toysGrid');
   const owned = TOYS.filter(t => isOwned(t.id));
   if(!owned.length){
     grid.innerHTML = `<div class="empty">
       У тебя пока нет антистрессов 😢<br>
-      Заработай монет на работе 💼 и купи их в магазине 🛒!
+      Заработай монет в кликере 🪙, на работе 💼 или купи в магазине 🛒!
     </div>`;
     return;
   }
@@ -1967,19 +2369,15 @@ function renderToys(){
     grid.appendChild(card);
   });
 }
-
-/* ============================================================
-   СКИНЫ
-   ============================================================ */
 async function openSkins(toyId){
   const toy = getToy(toyId);
   if(!toy) return;
   await openModal(`🎨 Скины: ${toy.name}`);
   const stage = $('#modalStage');
   const owned = state.toys[toyId];
+  if(!owned){ closeModal(); return; }
   const grid = document.createElement('div');
   grid.className = 'skin-grid';
-
   toy.skins.forEach(skin => {
     const isSkinOwned = owned.skins.includes(skin.id);
     const isActive = owned.active === skin.id;
@@ -1993,18 +2391,16 @@ async function openSkins(toyId){
       ${ isActive
           ? `<button class="buy-btn" disabled>✓ Выбран</button>`
           : isSkinOwned
-            ? `<button class="buy-btn" data-act="select">Выбрать</button>`
-            : `<button class="buy-btn" data-act="buy">${skin.price} 🪙</button>` }
+            ? `<button class="buy-btn">Выбрать</button>`
+            : `<button class="buy-btn">${skin.price} 🪙</button>` }
     `;
     const btn = card.querySelector('button');
     if(!isActive && isSkinOwned) btn.onclick = () => selectSkin(toyId, skin.id);
     else if(!isSkinOwned) btn.onclick = () => buySkin(toyId, skin);
     grid.appendChild(card);
   });
-
   stage.appendChild(grid);
 }
-
 function buySkin(toyId, skin){
   if(state.coins < skin.price){ toast('Не хватает монет!', false); beep(150,.18,'sawtooth',.07); return; }
   state.coins -= skin.price;
@@ -2012,11 +2408,10 @@ function buySkin(toyId, skin){
   state.toys[toyId].active = skin.id;
   save();
   renderCoins(); bumpCoins(); renderShop(); renderToys();
-  toast(`Скин «${skin.name}» куплен и выбран! 🎨`);
+  toast(`Скин «${skin.name}» куплен! 🎨`);
   beep(680,.09); setTimeout(()=>beep(920,.14),100);
   openSkins(toyId);
 }
-
 function selectSkin(toyId, skinId){
   state.toys[toyId].active = skinId;
   save();
@@ -2025,14 +2420,11 @@ function selectSkin(toyId, skinId){
   toast('Скин применён ✨');
   openSkins(toyId);
 }
-
-/* ============================================================
-   ОТКРЫТИЕ ИГРУШКИ
-   ============================================================ */
 async function openToy(id){
   const toy = getToy(id);
   if(!toy || !isOwned(id)) return;
   const skin = activeSkin(id);
+  if(!skin) return;
   await openModal(`${skin.emoji || toy.emoji} ${toy.name}`);
   const stage = $('#modalStage');
   const renderer = TOY_RENDERERS[id];
@@ -2043,17 +2435,14 @@ async function openToy(id){
 }
 
 /* ============================================================
-   ИГРУШКИ
+   ИГРУШКИ — реализации
    ============================================================ */
 const TOY_RENDERERS = {};
 
 TOY_RENDERERS.bubble = (stage, skin) => {
   const TOTAL = 80;
   stage.innerHTML = `<div class="bubble-wrap" id="bw"></div>
-    <div class="toy-bar">
-      <span id="c">Лопнуто: 0 / ${TOTAL}</span>
-      <button id="r">🔄 Восстановить</button>
-    </div>`;
+    <div class="toy-bar"><span id="c">Лопнуто: 0 / ${TOTAL}</span><button id="r">🔄 Восстановить</button></div>`;
   const wrap = stage.querySelector('#bw'), cnt = stage.querySelector('#c');
   let popped = 0;
   function makeB(){
@@ -2064,12 +2453,7 @@ TOY_RENDERERS.bubble = (stage, skin) => {
       if(b.classList.contains('popped')) return;
       b.classList.add('popped'); popSound(); popped++;
       cnt.textContent = `Лопнуто: ${popped} / ${TOTAL}`;
-      if(popped === TOTAL){
-        setTimeout(() => {
-          toast('Все пузырьки лопнуты! 🫧✨');
-          [0,100,200,300,420].forEach((d,i)=>setTimeout(()=>beep(600+i*130,.1,'triangle',.08),d));
-        }, 150);
-      }
+      if(popped === TOTAL) setTimeout(() => { toast('Все пузырьки лопнуты! 🫧✨'); }, 150);
     };
     return b;
   }
@@ -2143,7 +2527,7 @@ TOY_RENDERERS.slime = (stage, skin) => {
     ty = Math.max(20, Math.min(r.height-20, e.clientY-r.top));
   }
   function dn(e){ area.setPointerCapture?.(e.pointerId); setT(e); beep(260,.06); }
-  function mv(e){ if(e.buttons) setT(e); }
+  function mv(e){ setT(e); }
   area.addEventListener('pointerdown', dn);
   area.addEventListener('pointermove', mv);
   function loop(){
@@ -2246,10 +2630,7 @@ TOY_RENDERERS.fidgetcube = (stage, skin) => {
 
 TOY_RENDERERS.sand = (stage, skin) => {
   stage.innerHTML = `<div class="sand-wrap" id="w"><canvas id="c"></canvas></div>
-    <div class="toy-bar">
-      <span>Рисуй пальцем по песку 🏖️</span>
-      <button id="r">🔄 Разровнять</button>
-    </div>`;
+    <div class="toy-bar"><span>Рисуй пальцем 🏖️</span><button id="r">🔄 Разровнять</button></div>`;
   const canvas = stage.querySelector('#c'), wrap = stage.querySelector('#w'), ctx = canvas.getContext('2d');
   function fill(){
     const g = ctx.createLinearGradient(0,0,0,canvas.height);
@@ -2290,15 +2671,12 @@ TOY_RENDERERS.infinity = (stage, skin) => {
       <div class="face" style="transform: rotateX(90deg) translateZ(60px)"></div>
       <div class="face" style="transform: rotateX(-90deg) translateZ(60px)"></div>
     </div></div>
-    <p class="hint">Кликни, чтобы запустить/остановить вращение ♾️</p>`;
+    <p class="hint">Кликни, чтобы вращать ♾️</p>`;
   const cube = stage.querySelector('#ic');
   cube.querySelectorAll('.face').forEach(f => {
     f.style.background = `radial-gradient(circle at 34% 26%, ${skin.colors.a}, ${skin.colors.b} 55%, ${skin.colors.c})`;
   });
-  cube.onclick = () => {
-    cube.classList.toggle('spin');
-    beep(cube.classList.contains('spin') ? 620 : 420, .08);
-  };
+  cube.onclick = () => { cube.classList.toggle('spin'); beep(cube.classList.contains('spin') ? 620 : 420, .08); };
   return null;
 };
 
@@ -2306,40 +2684,38 @@ TOY_RENDERERS.smiley = (stage, skin) => {
   stage.innerHTML = `<div class="cat-stage" id="ss">
     <div class="squish-cat" id="sm" style="filter: drop-shadow(0 12px 26px ${skin.colors.b}88)">${skin.emoji||'😊'}</div>
     </div>
-    <p class="hint">Сжимай смайлик — он меняет выражение 👆</p>`;
+    <p class="hint">Сжимай смайлик 👆</p>`;
   const st = stage.querySelector('#ss'), face = stage.querySelector('#sm');
   const happy = skin.emoji || '😊';
   let dn = false;
-  face.addEventListener('pointerdown', e => {
+  function onDown(e){
     e.preventDefault(); if(dn) return; dn = true;
     face.classList.remove('squish'); void face.offsetWidth; face.classList.add('squish');
-    face.textContent = '😵';
-    beep(200, .12); 
+    face.textContent = '😵'; beep(200, .12);
     const r = st.getBoundingClientRect();
     const f = document.createElement('div');
     f.className = 'float-text'; f.textContent = 'ой!';
     f.style.left = (e.clientX-r.left)+'px';
     f.style.top  = (e.clientY-r.top-20)+'px';
     st.appendChild(f); setTimeout(()=>f.remove(), 900);
-  });
-  window.addEventListener('pointerup', () => {
-    if(!dn) return; dn = false;
-    face.textContent = happy;
-    beep(480, .1);
-  });
-  return () => { dn = false; };
+  }
+  function onUp(){ if(!dn) return; dn = false; face.textContent = happy; beep(480, .1); }
+  face.addEventListener('pointerdown', onDown);
+  window.addEventListener('pointerup', onUp);
+  window.addEventListener('pointercancel', onUp);
+  return () => {
+    dn = false;
+    window.removeEventListener('pointerup', onUp);
+    window.removeEventListener('pointercancel', onUp);
+  };
 };
 
-/* Шарик */
 TOY_RENDERERS.balloon = (stage, skin) => {
   stage.innerHTML = `<div class="balloon-stage" id="a">
     <div class="balloon" id="b" style="color:${skin.colors.b}">🎈</div>
   </div>
-  <div class="toy-bar">
-    <span>Кликай, чтобы надуть (0 / 12)</span>
-    <button id="r">🔄 Заново</button>
-  </div>`;
-  const area = stage.querySelector('#a'), balloon = stage.querySelector('#b');
+  <div class="toy-bar"><span>Кликай, чтобы надуть (0 / 12)</span><button id="r">🔄 Заново</button></div>`;
+  const balloon = stage.querySelector('#b');
   let size = 6, count = 0;
   const MAX = 12;
   const infoEl = stage.querySelector('.toy-bar span');
@@ -2350,17 +2726,13 @@ TOY_RENDERERS.balloon = (stage, skin) => {
   refresh();
   balloon.onclick = () => {
     if(count >= MAX) return;
-    count++;
-    size += 0.45;
-    refresh();
+    count++; size += 0.45; refresh();
     balloon.classList.remove('pulse'); void balloon.offsetWidth; balloon.classList.add('pulse');
     beep(400 + count*40, .06, 'sine', .06);
     if(count >= MAX){
       setTimeout(() => {
-        balloon.classList.add('burst');
-        popSound();
+        balloon.classList.add('burst'); popSound();
         toast('Шарик лопнул! 🎈💥');
-        [0,80,160,250].forEach((d,i)=>setTimeout(()=>beep(900+i*150,.1,'triangle',.09),d));
       }, 200);
     }
   };
@@ -2373,30 +2745,22 @@ TOY_RENDERERS.balloon = (stage, skin) => {
   return null;
 };
 
-/* Пианино */
 TOY_RENDERERS.piano = (stage, skin) => {
   const NOTES = [
-    { note: 261.63, label: 'До',  col: 'linear-gradient(180deg,#ffffff,#e5e7eb)' },
-    { note: 293.66, label: 'Ре',  col: 'linear-gradient(180deg,#ffffff,#d1d5db)' },
-    { note: 329.63, label: 'Ми',  col: 'linear-gradient(180deg,#fef3c7,#fcd34d)' },
-    { note: 349.23, label: 'Фа',  col: 'linear-gradient(180deg,#fef3c7,#fbbf24)' },
-    { note: 392.00, label: 'Соль',col: 'linear-gradient(180deg,#bbf7d0,#4ade80)' },
-    { note: 440.00, label: 'Ля',  col: 'linear-gradient(180deg,#bae6fd,#60a5fa)' },
-    { note: 493.88, label: 'Си',  col: 'linear-gradient(180deg,#e9d5ff,#a855f7)' },
-    { note: 523.25, label: 'До²', col: 'linear-gradient(180deg,#fbcfe8,#ec4899)' },
+    { note: 261.63, label: 'До' },{ note: 293.66, label: 'Ре' },
+    { note: 329.63, label: 'Ми' },{ note: 349.23, label: 'Фа' },
+    { note: 392.00, label: 'Соль'},{ note: 440.00, label: 'Ля' },
+    { note: 493.88, label: 'Си' },{ note: 523.25, label: 'До²' },
   ];
-  stage.innerHTML = `<div class="piano-stage">
-    <div class="piano" id="p"></div>
-  </div>
-  <p class="hint">Нажимай клавиши и играй мелодии 🎵</p>`;
+  stage.innerHTML = `<div class="piano-stage"><div class="piano" id="p"></div></div>
+    <p class="hint">Нажимай клавиши 🎵</p>`;
   const piano = stage.querySelector('#p');
-  NOTES.forEach((n, i) => {
+  NOTES.forEach((n) => {
     const k = document.createElement('button');
     k.className = 'piano-key';
     k.textContent = n.label;
-    k.style.background = skin.id === 'classic' ? n.col
-      : `linear-gradient(180deg, ${skin.colors.a}, ${skin.colors.b} 60%, ${skin.colors.c})`;
-    k.style.color = skin.id === 'classic' ? '#1f2937' : '#fff';
+    k.style.background = `linear-gradient(180deg, ${skin.colors.a}, ${skin.colors.b} 60%, ${skin.colors.c})`;
+    k.style.color = '#fff';
     k.style.textShadow = '0 1px 3px #0008';
     k.style.fontWeight = '800';
     k.onclick = () => {
@@ -2418,7 +2782,6 @@ TOY_RENDERERS.piano = (stage, skin) => {
   return null;
 };
 
-/* Магический шар */
 TOY_RENDERERS.magicball = (stage, skin) => {
   const ANSWERS = [
     'Определённо да ✨','Скорее всего 🌀','Знаки говорят да 🌟','Бесспорно 💫',
@@ -2443,12 +2806,10 @@ TOY_RENDERERS.magicball = (stage, skin) => {
     ans.textContent = ANSWERS[idx];
     ans.classList.remove('show'); void ans.offsetWidth; ans.classList.add('show');
     beep(440, .1, 'sine', .08);
-    setTimeout(()=>beep(660, .14, 'sine', .08), 100);
   };
   return null;
 };
 
-/* Йо-йо */
 TOY_RENDERERS.yoyo = (stage, skin) => {
   stage.innerHTML = `<div class="yoyo-stage" id="a">
     <div class="yoyo-string" id="str"></div>
@@ -2457,15 +2818,16 @@ TOY_RENDERERS.yoyo = (stage, skin) => {
       color: ${skin.colors.b};
     ">🪀</div>
   </div>
-  <p class="hint">Води мышью вверх-вниз или пальцем 📱</p>`;
+  <p class="hint">Води мышью вверх-вниз 📱</p>`;
   const area = stage.querySelector('#a'), str = stage.querySelector('#str'), yoyo = stage.querySelector('#yy');
   let y = area.clientHeight/2, ty = y, raf = null, alive = true;
   function setT(e){
     const r = area.getBoundingClientRect();
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    const clientY = (e.touches && e.touches[0]) ? e.touches[0].clientY : e.clientY;
+    if(typeof clientY !== 'number') return;
     ty = Math.max(40, Math.min(r.height-40, clientY - r.top));
   }
-  function onMove(e){ if(e.buttons || e.touches) setT(e); }
+  function onMove(e){ setT(e); }
   function onDown(e){ setT(e); e.preventDefault?.(); }
   area.addEventListener('pointerdown', onDown);
   area.addEventListener('pointermove', onMove);
@@ -2487,8 +2849,12 @@ TOY_RENDERERS.yoyo = (stage, skin) => {
 /* ============================================================
    ЗВУК
    ============================================================ */
+soundOn = state.soundOn !== false;
+$('#soundBtn').textContent = soundOn ? '🔊' : '🔇';
 $('#soundBtn').onclick = () => {
   soundOn = !soundOn;
+  state.soundOn = soundOn;
+  save();
   $('#soundBtn').textContent = soundOn ? '🔊' : '🔇';
   if(soundOn) beep(700, .08);
 };
@@ -2498,6 +2864,8 @@ $('#soundBtn').onclick = () => {
    ============================================================ */
 applyTheme(state.theme || 'dark');
 renderCoins();
+renderClickerStats();
+renderUpgrades();
 renderJobs();
 renderShop();
 renderToys();
